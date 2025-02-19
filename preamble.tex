@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}            % font encoding: T1
 \usepackage{textcomp}               % additional symbols
 \usepackage{times}                  % times new roman font
-\usepackage{inconsolata}            % inconsolata font for listings
+\usepackage{inconsolata}            % use consolas font for ttfamily
 \usepackage[main=ngerman]{babel}    % set main language to german
 
 
@@ -12,12 +12,16 @@
 
 
 \usepackage{enumitem}               % list customization
+\usepackage{dirtree}                % tree style lists
 \usepackage{outlines}               % easy nested lists
 \usepackage{tabularx}               % some nicer tables with X columns
-\usepackage{tabu}                   % more flexible tables
+\usepackage{array}
+\usepackage{makecell}               % multi-line cells in tables
+\usepackage{multirow}               % multi-row cells in tables
 \usepackage{hhline}                 % double lines in tables
 \usepackage{booktabs}               % thick and thin lines in tables
 \usepackage{boldline}               % bold (vertical) lines in tables
+\usepackage{colortbl}               % colored tables
 
 
 \usepackage{amsmath}                % math symbols
@@ -36,6 +40,7 @@
 \usepackage{scalerel}               % scale any objects
 \usepackage{anyfontsize}            % set any font size
 \usepackage[table]{xcolor}          % needed for colors
+\usepackage{pdfpages}               % include pdfs (with more options)
 
 
 \usepackage{tcolorbox}              % colored boxes
@@ -44,7 +49,6 @@
 
 
 \usepackage{tikz}                   % needed for TikZ drawings
-\usepackage{pgfplots}               % Draw nice plots
 
 
 \usepackage{listings}               % for nicer code display
@@ -87,9 +91,7 @@
           bottom=6mm, 
           headheight=0mm, 
           headsep=0mm, 
-          footskip=4mm,
-        %   showframe,
-          }
+          footskip=4mm}
 
 \setlength{\columnsep}{1.5mm}       % distance between columns
 \setlength{\columnseprule}{0.1pt}   % thickness of column separation line
@@ -102,8 +104,8 @@
 
 
 % --------------------------------------- COLOR DEFINITIONS ---------------------------------------
-\definecolor{sectioncolor}{HTML}{b4b3b2}
-\definecolor{subsectioncolor}{HTML}{dcdbdb}
+\definecolor{sectioncolor}{HTML}{ffc81a}
+\definecolor{subsectioncolor}{HTML}{ffe697}
 \definecolor{sectextcol}{HTML}{000000}
 \definecolor{subsectextcol}{HTML}{000000}
 
@@ -141,19 +143,21 @@
 
 \setcounter{MaxMatrixCols}{32}                      % increase max columns in matrix environments
 
-% ----------------------------------- TIKZ & PGF-PLOTS SETTINGS -----------------------------------
+% ----------------------------------------- TIKZ SETTINGS -----------------------------------------
 \usetikzlibrary{arrows}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{bending}
 \usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.markings}
 \usetikzlibrary{angles}
 \usetikzlibrary{tikzmark}
 \usetikzlibrary{petri}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shapes}
+\usetikzlibrary{shapes.arrows}
 \usetikzlibrary{calc}
+\usetikzlibrary{fit}
 
-\pgfplotsset{compat=1.18}
 
 % ------------------------------------ OTHER PACKAGE SETTINGS -------------------------------------
 
@@ -169,11 +173,13 @@
 \renewcommand{\ULdepth}{1.75pt} % set underline depth
 \contourlength{0.7pt}           % set contour length
 
+% use xparse library in tcolorbox (for \DeclareTotalTCBox etc.)
+\tcbuselibrary{xparse}
 
 % ====================================== SETUP AND COMMANDS =======================================
 
-% custom font size for paragraph titles
-\newcommand{\semilarge}{\fontsize{9}{8}\selectfont} % new font size \semilarge (9pt)
+% custom font size for paragraph
+\newcommand{\semilarge}{\fontsize{9}{8}\selectfont}
 
 \ExplSyntaxOn
 % custom underline command for exclusions on lowercase letters such as g, j, p, q, y
@@ -202,6 +208,8 @@
 }
 \ExplSyntaxOff
 
+% custom command for straight double quotes
+\newcommand{\qts}[1]{\textquotedbl#1\textquotedbl}
 
 % setup header and footer
 \pagestyle{fancy}
@@ -214,7 +222,6 @@
 % --------------------------------------- TITLE FORMATTING ----------------------------------------
 
 \titleclass{\part}{straight}
-
 % part formatting
 \titleformat{\part}
             {\huge\bfseries}
@@ -222,12 +229,6 @@
             {1em}
             {#1}
 
-\titlespacing{\part}
-             {0.6ex}
-             {1ex}
-             {1ex}
-
-% section formatting
 \titleformat{\section}
             % {\fontsize{9}{8}\selectfont\bfseries}
             {\Large\bfseries}
@@ -312,7 +313,7 @@
 
 
 % paragraph formatting
-\titleformat{\paragraph}[runin]
+\titleformat{\paragraph}
             {\semilarge\bfseries}
             {}
             {0mm}
@@ -320,7 +321,7 @@
 
 \titlespacing{\paragraph}
              {0mm}
-             {0ex}
+             {1.5ex}
              {0.1ex}
 
 
@@ -328,7 +329,7 @@
 \let\para\paragraph%
 
 % custom command for examples
-\newcommand{\example}[1]{\subsubsection*{Beispiel: #1}}
+\newcommand{\example}[1]{\subsubsection*{Example: #1}}
 
 
 % ----------------------------------- CUSTOM TABULAR SPECIFIERS -----------------------------------
@@ -342,15 +343,40 @@
 % centered math column type
 \newcolumntype{M}{>{$}c<{$}}
 
+% centered colored column type
+\newcolumntype{Q}[3]{>{\footnotesize\color{#1}\columncolor{#2}\centering\arraybackslash}m{#3}}
+
+% custom big strut for vertical spacing in tables
+\newcommand{\bigstrut}{\rule[-.3\baselineskip]{0pt}{1.1\baselineskip}}
 
 % inline tikz node for later referencing
 \newcommand{\tikznode}[2]{% from https://tex.stackexchange.com/a/402466/121799
 	\ifmmode%
-	\tikz[remember picture,baseline= (#1.base),inner sep=0pt] \node(#1){$#2$};
+	\tikz[remember picture,baseline= (#1.base)] \node[inner sep=0pt, draw=none, minimum width=0mm, minimum height=0mm](#1){$#2$};
 	\else
-	\tikz[remember picture,baseline= (#1.base),inner sep=0pt] \node(#1){#2};
+	\tikz[remember picture,baseline= (#1.base)] \node[inner sep=0pt, draw=none, minimum width=0mm, minimum height=0mm](#1){#2};
 	\fi}
 
+% inline tikz mark for later referencing (coordinate only)
+\newcommand{\tikzcoord}[2][]{%
+\tikz[overlay,remember picture]\coordinate[#1](#2);%
+}
+
+\DeclareTotalTCBox{\mylstboxx}{ O{columns=fullflexible} v }
+                {verbatim,
+                on line,
+                arc=0pt,
+                outer arc=0pt,
+                colback=backcolour,
+                colframe=backcolour,
+                boxsep=0pt,
+                left=1pt,
+                right=1pt,
+                top=1pt,
+                bottom=1pt,
+                boxrule=0pt,
+                left skip=0ex}
+                {\lstinline[#1]^#2^}
 
 % custom inline tcolorbox
 \newtcbox{\mybox}
@@ -477,29 +503,31 @@
     }
 }
 
+% CHECk: I really dislike theese arrows so I removed them and added a new lrarrow. -Flurin
+% % custom text rightarrow to match tikz arrows
+% \renewrobustcmd{\textrightarrow}{%
+%     \raisebox{0.2ex}{%
+%         \tikz[line width=0.11ex, >={Stealth[length=1.1ex, inset=0.2ex]}]{%
+%             \draw (0,-0.13ex) to (0.55em, -0.13ex);%
+%             \draw (0, 0.13ex) to (0.55em,  0.13ex);%
+%             \draw[line width=0pt, ->] (0.8em,0) to (0.9em,0);%
+%         }%
+%     }%
+% }%
 
-% custom text rightarrow to match tikz arrows
-\renewrobustcmd{\textrightarrow}{%
-    \raisebox{0.2ex}{%
-        \tikz[line width=0.11ex, >={Stealth[length=1.1ex, inset=0.2ex]}]{%
-            \draw (0,-0.13ex) to (0.55em, -0.13ex);%
-            \draw (0, 0.13ex) to (0.55em,  0.13ex);%
-            \draw[line width=0pt, ->] (0.8em,0) to (0.9em,0);%
-        }%
-    }%
-}%
+% % custom text leftrightarrow to match tikz arrows
+% \newrobustcmd{\textlrarrow}{%
+%     \raisebox{0.2ex}{%
+%         \tikz[line width=0.11ex, >={Stealth[length=1.1ex, inset=0.2ex]}]{%
+%             \draw (0.35em,-0.13ex) to (0.9em, -0.13ex);%
+%             \draw (0.35em, 0.13ex) to (0.9em,  0.13ex);%
+%             \draw[line width=0pt, ->] (1.15em,0) to (1.25em,0);%
+%             \draw[line width=0pt, <-] (0,0) to (0.1em,0);%
+%         }%
+%     }%
+% }%
 
-% custom text leftrightarrow to match tikz arrows
-\newrobustcmd{\textlrarrow}{%
-    \raisebox{0.2ex}{%
-        \tikz[line width=0.11ex, >={Stealth[length=1.1ex, inset=0.2ex]}]{%
-            \draw (0.35em,-0.13ex) to (0.9em, -0.13ex);%
-            \draw (0.35em, 0.13ex) to (0.9em,  0.13ex);%
-            \draw[line width=0pt, ->] (1.15em,0) to (1.25em,0);%
-            \draw[line width=0pt, <-] (0,0) to (0.1em,0);%
-        }%
-    }%
-}%
+\newcommand{\textlrarrow}{$\leftrightarrow$}
 
 
 % renews the pmatrix environment to use \lgroup and \rgroup instead of \left( and \right)
@@ -530,8 +558,6 @@
 
 % custom command for differential operator d
 \newcommand{\diff}{\ensuremath{\mathop{} \! \mathrm{d}}}
-\newcommand{\dd}{\diff}
-
 
 % custom command for underset limes operator
 \newcommand{\limes}[1]{\ensuremath{\underset{#1}{\lim}}}
@@ -546,6 +572,7 @@
 \newcommand{\cbl}[1]{{\color{blue}#1}}
 \newcommand{\cor}[1]{{\color{orange}#1}}
 \newcommand{\cvt}[1]{{\color{violet}#1}}
+
 
 
 % bullet command for items in tables
@@ -607,8 +634,9 @@
                     \begin{minipage}[t]{0.1\columnwidth} % DigDes-like formatting
                         \raisebox{-.3\columnwidth}{\qrcode[level=L, 
                                 version=0,
-                                height=0.9\columnwidth]{\repo}}\hfill
-                        \normalfont\footnotesize\rotatebox[origin=tr]{90}{V \version{}}
+                                height=0.9\columnwidth]{\repo}}\\[1mm]
+                        \normalfont\footnotesize V \version{}
+                        \smallskip
                     \end{minipage}\hfill
                     \begin{minipage}[t]{0.89\columnwidth}
                         \raggedright%
@@ -617,14 +645,14 @@
                         \large Autoren:\ \author{}\\[1mm]
                         \myul{\url{\repo}}
                     \end{minipage}\par
-                        \section*{\contentsname}
-                        \group_begin:
-                        \setlength{\columnsep}{5mm}
-                        \begin{multicols}{2}
-                            \tableofcontents%
-                        \end{multicols}
-                        \group_end:
-                        \hrule
+                    \section*{\contentsname}
+                    \group_begin:
+                    \setlength{\columnsep}{5mm}
+                    \begin{multicols}{2}
+                        \tableofcontents%
+                    \end{multicols}
+                    \group_end:
+                    \hrule
                     \begin{multicols*}{2}
                     \raggedcolumns%
                 }
@@ -635,8 +663,9 @@
                         \vspace{-0.225\columnwidth}
                         \qrcode[level=L, 
                                 version=0,
-                                height=0.9\columnwidth]{\repo}\hfill
-                        \normalfont\footnotesize\rotatebox[origin=tr]{90}{V \version{}}
+                                height=0.9\columnwidth]{\repo}\\[1mm]
+                        \normalfont\footnotesize V \version{}
+                        \smallskip
                     \end{minipage}\hfill
                     \begin{minipage}[t]{0.79\columnwidth}
                         \raggedright%
@@ -654,8 +683,9 @@
                     \begin{minipage}[t]{0.1\columnwidth} % Elo-like formatting
                         \raisebox{-.3\columnwidth}{\qrcode[level=L, 
                                 version=0,
-                                height=0.9\columnwidth]{\repo}}\hfill
-                        \normalfont\footnotesize\rotatebox[origin=tr]{90}{V \version{}}
+                                height=0.9\columnwidth]{\repo}}\\[1mm]
+                        \normalfont\footnotesize V \version{}
+                        \smallskip
                     \end{minipage}\hfill
                     \begin{minipage}[t]{0.89\columnwidth}
                         \raggedright%
@@ -683,8 +713,9 @@
                         \vspace{-0.225\columnwidth}
                         \qrcode[level=L, 
                                 version=0,
-                                height=0.9\columnwidth]{\repo}\hfill
-                        \normalfont\footnotesize\rotatebox[origin=tr]{90}{V \version{}}
+                                height=0.9\columnwidth]{\repo}\\[1mm]
+                        \normalfont\footnotesize V \version{}
+                        \smallskip
                     \end{minipage}\hfill
                     \begin{minipage}[t]{0.79\columnwidth}
                         \raggedright%
@@ -906,14 +937,20 @@
         unsigned,%
         signed,%
         natural,%
+        sfixed,%
+        ufixed,%
         note,%
         warning,%
         error,%
-        failure%
+        failure,%
+        real,%
+        line,%
+        text%
     },
+    keywordstyle={[3]\color{green!70!blue}},
 %   === Additional Default Functions ===
-    keywordstyle={[3]\color{blue!80!black}},
-    morekeywords={[3],%
+    keywordstyle={[4]\color{blue!80!black}},
+    morekeywords={[4],%
         rising_edge,%
         falling_edge,%
         ceil,%
@@ -935,8 +972,274 @@
     morestring=[m]',
 }
 
+\lstdefinestyle{digdesvars}{%
+    keywordstyle={[3]\color{green!70!blue}},
+    morekeywords={[3],%
+        in_top,%
+        out_top,%
+        int_sig,%
+        rst,%
+        rst_tb,%
+        reset,%
+        cnt_present,%
+        cnt_next,%
+        tick_present,%
+        tick_next,%
+        count,%
+        count0,%
+        count1,%
+        carry,%
+        carry0,%
+        carry1,%
+        carry_next,%
+        clk,%
+        clk_out,%
+        ena,%
+        clk_tb,%
+        st_reset,%
+        st_present,%
+        st_next,%
+        x0,%
+        x1,%
+        y,%
+        Y,%
+        en1,%
+        en2,%
+        d1,%
+        d2,%
+        sel,%
+        data_out,%
+        my_bus,%
+        data_in,%
+        present_state,%
+        next_state,%
+        inp,%
+        inp_tb,%
+        oup,%
+        oup1,%
+        oup2,%
+        oup1_tb,%
+        oup2_tb,%
+        s0,%
+        s1,%
+        s2,%
+        s3,%
+        a,%
+        A,%
+        A_usig,%
+        b,%
+        B,%
+        B_sig,%
+        d,%
+        q,%
+        clk0,%
+        clk1,%
+        tb_s0,%
+        tb_s1,%
+        XYZ,%
+    },
+}
+
 \lstset{
     style=basestyle,    % base style for listings (styles are cumulative)
-    style=cppstyle,     % C++ style for listings (builds on top of base style)
-    % style=vhdlstyle,    % VHDL style for listings (builds on top of base style)
+    % style=cppstyle,     % C++ style for listings (builds on top of base style)
+    style=vhdlstyle,    % VHDL style for listings (builds on top of base style)
+    keywordstyle={[5]\color{blue!40!black}},
+    morecomment=[n][\color{blue!65!white}]{<}{>},
+    % morecomment={[s][\color{blue!70!black}]{[}{]}}, % add '[' and ']' as comment delimiters (formatting); ignore linter warning
+    morestring=[m]',
+    moredelim=[is][\color{black}]{¦}{¦}, % add '¦' as delimiter to remove formatting
+    moredelim=[is][\color{red}]{§}{§}, % add '§' as delimiter to remove formatting
+    moredelim=[is][\color{green!70!blue}]{¬}{¬}, % add '§' as delimiter to remove formatting
 }
+
+
+% % custom inline listings with box around them
+% \newcommand{\mylstbox}[2][columns=fullflexible]{%
+%     \mybox{%
+%         \lstinline[#1]|#2|}}
+% \newcommand{\mytclstbox}[2][black]{%
+%     \mybox{%
+%         \lstinline[basicstyle=\ttfamily\footnotesize\color{#1}, columns=fullflexible]{#2}}}
+
+
+
+% % listings style (code)
+% \lstdefinestyle{mystyle}{
+%     backgroundcolor=\color{backcolour},   
+%     commentstyle=\color{commentcolour},
+%     keywordstyle=\bfseries\color{keywordcolour},
+%     numberstyle=\ttfamily\tiny\color{numbercolour},
+%     stringstyle=\color{stringcolour},
+%     % identifierstyle=\color{red},
+%     % emphstyle=\color{blue},
+%     basicstyle=\ttfamily,
+%     breakatwhitespace=false,
+%     breaklines=true,
+%     captionpos=b,
+%     keepspaces=true,    
+%     frame=single,
+%     framexleftmargin=0.5ex,
+%     framesep=0pt,
+%     framerule=0pt,
+%     linewidth=\columnwidth,
+%     numbers=left,
+%     numbersep=4pt,
+%     showspaces=false,
+%     showstringspaces=false,
+%     showtabs=false,
+%     tabsize=2,
+% 	xleftmargin=2.5ex,
+% 	language=VHDL,
+%     extendedchars=true,
+%     inputencoding=cp1252,
+% 	columns=[l]fullflexible	% see: https://tex.stackexchange.com/questions/99416/latex-source-code-listing-with-less-space-between-characters or manual
+% }
+
+
+% % custom lstinline command with custom colors
+% \def\purplst{\begingroup\color{violet}}
+% \def\greenlst{\begingroup\color{green}}
+% \def\redlst{\begingroup\color{red}}
+% \def\ywlst{\begingroup\color{orange}}
+% \def\bluelst{\begingroup\color{blue}}
+% \def\endlstcol{\endgroup}
+
+
+% % basic lstinline style without colors
+% \lstdefinestyle{basestyle}{
+%     backgroundcolor=\color{backcolour},
+%     keywordstyle=\bfseries,
+%     numberstyle=\tiny\color{numbercolour},
+%     basicstyle=\ttfamily\footnotesize,
+%     breakatwhitespace=false,     
+%     breaklines=true,
+%     captionpos=b,
+%     keepspaces=true,
+%     numbers=none,
+%     numbersep=2pt,
+%     showspaces=false,
+%     showstringspaces=false,
+%     showtabs=false,
+%     tabsize=4,
+%     xleftmargin=0em,
+%     language=VHDL,
+%     columns=flexible,	% see: https://tex.stackexchange.com/questions/99416/latex-source-code-listing-with-less-space-between-characters or manual
+% }
+
+
+% \lstset{
+%     style=mystyle,
+%     upquote=true,
+%     morekeywords={[2],%
+%     bit,%
+%     bit_vector,%
+%     boolean,%
+%     integer,%
+%     string,%
+%     std_logic,%
+%     std_logic_vector,%
+%     std_ulogic,%
+%     std_ulogic_vector,%
+%     time,%
+%     unsigned,%
+%     signed,%
+%     natural,%
+%     note,%
+%     warning,%
+%     error,%
+%     failure%
+%     },
+%     % morekeywords={[4]<=},
+%     keywordstyle={[2]\color{orange}},
+%     morekeywords={[3],%
+%     in_top,%
+%     out_top,%
+%     int_sig,%
+%     rst,%
+%     rst_tb,%
+%     reset,%
+%     cnt_present,%
+%     cnt_next,%
+%     tick_present,%
+%     tick_next,%
+%     count,%
+%     count0,%
+%     count1,%
+%     carry,%
+%     carry0,%
+%     carry1,%
+%     carry_next,%
+%     clk,%
+%     clk_out,%
+%     ena,%
+%     clk_tb,%
+%     st_reset,%
+%     st_present,%
+%     st_next,%
+%     x0,%
+%     x1,%
+%     y,%
+%     Y,%
+%     en1,%
+%     en2,%
+%     d1,%
+%     d2,%
+%     sel,%
+%     data_out,%
+%     my_bus,%
+%     data_in,%
+%     present_state,%
+%     next_state,%
+%     inp,%
+%     inp_tb,%
+%     oup,%
+%     oup1,%
+%     oup2,%
+%     oup1_tb,%
+%     oup2_tb,%
+%     s0,%
+%     s1,%
+%     s2,%
+%     s3,%
+%     a,%
+%     A,%
+%     A_unsig,%
+%     b,%
+%     B,%
+%     B_sig,%
+%     d,%
+%     q,%
+%     clk0,%
+%     clk1,%
+%     tb_s0,%
+%     tb_s1,%
+%     XYZ},
+%     keywordstyle={[3]\color{green!70!blue}},
+%     morekeywords={[5],%
+%     rising_edge,%
+%     falling_edge,%
+%     ceil,%
+%     floor,%
+%     log2,%
+%     to_integer,%
+%     to_unsigned,%
+%     to_signed,%
+%     to_bit,%
+%     to_bitvector,%
+%     to_stdlogic,%
+%     to_stdulogic,%
+%     to_stdlogicvector,%
+%     to_stdulogicvector,%
+%     resize,%
+%     real},
+%     keywordstyle={[5]\color{blue!40!black}},
+%     morecomment=[n][\color{blue!65!white}]{<}{>},
+%     % morecomment={[s][\color{blue!70!black}]{[}{]}}, % add '[' and ']' as comment delimiters (formatting); ignore linter warning
+%     morestring=[m]',
+%     moredelim=[is][\color{black}]{¦}{¦}, % add '¦' as delimiter to remove formatting
+%     moredelim=[is][\color{red}]{§}{§}, % add '§' as delimiter to remove formatting
+%     moredelim=[is][\color{green!70!blue}]{¬}{¬}, % add '§' as delimiter to remove formatting
+%     % morecomment=[s][\color{red}]{<=}{\space}
+% }
+
