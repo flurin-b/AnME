@@ -1,0 +1,167 @@
+% CHECK: Lernziele
+% • Sie können mindestens zwei Bereiche nennen, in
+% denen Analogschaltungen heute in integrierten
+% Schaltungen zur Anwendung kommen.
+% • Sie kennen die Hauptschritte der Herstellung von
+% integrierten Schaltungen in CMOS-Technologie.
+% • Sie können die wichtigsten aktiven und passiven
+% Bauelemente nennen und beschreiben, die in einem
+% CMOS-Prozess standardmässig zur Verfügung
+% stehen.
+
+\section{Technologie}
+
+\subsection{Geschichte} % CHECK: This can be removed if unneded 
+\begin{description}
+    \item[1926] Julius E. Lilienfeld: Erster Vorschlag zur Realisierung eines SperrschichtFET
+    
+    \item[1934] Oskar Heil: Erster Vorschlag eines Feldeffektverstärkers (Vorläufer vom MOSFET)
+    \item[1947] W. H. Brattain, J. Bardeen (und William B.Shockley): Erfindung des ersten Bipolartransistors
+    \item[1958] Jack S. Kilby: Erste Gedanken zur Realisierung einer integrierten Schaltung
+    \item[1961] Robert W. Noyce: Erhält Patent für die integrierte Schaltung
+    \item[1947] W. Shockley, J. Bardeen und W. Brattain: Erster funktionierender Bipolartransistor \rightarrow Physik-Nobellpreis
+    \item[1958] Jack S. Kilby: Erstes IC mit 1 Transistor, \qty{17.76}{\square\milli\meter}, Realisiert RC-Oszillator
+    \item[2024] Intel: Arrow Lake, >123\,Mio.Tr./mm$^2$
+    \item[2024] Apple: M4max, >92\,Mio.Tr./mm$^2$
+\end{description}
+
+\paragraph{Moores Law}
+1965 hat G.E. Moore in einem Paper prognostiziert, dass sich die Transistorzahl pro chip in nächsten 10 Jahren jährlich verdoppeln wird. 
+1975 wurde die Prognose revidiert auf eine Verdoppelung alle zwei Jahre.
+
+\subsection{Prozessüberblick}
+Die Herstellung integrierter Schaltungen zeichnet sich durch folgende Besonderheiten aus:
+\begin{itemize}
+    \item Komplexe Logistik aufgrund einer Vielzahl prozessschritte
+    \item Hochgradige Standardisierung
+    \item Teure Infrastruktur un teure Prozesse
+\end{itemize}
+
+Der Prozess läuft in groben Zügen wie folgt ab:
+\begin{enumerate}
+    \item Sand wird geschmolzen und gereinigt.
+    \item Daraus wird ein Silizium-Einkristall gezogen.
+    \item Der Einkristall wird in Wafer geschnitten.
+    \item Durch Beschichtung, Lithografie, Ätzen und Dotieren wird der Waver strukturiert.
+    \item Die einzelnen Chips auf dem Waver werden vereinzelt.
+    \item Zur Konfektion werden die Chips in gehäuse verbaut.
+    \item Um die ICs in Systemen einzusetzen, werden diese auf Leiterplatten verbaut.
+\end{enumerate}
+% TODO: Image V1 S14
+
+\paragraph{Lithographie}
+Das Prinzip der Lithographie basiert auf einem lichtempfindlichen Lack, dem sogenannten Photoresist.
+Dieser wird durch eine Lichtquelle löslich (positiver Photoresist) oder unlöslich (negativer Photoresist) gemacht. % CHECK: positiv / negativ korrekt?
+Durch lösen des löslichen Photoresists kann die Oberfläche lokal geschützt werden und so gezielt regionen des Chips geätzt oder beschichtet werden.
+Zum Ende wird der übrige Lack entfernt und der Vorgang beliebig oft wiederholt.
+
+\paragraph{Ätzen}
+Durch Ätzen kann gezielt Material von freiliegende Flächen des Wavers entfernt werden.
+Dabei werden folgende Verfahren unterschieden:
+\begin{description}
+    \item[Isotrop (Nass oder Plasma):] Gleichförmiges Ätzen in alle Richtungen \rightarrow Bringt die Gefahr des Unterätzens
+    \item[Anisotrop (Reactive Ion Etching, KOH oder Plasma):] Ätzen entlang Kristallrichtungen, z.B. KOH greift die (111)-Ebene kaum an \rightarrow Ermöglicht steiliere Gräben, MEMS
+    \item[Selektiv:] Selektives Ätzen bestimmter Materialien, z.B. HF ätzt SiO$_2$ aber nicht Si \rightarrow Erlaubt das Ätzen einer Lage ohne beschädigung unterliegender Strukturen
+\end{description}
+
+\paragraph{Dotieren}
+Beim Dotieren werden gezielt fremdatome in den Siliziumkristall eingepflanzt.
+\begin{description}
+    \item[Donatoren,] also Atome mit einem Valenzelektron mehr als der Halbleiter, verursachen einen Elektronenüberschuss, der Kristall wird n-dotiert.
+    \item[Akzeptoren,] also Atome mit einem Valenzelektron weniger als der Halbleiter, verursachen einen Lochüberschuss, der Kristall wird p-dotiert.
+\end{description}
+
+\paragraph{Wafer Sort}
+Die Chips werden noch als Wafer einzeln getestet. 
+Dies ist oft zeitaufwändig \rightarrow durch gutes Design sollte diese Zeit minimiert werden.
+
+Der Yield, also der prozentuale Anteil funktionaler Chips hängt dabei von der Chipgrösse ab.
+Dies, da jeder Defekt bei grossen Chips eine grosse Fläche beeinträchtigt, da jeweils nur ganze Chips funktionsfähig oder defekt sein können.
+
+Yields von \qty{90}{\percent} sind meist notwendig, um Profit zu machen.
+
+\paragraph{Assembly and Test}
+Die Waver werden in einzelne Chips getrennt und die funktionierenden Chips in gehäuse verbaut.
+
+\subsection{Arten von Toleranzen}
+Bei der Herstellung von Wavern werden verschiedene Toleranzen unterschieden:
+\begin{description}
+    \item[Devicetoleranz] Toleranzen betreffend der Strukturen auf einem Chip
+    \item[Prozesstoleranzen] Toleranzen betreffend der Strukturen auf einem Wafer
+    \item[Lostoleranz] Toleranzen innerhalb eines Batches bzw. eines Los (meist 25, selten bis 50 Wafer)
+\end{description}
+
+\subsection{CMOS Bauelemente}
+Mögliche Strukturen und Elemente wie auch die Materialeigenschaften werden im Technologiehandbuch gegeben.
+
+\subsubsection{NMOS und PMOS Transistoren}
+\begin{center}
+    \includesvg[scale=0.3]{images/01_CMOS.svg}
+\end{center}
+
+\subsubsection{Bipolartransistoren}
+\begin{center}
+    \includesvg[scale=0.3]{images/01_BJT.svg}
+\end{center}
+
+\subsubsection{Kapazitäten}
+\begin{center}
+    \boxed{
+        C = \epsilon\frac{A}{d} = C'' \cdot A
+    }
+\end{center}
+\begin{center}
+    \boxed{
+        C'' = \frac{\epsilon}{d}
+    }
+\end{center}
+\[
+    \epsilon_0 = \qty{8.85e-12}{\farad\per\meter}
+\]
+\[
+    \epsilon_{r, \text{Si, SiO$_2$}} \approx 3.9
+\]
+\[
+    \epsilon_{r, \text{Dielektrikum}} \approx 2.9 \text{\ (Typisch, so klein wie möglich)}
+\]
+\[
+    C''\text{: Spezifische Kapazität}
+\]
+
+\paragraph{MIM}
+
+Metal-Interconnect-Metal-Kondensatoren produzieren sehr kleine Kapazitäten, da die Interconnect-Layers relativ dick ($\sim \qty{2.5e-7}{\meter}$) sind und aus absichtlich ``schlechtem'' dielektrikum ($\epsilon_r \approx 2.9$) bestehen.
+Die Spannungsfestigkeit ist jedoch höher.
+
+\paragraph{MOS}
+
+Da Oxidschichten sehr dünn realisiert werden können ($\sim \qty{2.33e-9}{\meter}$) und ein höheres $\epsilon_r \approx 3.9$ besitzen, sind diese Kondensatoren bedeutend kleiner.
+Sie besitzen jedoch eine kleinere Spannungsfestigkeit.
+
+\subsubsection{Spulen}
+Spulen sind nur planar möglich und beanspruchen oft viel Platz.
+
+\subsubsection{Widerstände}
+\begin{center}
+    \boxed{
+        R = \rho \frac{L}{A} = \rho \frac{L}{t \cdot W} = R_\square \frac{L}{W}
+    }
+\end{center}
+\begin{center}
+    \boxed{
+        R_\square = \frac{\rho}{t}
+    }
+\end{center}
+
+\paragraph{Typische Werte}
+
+\begin{tabular}{l l}
+    Metall              & $R_\square \approx 0.02 ... \qty{0.08}{\ohm}$                  \\
+    Poly (Salicide)     & $R_\square \approx \qty{10}{\ohm}$                             \\
+    Poly (non-Salicide) & $R_\square \approx 100/\qty{400}{\ohm}$ (n+ Poly / p+ Poly)    \\
+    n- / p-Diffusion    & $R_\square \approx 100/\qty{150}{\ohm}$                        \\
+    n- / p-Well         & $R_\square \approx 400/\qty{1600}{\ohm}$                       \\
+\end{tabular}
+
+\subsubsection{Parasitäre Effekte}
+%TODO: Bilder zu den Parasitäten V1 S27

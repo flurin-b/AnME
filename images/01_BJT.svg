@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="245mm" height="94mm"
+    version="1.1" viewBox="0 6 245 88">
+    <rect width="214" height="94" fill="#fff" />
+    <rect x="2" y="56" width="210" height="35" fill="#ff9" />
+    <g font-family="Times" font-size="9px" text-anchor="middle">
+
+        <g id="n">
+            <path d="
+                m 3 56
+                v 12
+                c 0 3, 2 5, 5 5
+                h 54
+                c 3 0, 5 -2, 5 -5
+                v -12
+                " fill="#8ff" stroke="#000" stroke-width=".5" />
+            <text x="35" y="70" id="trsvg21">
+                <tspan id="trsvg10">n</tspan>
+            </text>
+        </g>
+        <g id="substrat">
+            <path d="
+                m 110 56
+                v 23
+                c 0 3, 2 5, 5 5
+                h 88
+                c 3 0, 5 -2, 5 -5
+                v -23
+                " fill="#8ff" stroke="#000" stroke-width=".5" />
+            <text x="161" y="81" id="trsvg21">
+                <tspan id="trsvg10">n-well</tspan>
+            </text>
+        </g>
+        <g id="p">
+            <path d="
+                m 113 56
+                v 12
+                c 0 3, 2 5, 5 5
+                h 54
+                c 3 0, 5 -2, 5 -5
+                v -12
+                " fill="#ff9" stroke="#000" stroke-width=".5" />
+            <text x="145" y="70" id="trsvg21">
+                <tspan id="trsvg10">p</tspan>
+            </text>
+        </g>
+
+        <g id="d">
+            <path d="m64 56v6c0 2-1 3-3 3h-20c-2 0-3-1-3-3v-6" fill="#fc9" stroke="#000" stroke-width=".5" />
+            <text x="52" y="62" id="trsvg12">
+                <tspan id="trsvg1">p+</tspan>
+            </text>
+        </g>
+        <use transform="translate(78)" xlink:href="#d" />
+
+        <g id="c">
+            <path d="m32 56v6c0 2-1 3-3 3h-20c-2 0-3-1-3-3v-6" fill="#36f" stroke="#000" stroke-width=".5" />
+            <text x="20" y="62" fill="#fff" id="trsvg13">
+                <tspan id="trsvg2">n+</tspan>
+            </text>
+        </g>
+        <use transform="translate(142)" xlink:href="#c" />
+
+        <g id="f" stroke-width=".5" stroke="#000">
+        </g>
+
+        <g id="a" stroke="#000" stroke-width=".5">
+            <path d="m15 55h8" stroke-width="1.5" />
+            <path d="m19 44v11" fill="#fed" />
+            <circle cx="19" cy="44" r="2" fill="#fff" />
+        </g>
+
+        <use transform="translate(32)" xlink:href="#a" />
+        <use transform="translate(64)" xlink:href="#a" />
+        <use transform="translate(110)" xlink:href="#a" />
+        <use transform="translate(142)" xlink:href="#a" />
+        <use transform="translate(174)" xlink:href="#a" />
+
+        <path id="b" d="m51 20 c
+            0 10, -41 0.8, -47  8,
+            0.2 -8,  46 0.4,  47 -8z" />
+        <use transform="matrix(-1 0 0 1 102 0)" xlink:href="#b" />
+        <use transform="translate(110)" xlink:href="#b" />
+        <use transform="matrix(-1 0 0 1 212 0)" xlink:href="#b" />
+
+        <g id="e">
+            <text x="19" y="39" id="trsvg17">
+                <tspan id="trsvg6">B</tspan>
+            </text>
+            <text x="51" y="39" id="trsvg14">
+                <tspan id="trsvg3">E</tspan>
+            </text>
+            <text x="83" y="39" id="trsvg16">
+                <tspan id="trsvg5">C</tspan>
+            </text>
+        </g>
+        <use transform="translate(110)" xlink:href="#e" />
+
+        <text x="51" y="17" id="trsvg19">
+            <tspan id="trsvg8">PNP</tspan>
+        </text>
+        <text x="161" y="17" id="trsvg20">
+            <tspan id="trsvg9">NPN</tspan>
+        </text>
+
+        <path d="m2 91h210m-210-35h210" stroke="#000" stroke-width=".5" />
+        <text x="54" y="83" id="trsvg22">
+            <tspan id="trsvg11">p-substrate</tspan>
+        </text>
+    </g>
+</svg>
