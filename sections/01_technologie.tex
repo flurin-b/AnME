@@ -11,9 +11,7 @@
 
 \section{CMOS Technologie}
 
-% CHECK: [Flurin] This can be removed if unneded 
-% [Simi] @Flurin I agree and threrefore it is outcommented :)
-
+% NOTE: outcommented due to space issues
 % \subsection{Geschichte} 
 % \begin{description}
 %     \item[1926] Julius E. Lilienfeld: Erster Vorschlag zur Realisierung eines SperrschichtFET
@@ -55,8 +53,7 @@ Der Prozess läuft in groben Zügen wie folgt ab:
 
 \medskip
 
-% NOTE: [Simi] I used the image from the script instead of the one from the slides (V1 S14)
-% The one from the slides was not expotable in high quality (pdf) and the other image contains the same information...
+% TODO: [Flurin] I hate this image. I'll see if i get round to find a better one.
 
 \begin{minipage}[t]{0.5\columnwidth}
     \includegraphics[width=\columnwidth, align=t]{images/technologie_grundprozess_skript.pdf}
@@ -121,7 +118,7 @@ Bei der Herstellung von Wafern werden verschiedene Toleranzen unterschieden:
 \subsection{CMOS Bauelemente}
 Mögliche Strukturen und Elemente wie auch die Materialeigenschaften werden im \textbf{Technologiehandbuch} gegeben.
 
-%CHECK [Simi] @Flurin I have no idea how to compile the document with .svg files in it... therefore I added them as .pdf as well...?
+% NOTE: svg code:
 % \subsubsection{NMOS und PMOS Transistoren}
 % \begin{center}
 %     \includesvg[scale=0.3]{images/01_CMOS.svg}
@@ -179,10 +176,9 @@ Metal-Interconnect-Metal-Kondensatoren produzieren \textbf{sehr kleine Kapazitä
 Die Spannungsfestigkeit ist jedoch höher.
 
 \paragraph{MOS}
-Da Oxidschichten sehr dünn realisiert werden können ($d \sim \qty{2.33e-9}{\meter}$) und ein höheres $\varepsilon_r \approx 3.9$ besitzen, sind diese Kondensatoren bedeutend kleiner.
+Da Oxidschichten sehr dünn realisiert werden können ($d \sim \qty{2.33e-9}{\meter}$) und ein höheres $\varepsilon_r \approx 3.9$ besitzen, benötigen MOS-Kondensatoren im Vergleich zu MIM-Kondensatoren bedeutend weniger Fläche.
+Somit können grössere Kapazitäts-Werte realisiert werden.
 Sie besitzen jedoch eine kleinere Spannungsfestigkeit.
-% CHECK: [Simi] @Flurin "sind diese Kondensatoren bedeutend kleiner" -> flächenmässig oder bezüglich ihrer Kapazität? 
-% Ich hätte gesagt flächenmässig kleiner und können daher grössere Kapazitäten 'erzeugen'...? (V1 S23 / S24) 
 
 
 \subsubsection{Spulen}
@@ -223,23 +219,17 @@ Spulen sind nur planar möglich und beanspruchen oft viel Platz.
 
 \subsubsection{Parasitäre Effekte}
 
-\begin{minipage}[t]{0.7\columnwidth}
-    \raggedright
-    Widerstände und Kapazitäten weisen dieselben parasitären Effekte auf.
+Jedes Bauteil ist von parasitären Effekten betroffen. 
+Diese sind:
+\begin{itemize}
+    \item Streukapazitäten und ungewollte Kapazitäten zu anderen Layern
+    \item Wiederstandsbelag des Leitermaterials
+    \item Induktivitätsbelag von 'langen' Leitern
+    \item Toleranzen
+    \item Nichtlinearitäten z.B. die Spannungsabhängigkeit der Kapazitäten von PN-Übergängen
+\end{itemize}
 
-    \smallskip
+\smallskip
 
-    \textbf{Empfehlung: Verhältnisse verwenden, nicht Absolutwerte!}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.25\columnwidth}
-    \begin{itemize}
-        \item Streukapazitäten
-        \item Toleranzen
-        \item Nichtlinearitäten
-    \end{itemize}
-\end{minipage}
+\textbf{\rightarrow Empfehlung: Verhältnisse verwenden, nicht Absolutwerte!}
 
-
-%TODO: Bilder zu den Parasitäten V1 S27
-% [Simi] @Flurin: welche genau? Das mit dem Halbleiteraufbau UND das mit dem Schema?
