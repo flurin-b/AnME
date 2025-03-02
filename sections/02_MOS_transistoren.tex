@@ -95,7 +95,7 @@ Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{DS}) \big|_{V_{GS}
 
 
 
-\subsubsection{Transferkennlinie -- Ausgangsstrombereiche}
+\subsection{Transferkennlinie -- Ausgangsstrombereiche}
 
 
 \begin{minipage}[t]{0.55\columnwidth}
@@ -190,6 +190,9 @@ Je nach Arbeitsbereich (gesättigt / ungesättigt) müssen verschiedene Ersatzsc
 
 \subsection{Berechnung des Drainstroms}
 
+% CHECK [Simi] @Flurin (gnaze subsection): Formeln für p-Kanal UND n-Kanal? (im Skript ist beides, in den Slides nicht)
+% CHECK [Simi] @Flurin (gnaze subsection): Kanallängenmodulation Faktor $(1 + \lambda)$ bei Formeln hinzufügen? (ist im Skript enthalten, in den Slides nicht)
+
 Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / ungesättig), als auch vom Ausgangsstrombereich (bzw. der Kanaliversion) ab!
 
 
@@ -213,10 +216,10 @@ $$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{GS} < V_L(I_D) } \qquad \qquad \b
 
 \vspace{-0.3cm}
 
-$$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D)} \qquad \qquad V_{\rm temp} = \frac{kT}{q} $$
-%TODO [Simi] @Flurin: Wo hast du diese Information gefunden...?  \[ V_M(I_D) = V_T(I_D) - x_M(I_D) \]
+$$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D) \qquad \qquad V_M(I_D) = V_T(I_D) - x_M(I_D) } $$
 
-%TODO [Simi] finde Platz für Erklärungen der Parameter der Vtemp Formel...
+%TODO bzw CHECK [Simi] @Flurin Vtemp Formel auch irgendwo ergänzen? Wert für Vtemp in Übungen immer aus Technologiehandbuch gegeben
+% $V_{\rm temp} = \frac{kT}{q}$
 % $k$: Boltzmann-Konstante
 % $q$: Elementarladung
 % $T$: Temperatur in Kelvin
@@ -233,7 +236,7 @@ $$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D)} \qquad \qquad V_{\
 
 In den drei verbleibenden Bereichen sind \textbf{keine Berechnungsformeln für} $\bm{I_D}$ vorhanden.
 
-\medskip
+\smallskip
 
 \begin{minipage}[c]{0.48\columnwidth}
     \renewcommand{\arraystretch}{1.2}
@@ -241,6 +244,7 @@ In den drei verbleibenden Bereichen sind \textbf{keine Berechnungsformeln für} 
         \textbf{Bereich}    & \textbf{Grenzen}                  \\
         LECK                & $V_K(I_D) < V_{GS} < V_M(I_D)$    \\ 
         MOD                 & $V_M(I_D) < V_{GS} < V_H(I_D)$    \\ 
+                            & $V_H(I_D) = V_T(I_D) + x_H(I_D)$  \\
         LIN                 & $V_L(I_D) < V_{GS}$               \\ 
     \end{ctabular}
 \end{minipage}
