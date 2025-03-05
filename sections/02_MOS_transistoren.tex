@@ -114,7 +114,7 @@ Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{DS}) \big|_{V_{GS}
     Des Weiteren gibt es die Bereiche:
 
     \begin{outline}
-        \1 Subthreshold: $V_{GS} < V_T$
+        \1 Sub Threshold: $V_{GS} < V_T$
         \1 Above Threshold: $V_{GS} > V_T$
     \end{outline}
 \end{minipage}
@@ -206,10 +206,56 @@ $$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{GS} < V_L(I_D) } \qquad \qquad \b
 \renewcommand{\arraystretch}{1.5}
 \begin{ctabular}{c|c}
     \textbf{Ungesättigt}                                                            & \textbf{Gesättigt}                        \\
-    $I_D = \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg]$    & $I_D = \frac{\beta}{2} (V_{GS} - V_T)^2$
+    $I_D = \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg]$    & $I_{\text{D, ideal}} = \frac{\beta}{2} (V_{GS} - V_T)^2$\\
+    $I_D = \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg]$    & $I_{D} = \frac{\beta}{2} (V_{GS} - V_T)^2 \cdot (1 + \lambda \cdot \Delta V_{DS})$
 \end{ctabular}
 \renewcommand{\arraystretch}{1}
 
+%TODO: V3S9 nochmal studieren, macht iwie noch nicht so sinn.
+\paragraph{Kanallängenmodulation $\lambda$}
+\[
+    \lambda = \frac{1}{V_E} % \overset{V_E >> V_{DS}}{\approx} \frac{1}{V_E}
+\]
+Die Early-Spannung $V_E = a_E \cdot L$ setzt sich zusammen aus dem technologieabhängigen Early-Faktor $a_E$ und der Kanallänge $L$.
+%CHECK: Ich finde die Herleitung aus V3S9 überflüssig. Evtl. macht die Grafik zur Early-Spannung sinn? Braucht halt viel platz...
+
+\paragraph{Body-Effekt}
+Der Body-Effekt beschreibt die Abhängigkeit der Schwellenspannung $V_T$ von der Source-Bulk-Spannung als
+\[
+    V_T = V_{T0} \pm \Delta V_T \quad \text{mit} \quad \gamma\left(\sqrt{\abs{V_{SB}+\abs{2\Phi_F}}}-\sqrt{\abs{}}\right).
+\]
+
+Das Fermi-Potential
+\[
+    \Phi_F = kT/q \ln(N_A/n_i)
+\]
+mit 
+\begin{tabular}{rl}
+    $n_i$:& Intrinsische ladungsdichte von Silizium\\
+    $N_A$:& Ladungsdichte der Akzeptoren
+\end{tabular}
+ist Prozess- wie auch Temperaturabhängig.
+Zudem ist er abhängig der Dotierungsstärke.
+
+
+
+Body-Effekt-Konstante
+\[
+    \gamma \overset{\approx}{n-Dotierung} \qty{1.46}{\sqrt{\volt}}
+\]
+\[
+    \gamma \overset{\approx}{p-Dotierung} \qty{1.08}{\sqrt{\volt}}
+\]
+\paragraph{Transkonduktanz-Parameter}
+$\beta$ ist abhängig davon, ob der Transistor gesättigt ist. 
+In der Praxis wird diese Unterscheidung jedoch nicht gemacht. 
+Beta ist jedoch gegeben durch 
+\[
+    \beta = \beta_0 \frac{W}{L} = \mu C_{OX} \frac{W}{L}
+\]
+und so abhängig von der Kanalbreite $W$ und -länge $L$.
+
+%TODO: NMOSI und PMOSI V2S12
 
 
 \subsubsection{Weak Inversion}
@@ -219,10 +265,28 @@ $$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{GS} < V_L(I_D) } \qquad \qquad \b
 $$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D) \qquad \qquad V_M(I_D) = V_T(I_D) - x_M(I_D) } $$
 
 %TODO bzw CHECK [Simi] @Flurin Vtemp Formel auch irgendwo ergänzen? Wert für Vtemp in Übungen immer aus Technologiehandbuch gegeben
-% $V_{\rm temp} = \frac{kT}{q}$
-% $k$: Boltzmann-Konstante
-% $q$: Elementarladung
-% $T$: Temperatur in Kelvin
+% CHECK [Flurin] @Simi Würde ich in die FoSa nemen falls an der Prüfung nicht gegeben. Habe aber noch einen disclaimer eingebaut.
+Dabei wird $V_{\rm temp}$ oft vom Technologiehandbuch gegeben. 
+
+Alternativ kann sie als 
+
+\begin{minipage}{0.4\columnwidth}
+    \[
+        V_{\rm temp} = \frac{kT}{q} \approx \qty{130}{\milli\volt}
+    \]
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\columnwidth}
+    \begin{tabular}{rl}
+        $k$: & Boltzmann-Konstante \\
+        $q$: & Elementarladung \\
+        $T$: & Temperatur in Kelvin \\
+    \end{tabular}
+\end{minipage}
+
+% CHECK: Ist das tatsächlich eine approximation? Was stimmt nicht daran?
+% CHECK: Wovon kommen die 130 mV? -> Gesehen in Quiz zu Woche 2
+approximativ berechnet werden.
 
 \renewcommand{\arraystretch}{1.5}
 \begin{ctabular}{c|c}
@@ -231,6 +295,31 @@ $$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D) \qquad \qquad V_M(I
 \end{ctabular}
 \renewcommand{\arraystretch}{1}
 
+\paragraph{Temparaturspannung}
+\[
+    V_{temp} = \frac{k T}{q} \approx \qty{86.2}{\micro\volt\per\kelvin} \cdot T
+\]
+
+\paragraph{Spezifischer Drainstrom}
+\[
+    I_M = \frac{W}{L} I_{M, 0}
+\]
+
+\paragraph{Subthreshold Slope Factor}
+\[
+    n_M = 1 + \frac{\gamma}{2\sqrt{V_{SB}+\Phi_0}} \quad \text{mit} \quad \Phi_0 = 2 \Phi_F \approx \qty{0.6}{\volt}
+\]
+
+\paragraph{Kanallängenmodulation}
+\[
+    \lambda = \frac{1}{V_E} \approx \frac{1}{a_E L}
+\]
+
+\paragraph{Transkonduktanz-Parameter}
+\[
+    \beta = \frac{W}{L}\beta_0 = \mu C_{OX}
+\]
+(unter Vernachlässigung der Abhängigkeit von der Sättigung.)
 
 \subsubsection{Bereiche ohne Berechnungsformeln}
 
@@ -256,3 +345,43 @@ In den drei verbleibenden Bereichen sind \textbf{keine Berechnungsformeln für} 
 
     Es ist daher enorm wichtig, den Arbeitsbereich des Transistors korrekt zu bestimmen.
 \end{minipage}
+
+
+\subsection{Modellierung}
+\subsubsection{Bestimmung des Arbeitspunkts}
+Um den Zustand eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
+\begin{enumerate}
+    \item $V_{GS}$ bestimmen
+    \item Ausgangsstrombereich (weak, strong inversion, \ldots) anhand von Vergleich von $V_{GS}$ mit $V_K$, $V_M$, $V_T$, $V_H$ und $V_L$
+    \item $V_{DS}$ ermitteln
+    \item $V_{DS, sat}$ ausrechnen
+    \item Ausgangsspannungsbereich durch vergleich von $V_{DS}$ mit $V_{DS, sat}$ ermitteln (gesättigt vs. ungesättigt)
+\end{enumerate}
+
+\subsubsection{Modellieren im Arbeitspunkt}
+Um eine Transistorschaltung zu erstellen muss wie folgt vorgegangen werden:
+\begin{enumerate}
+    \item Definieren des Arbeitspunkts
+    \item Linearisierung im Arbeitspunkt mittels ersatzschaltung
+    \item Mit den linearisierten Grössen rechnen
+\end{enumerate}
+%TODO: Ergänzte Ersatzschaltung -> Evtl. vorherige entfernen?
+
+\subsubsection{Ersatzschaltbilder}
+\paragraph{Grosssignalersatzschaltbild}
+Zur Bestimmung des Arbeitspunkts bzw. aller Gleichspannungen.
+\begin{description}
+    \item[AC-Spannungsquellen] durch Kurzschlüsse ersetzen.
+    \item[AC-Stromquellen] durch Unterbrüche ersetzen. 
+    \item[Kondensatoren] durch Unterbrüche ersetzen.
+    \item[Spulen] durch Kurzschlüsse ersetzen.  
+\end{description}
+
+\paragraph{Kleinsignalersatzschaltbild}
+Zur Berechnung von Verstärkungsfaktoren und Eingangswiderständen für AC-Signale.
+\begin{description}
+    \item[DC-Spannungsquellen] durch Kurzschlüsse ersetzen.
+    \item[DC-Stromquellen] durch Unterbrüche ersetzen. 
+    \item[Nichtlineare Bauteile] durch deren Kleinsignalersatzschaltbild ersetzen.
+    \item[Koppel- und Bypass-Kondensatoren] durch Kurzschlüsse ersetzen.  
+\end{description}
