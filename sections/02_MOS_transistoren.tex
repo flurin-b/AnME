@@ -191,9 +191,6 @@ Je nach Arbeitsbereich (gesättigt / ungesättigt) müssen verschiedene Ersatzsc
 
 \subsection{Berechnung des Drainstroms}
 
-% CHECK [Simi] @Flurin (gnaze subsection): Formeln für p-Kanal UND n-Kanal? (im Skript ist beides, in den Slides nicht)
-% CHECK [Simi] @Flurin (gnaze subsection): Kanallängenmodulation Faktor $(1 + \lambda)$ bei Formeln hinzufügen? (ist im Skript enthalten, in den Slides nicht)
-
 Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / ungesättig), als auch vom Ausgangsstrombereich (bzw. der Kanaliversion) ab!
 
 
@@ -201,30 +198,98 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 
 \vspace{-0.3cm}
 
-$$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{GS} < V_L(I_D) } \qquad \qquad \beta = \mu \cdot C_{\text{OX}} \cdot \frac{W}{L} $$
+% $$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{GS} < V_L(I_D) } \qquad \qquad \beta = \mu \cdot C_{\text{OX}} \cdot \frac{W}{L} $$
+$$ \boxed{ \text{QUAD-Bereich:} \quad V_H(I_D) \leq V_{GS} < V_L(I_D) \quad \text{bzw.} \quad I_H \leq I_D < I_L } $$  %NOTE: Bedingung für Ströme aus Ü3, 3.6.4 1)
+
+\resizebox{\columnwidth}{!}
+{
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{@{}l c | c@{}}
+                & \textbf{Ungesättigt:} \quad $\bm{| V_{DS} | < | V_{GS} - V_T |}$                                                              & \textbf{Gesättigt:} \quad $\bm{| V_{DS} | \geq | V_{GS} - V_T |}$                         \\
+        NMOS:   & $I_D = \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg] \cbl{\cdot (1 + \lambda \cdot \Delta V_{DS})}$    & $I_D = \frac{\beta}{2} (V_{GS} - V_T)^2 \cbl{\cdot (1 + \lambda \cdot \Delta V_{DS})}$    \\
+        \midrule
+        PMOS:   & $I_D = - \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg] \cbl{\cdot (1 - \lambda \cdot \Delta V_{DS})}$  & $I_{D} = - \frac{\beta}{2} (V_{GS} - V_T)^2 \cbl{\cdot (1 - \lambda \cdot \Delta V_{DS})}$
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+}
+
+\medskip
+
+\textbf{Ohne} Berücksichtigung der \textbf{Kanallängenmodulation:} \cbl{blauen Term $=1$} bzw $\lambda = 0$ setzen
 
 
-\renewcommand{\arraystretch}{1.5}
-\begin{ctabular}{c|c}
-    \textbf{Ungesättigt}                                                            & \textbf{Gesättigt}                        \\
-    $I_D = \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg]$    & $I_{\text{D, ideal}} = \frac{\beta}{2} (V_{GS} - V_T)^2$\\
-    $I_D = \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg]$    & $I_{D} = \frac{\beta}{2} (V_{GS} - V_T)^2 \cdot (1 + \lambda \cdot \Delta V_{DS})$
-\end{ctabular}
-\renewcommand{\arraystretch}{1}
 
-%TODO: V3S9 nochmal studieren, macht iwie noch nicht so sinn.
-\paragraph{Kanallängenmodulation $\lambda$}
-\[
-    \lambda = \frac{1}{V_E} % \overset{V_E >> V_{DS}}{\approx} \frac{1}{V_E}
-\]
-Die Early-Spannung $V_E = a_E \cdot L$ setzt sich zusammen aus dem technologieabhängigen Early-Faktor $a_E$ und der Kanallänge $L$.
+% NOTE [Simi] @Flurin: Hier noch dein Vorschlag der Darstellung (mit NMOS / PMOS Ergänzung):
+% Jetzt können wir streiten, welchen wir nehmen wollen :P
+
+% \resizebox{\columnwidth}{!}
+% {
+%     \renewcommand{\arraystretch}{1.5}
+%     \begin{tabular}{l c|c}
+%                 & \textbf{Ungesättigt:} \quad $\bm{| V_{\rm DS} | < | V_{GS} - V_T |}$                          & \textbf{Gesättigt:} \quad $\bm{| V_{\rm DS} | \geq | V_{GS} - V_T |}$             \\
+%         NMOS:   & $I_{\rm D, ideal} = \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg]$     & $I_{\rm D, ideal} = \frac{\beta}{2} (V_{GS} - V_T)^2 $                            \\
+%         NMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{DS})$      \\
+%         \midrule
+%         PMOS:   & $I_{\rm D, ideal} = - \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg]$   & $I_{\rm D, ideal} = - \frac{\beta}{2} (V_{GS} - V_T)^2$                           \\
+%         PMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{DS})$      
+%     \end{tabular}
+%     \renewcommand{\arraystretch}{1}
+% }
+
+
+
+\paragraph{Transkonduktanz-Parameter $\bm{\beta}$}
+
+\begin{minipage}[c]{0.78\columnwidth}
+    $\beta$ ist abhängig davon, ob der Transistor gesättigt ist. 
+    In der Praxis wird diese Unterscheidung jedoch \textbf{nicht} gemacht. 
+    Im \textbf{Design} kann $\beta$ durch das Verhältnis von Kanalbreite $W$ und -länge $L$ beeinflusst werden.
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.2\columnwidth}
+    $$ \beta = \underbrace{ \mu C_{\rm OX} }_{\beta_0} \frac{W}{L} $$
+\end{minipage}
+
+
+%TODO: [Flurin] NMOSI und PMOSI V2S12
+% NOTE: [Simi] @ Flurin: Bist du sicher, dass du diese Slide meinst...? 
+
+
+
+%TODO: [Flurin] V3S9 nochmal studieren, macht iwie noch nicht so sinn.
+\paragraph{Kanallängenmodulation $\bm{\lambda$} und Early-Spannung $\bm{V_E}$}
+
+\begin{minipage}[c]{0.7\columnwidth}
+    % Die Early-Spannung $V_E = a_E \cdot L$ setzt sich zusammen aus dem technologieabhängigen Early-Faktor $a_E$ und der Kanallänge $L$.
+    Die Kanallängenmodulation beschreibt die Nichtidealität der spannungsgesteurten Stromquelle (im Sättigungsbetrieb). \\
+    Idealfall: $\lambda = 0$ \rightarrow\ $L = \infty$
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.28\columnwidth}
+    $$ \lambda = \frac{1}{V_E} = \frac{1}{a_E \cdot L} $$
+    % \overset{V_E >> V_{DS}}{\approx} \frac{1}{V_E}
+\end{minipage}
+
+\smallskip
+
+\textbf{Achtung:} $\bm{V_E}$ ist typischerweise negativ, wird jedoch \textbf{immer positiv angegeben}. 
+Grafisch entspricht $V_E$ der Spannung $V_{DS}$, bei welcher die Verlängerung der Ausgangskennlinie (Sättigung) die $V_{DS}$-Achse schneidet.
+
+
 %CHECK: Ich finde die Herleitung aus V3S9 überflüssig. Evtl. macht die Grafik zur Early-Spannung sinn? Braucht halt viel platz...
+% [Simi] @Flurin: Ja, auf die Herleitung würde ich auch verzichten. Das Bild wäre allenfalls sinnvoll. 
+% Aus Platzgründen habe ich etws 'Prosa' zur Early-Spannung geschrieben... Wirklich toll ist der Text aber auch nicht...
+
 
 \paragraph{Body-Effekt}
-Der Body-Effekt beschreibt die Abhängigkeit der Schwellenspannung $V_T$ von der Source-Bulk-Spannung als
-\[
-    V_T = V_{T0} \pm \Delta V_T \quad \text{mit} \quad \gamma\left(\sqrt{\abs{V_{SB}+\abs{2\Phi_F}}}-\sqrt{\abs{}}\right).
-\]
+Der Body-Effekt beschreibt die \textbf{Abhängigkeit der Schwellenspannung} $\bm{V_T}$ von der Source-Bulk-Spannung $V_{SB}$ als
+$$ V_T = V_{T0} \pm \Delta V_T \quad \text{mit} \quad \Delta V_T = \gamma\left(\sqrt{\abs{V_{SB}} + \abs{2\Phi_F}}-\sqrt{\abs{2\Phi_F}}\right)$$
+
+\rightarrow\ Body-Effekt nur wirksam, wenn $V_{SB} \neq \qty{0}{\volt}$ \\
+\rightarrow\ Reminder: Bulk nur gezeichnet, wenn nicht auf $V_{DD}$ oder $V_{SS}$
+
+\medskip
+% --------------------------------------------------------------------------------------------------------------------
 
 Das Fermi-Potential
 \[
@@ -247,23 +312,16 @@ Body-Effekt-Konstante
 \[
     \gamma \overset{\approx}{p-Dotierung} \qty{1.08}{\sqrt{\volt}}
 \]
-\paragraph{Transkonduktanz-Parameter}
-$\beta$ ist abhängig davon, ob der Transistor gesättigt ist. 
-In der Praxis wird diese Unterscheidung jedoch nicht gemacht. 
-Beta ist jedoch gegeben durch 
-\[
-    \beta = \beta_0 \frac{W}{L} = \mu C_{OX} \frac{W}{L}
-\]
-und so abhängig von der Kanalbreite $W$ und -länge $L$.
 
-%TODO: NMOSI und PMOSI V2S12
 
 
 \subsubsection{Weak Inversion}
 
 \vspace{-0.3cm}
 
-$$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D) \qquad \qquad V_M(I_D) = V_T(I_D) - x_M(I_D) } $$
+% $$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D) \qquad \qquad V_M(I_D) = V_T(I_D) - x_M(I_D) } $$
+$$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} \leq V_M(I_D) \qquad \qquad I_K < I_D \leq I_M } $$  %NOTE: Bedingung für Ströme aus Ü3, 3.6.5 1)
+
 
 %TODO bzw CHECK [Simi] @Flurin Vtemp Formel auch irgendwo ergänzen? Wert für Vtemp in Übungen immer aus Technologiehandbuch gegeben
 % CHECK [Flurin] @Simi Würde ich in die FoSa nemen falls an der Prüfung nicht gegeben. Habe aber noch einen disclaimer eingebaut.
