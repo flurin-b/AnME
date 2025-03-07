@@ -18,7 +18,7 @@
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\columnwidth}
-    \includegraphics[width=\columnwidth, align=t]{images/MOS_kapazitaet.pdf}
+    \includegraphics[width=\columnwidth, align=t]{images/02_MOS_kapazitaet.pdf}
 \end{minipage}
 
 
@@ -30,7 +30,7 @@ Dieser verbindet Drain und Source, es kann also ein Strom fliessen.
 \vspace{-0.2cm}
 
 \begin{center}
-    \includegraphics[width=0.5\columnwidth, align=t]{images/01_CMOS.pdf}
+    \includegraphics[width=0.5\columnwidth, align=t]{images/02_CMOS.pdf}
 \end{center}
 
 
@@ -38,22 +38,23 @@ Dieser verbindet Drain und Source, es kann also ein Strom fliessen.
 
 \begin{minipage}[t]{0.48\columnwidth}
     Durch Vordotierung des Kanals kann der Transistor ohne Gate-Spannung leitend gemacht werden (Verarmungstyp, selbstleitend).
-    Eine negative Gate-Spannung kann den Kanal dann abschnüren. Verarmungstypen werden in dieser Vorlesung nicht behandelt.
+    Eine negative Gate-Spannung kann den Kanal dann abschnüren. \\
+    \rightarrow\ hier nicht weiter behandelt
 
     \smallskip
 
-    Der Bulk wird nur eingezeichnet, wenn dieser nicht mit der Source verbunden ist.
-    Deshalb werden meist die vereinfachten Symbole verwendet.
+    \textbf{Der Bulk wird nur eingezeichnet, wenn dieser \myul{nicht} mit $\bm{V_{\rm DD}}$ bzw. $\bm{V_{\rm SS}}$ verbunden ist.}
+    Deshalb werden meist die vereinfachten Symbole verwendet:
 
     \vspace{-0.3cm}
 
     \begin{center}
-        \includegraphics[width=0.45\columnwidth, align=t]{images/MOSFET_symbole_vereinfacht.pdf}
+        \includegraphics[width=0.8\columnwidth, align=t]{images/02_MOSFET_symbole_vereinfacht.pdf}
     \end{center}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.5\columnwidth}
-    \includegraphics[width=\columnwidth, align=t]{images/MOSFET_uebersicht.pdf}
+    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_uebersicht.pdf}
 \end{minipage}
 
 
@@ -70,7 +71,7 @@ In Cadence sind verschiedene Modelle hinterlegt:
 Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{DS}) \big|_{V_{GS} = \text{konst}}$
 
 \begin{minipage}[t]{0.5\columnwidth}
-    \includegraphics[width=\columnwidth, align=t]{images/MOSFET_ausgangskennlinien.pdf}
+    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_ausgangskennlinien.pdf}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\columnwidth}
@@ -99,7 +100,7 @@ Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{DS}) \big|_{V_{GS}
 
 
 \begin{minipage}[t]{0.55\columnwidth}
-    \includegraphics[width=\columnwidth, align=t]{images/MOSFET_transferkennlinie.pdf}
+    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_transferkennlinie.pdf}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.42\columnwidth}
@@ -167,7 +168,7 @@ Je nach Arbeitsbereich (gesättigt / ungesättigt) müssen verschiedene Ersatzsc
 
     Gesteuerter Widerstand \rightarrow\ $I_D = f(V_{DS})$
     
-    \includegraphics[width=\columnwidth, align=t]{images/MOSFET_ersatzschaltung_ungesaettigt.pdf}
+    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_ersatzschaltung_ungesaettigt.pdf}
 
     \smallskip
     Je kleiner $r_{\rm DS0}$, desto steiler die Geraden links im Ausgangskennlinienfeld
@@ -181,7 +182,7 @@ Je nach Arbeitsbereich (gesättigt / ungesättigt) müssen verschiedene Ersatzsc
 
     Stromquelle \rightarrow\ $I_D = f(V_{GS})$
 
-    \includegraphics[width=\columnwidth, align=t]{images/MOSFET_ersatzschaltung_gesaettigt.pdf}
+    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_ersatzschaltung_gesaettigt.pdf}
 
     \smallskip
     Je grösser $r_{\rm DS}$, desto flacher die Geraden rechts im Ausgangskennlinienfeld
