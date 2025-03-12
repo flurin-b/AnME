@@ -199,7 +199,7 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 \vspace{-0.3cm}
 
 % $$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{GS} < V_L(I_D) } \qquad \qquad \beta = \mu \cdot C_{\text{OX}} \cdot \frac{W}{L} $$
-$$ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{GS}| < |V_L(I_D)| \quad \text{bzw.} \quad |I_H| \leq |I_D| < |I_L| } $$  %NOTE: Bedingung für Ströme aus Ü3, 3.6.4 1)
+\[ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{GS}| < |V_L(I_D)| \quad \text{bzw.} \quad |I_H| \leq |I_D| < |I_L| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.4 1)
 
 \resizebox{\columnwidth}{!}
 {
@@ -247,7 +247,7 @@ $$ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{GS}| < |V_L(I_D)| \qua
 \end{minipage}
 \hfill
 \begin{minipage}[c]{0.2\columnwidth}
-    $$ \beta = \underbrace{ \mu C_{\rm OX} }_{\beta_0} \frac{W}{L} $$
+    \[ \beta = \underbrace{ \mu C_{\rm OX} }_{\beta_0} \frac{W}{L} \]
 \end{minipage}
 
 
@@ -266,7 +266,7 @@ $$ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{GS}| < |V_L(I_D)| \qua
 \end{minipage}
 \hfill
 \begin{minipage}[c]{0.28\columnwidth}
-    $$ \lambda = \frac{1}{V_E} = \frac{1}{a_E \cdot L} $$
+    \[ \lambda = \frac{1}{V_E} = \frac{1}{a_E \cdot L} \]
     % \overset{V_E >> V_{DS}}{\approx} \frac{1}{V_E}
 \end{minipage}
 
@@ -283,7 +283,11 @@ Grafisch entspricht $V_E$ der Spannung $V_{DS}$, bei welcher die Verlängerung d
 
 \paragraph{Body-Effekt}
 Der Body-Effekt beschreibt die \textbf{Abhängigkeit der Schwellenspannung} $\bm{V_T}$ von der Source-Bulk-Spannung $V_{SB}$ als
-$$ V_T = V_{T0} \pm \Delta V_T \quad \text{mit} \quad \Delta V_T = \gamma\left(\sqrt{\abs{V_{SB}} + \abs{2\Phi_F}}-\sqrt{\abs{2\Phi_F}}\right)$$
+\[ 
+    V_T = V_{T0} \pm \Delta V_T 
+    \quad \text{mit} \quad 
+    \Delta V_T = \gamma\left(\sqrt{\abs{V_{SB}} + \abs{2\Phi_F}}-\sqrt{\abs{2\Phi_F}}\right)
+\]
 
 \rightarrow\ \textbf{Body-Effekt nur wirksam, wenn} $\mathbf{V_{SB} \neq \qty{0}{\volt}}$ \\
 \rightarrow\ Reminder: Bulk nur gezeichnet, wenn nicht auf $V_{DD}$ oder $V_{SS}$
@@ -294,9 +298,9 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 
 %NOTE: [Simi] Wenn kein Platz: folgende Tabelle weglassen (diese Formeln sind uns gemäss Zbinden egal)
 \begin{minipage}[c]{0.3\columnwidth}
-    $$ \Phi_F = \frac{kT}{q} \ln \left( \frac{N_A}{n_i} \right) $$
-    $$ \gamma_N \overset{n-Dotierung}{\approx} \qty{1.46}{\sqrt{\volt}} $$
-    $$ \gamma_P \overset{p-Dotierung}{\approx} \qty{1.08}{\sqrt{\volt}} $$
+    \[ \Phi_F = \frac{kT}{q} \ln \left( \frac{N_A}{n_i} \right) \]
+    \[ \gamma_N \overset{n-Dotierung}{\approx} \qty{1.46}{\sqrt{\volt}} \]
+    \[ \gamma_P \overset{p-Dotierung}{\approx} \qty{1.08}{\sqrt{\volt}} \]
 \end{minipage}
 \hfill
 \begin{minipage}[c]{0.68\columnwidth}
@@ -316,7 +320,7 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 \vspace{-0.3cm}
 
 % $$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D) \qquad \qquad V_M(I_D) = V_T(I_D) - x_M(I_D) } $$
-$$ \boxed{ \text{EXP-Bereich: } |V_K(I_D)| < |V_{GS}| \leq |V_M(I_D)| \quad \text{bzw.} \quad |I_K| < |I_D| \leq |I_M| } $$  %NOTE: Bedingung für Ströme aus Ü3, 3.6.5 1)
+\[ \boxed{ \text{EXP-Bereich: } |V_K(I_D)| < |V_{GS}| \leq |V_M(I_D)| \quad \text{bzw.} \quad |I_K| < |I_D| \leq |I_M| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.5 1)
 
 
 \resizebox{\columnwidth}{!}
@@ -520,39 +524,100 @@ Um den Zustand eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 
 \subsubsection{Kleinsignalersatzschlatungen des FET}
 
-\paragraph{Pi-Ersatzschaltung (niederfrequenz)}
+\paragraph{Niederfrequenz (Pi-Ersatzschaltung)}
 
 \begin{minipage}[t]{0.48\columnwidth}
+    % TODO: Pfeil bei g_mb umkehren damit es mit Formel stimmt
     \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_Pi_Ersatzschaltung.png}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\columnwidth}
     \raggedright
     \begin{itemize}
-        \item ideale spannungsgesteurte Stromquelle: $I_D = f(V_{GS})$
+        \item Ideale spannungsgesteurte Stromquelle: $I_D = f(V_{GS})$
         \item Berücksichtigung von Kanallängenmodulation: $g_0$ bzw. $r_{DS}$
         \item Berücksichtigung von Body-Effekt: $g_{mb} \cdot V_{SB}$
     \end{itemize}
 \end{minipage}
 
+\paragraph{Hochfrequenz}
 
-%NOTE: [Simi] Kommt dann wahrscheinlich nächstes Mal bei Kleinsignalparametern dran (ist jedenfalls im Skript drin)
-% \paragraph{Hochfrequenz-Kleinsignal-Ersatzschaltung}
+\begin{minipage}[t]{0.48\columnwidth}
+    % TODO: Pfeil bei g_mb umkehren damit es mit Formel stimmt
+    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_Kleinsignalersatzschaltung_hochfrequent.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\columnwidth}
+    \raggedright
+    Wenn Source und Bulk verbunden sind werden
+    \begin{itemize}
+        \item $C_{GB}$ und $C_{GS}$ parallel geschaltet und
+        \item $C_{SB}$ kurzgeschlossen.
+    \end{itemize}
+\end{minipage}
 
-% \begin{minipage}[t]{0.6\columnwidth}
-%     \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_Kleinsignalersatzschaltung_hochfrequent.png}
-% \end{minipage}
-% \hfill
-% \begin{minipage}[t]{0.36\columnwidth}
-%     blabla
-% \end{minipage}
+\paragraph{Parametrisierung}
+\begin{enumerate}
+    \item Grosssignalanalyse um AP zu bestimmen.
+    \item Parameter nach Formel bestimmen:
+\end{enumerate}
+\[
+    g_m          = \frac{\diff}{\diff V_{GS}} I_D \qquad
+    g_0 = r_{DS} = \frac{\diff}{\diff V_{DS}} I_D \qquad
+    g_{mb}       = \frac{\diff}{\diff V_{Sb}} I_D
+\]
+oder
+
+\textbf{Strong Inversion:}
+\[
+    g_m = \mu C_{ox} \frac{W}{L} (V_{GS} - V_T) 
+        = \sqrt{2 \mu C_{ox} \frac{W}{L} I_D}
+\]
+\[
+    g_{mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_m - 1)
+\]
+Ungesättigt:
+\[
+    g_0 = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})
+\]
+Gesättigt:
+\[
+    g_0 = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E L + V_{DS}}
+\]
 
 
+
+\textbf{Weak Inversion:}
+\[
+    g_m = \frac{I_D}{n_M V_\text{temp}}
+\]
+{
+    \raggedleft
+    \textrightarrow\ Unabhängig von der Geometrie des Transistors! \phantom{M}
+
+}
+\[
+    G_{mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_m - 1)
+\]
+Ungesättigt:
+\[
+    g_0: \text{Wird üblicherweise simuliert}
+\]
+Gesättigt:
+\[
+    g_0 = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}}
+\]
+
+\subsection{Zusammenhänge}
+%TODO: This seems important but I don't know how to integrate this in a logical way
+$g_m$ ist in der Weak Inversion unabhängig der Geometrie. 
+Es ist für einen gegebenen Drainstrom möglich, Transistoren, die in Weak Inversion wie auch welche, die in Strong Inversion sind herzustellen.
+Das $g_m$ steigt beim Transistor in Strong Inversion 
 
 \subsection{Bestimmung von Ersatzschaltbildern -- Allgemein}
 \subsubsection{Grosssignalersatzschaltung}
 
-Zur Bestimmung des \textbf{Arbeitspunkts} bzw. aller Gleichspannungen.
+Zur Bestimmung des \textbf{Arbeitspunkts} bzw.\ aller Gleichspannungen.
 \begin{description}
     \item[AC-Spannungsquellen] durch Kurzschlüsse ersetzen.
     \item[AC-Stromquellen] durch Unterbrüche ersetzen. 
@@ -569,3 +634,12 @@ Zur Berechnung von Verstärkungsfaktoren und Eingangswiderständen für AC-Signa
     \item[Nichtlineare Bauteile] durch deren Kleinsignalersatzschaltbild ersetzen.
     \item[Koppel- und Bypass-Kondensatoren] durch Kurzschlüsse ersetzen.  
 \end{description}
+
+\subsection{Verstärker dimensionieren}
+\begin{itemize}
+    \item Arbeitspunkt bestimmen.
+    \item $I_D$ wählen, sodass der Transistor ungesättigt ist.
+    \item Kleinsignalersatzschaltung zeichnen.
+    \item Parameter der Ersatzschaltung bestimmen.
+    \item 
+\end{itemize}
