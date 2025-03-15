@@ -464,30 +464,28 @@ In den drei verbleibenden Bereichen sind \textbf{keine Berechnungsformeln für} 
 \end{minipage}
 
 
-\subsection{Modellierung eines MOS-FET}
+\subsection{Modellierung eines MOS-FET in einem Arbeitspunkt}
 
-\subsubsection{Modellieren im Arbeitspunkt}
-% Um eine Transistorschaltung zu erstellen muss wie folgt vorgegangen werden:
 Der Transistor ist sehr komplex.
-Daher wird er in einem Arbeitspunkt folgendermassen vereinfacht vereinfacht und modelliert:
+Daher wird er \textbf{in einem Arbeitspunkt} folgendermassen vereinfacht  und modelliert:
 
 \begin{enumerate}
-    \item Definieren des Arbeitspunkts
-    \item Linearisierung im Arbeitspunkt mittels Ersatzschaltung
-    \item Mit den linearisierten Grössen rechnen
+    \item Definieren des Arbeitspunkts mittels \textbf{Grosssignalersatzschaltung} (\ref{Grosssignalersatzschaltung})
+    \item Linearisierung im Arbeitspunkt mittels \textbf{Kleinsignalersatzschaltung} (\ref{Niederfrequenz (Pi-Ersatzschaltung)} / \ref{Kleinsignalersatzschaltung})
+    \item Linearisierte \textbf{Kleinsignalparameter} bestimmen (\ref{Kleinsignalparameter}) und damit weiterrechnen
 \end{enumerate}
 
 
 \subsubsection{Bestimmung des Arbeitspunkts}
-Um den Zustand eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
+Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 
 \begin{minipage}[t]{0.44\columnwidth}
     \raggedright
     \begin{enumerate}
         \item $V_{GS}$ bestimmen 
         \item Ausgangsstrombereich mittels $V_{GS}$ bestimmen \\
-            $|V_{GS}| \geq V_H$ \rightarrow\ strong inversion \\
-            $|V_{GS}| \leq V_M$ \rightarrow\ weak inversion
+            $|V_{GS}| \geq |V_H|$ \rightarrow\ strong inversion \\
+            $|V_{GS}| \leq |V_M|$ \rightarrow\ weak inversion
         \item $V_{DS}$ ermitteln
     \end{enumerate}
 \end{minipage}
@@ -525,6 +523,7 @@ Um den Zustand eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 \subsubsection{Kleinsignalersatzschlatungen des FET}
 
 \paragraph{Niederfrequenz (Pi-Ersatzschaltung)}
+\label{Niederfrequenz (Pi-Ersatzschaltung)}
 
 \begin{minipage}[t]{0.48\columnwidth}
     % TODO: Pfeil bei g_mb umkehren damit es mit Formel stimmt
@@ -540,7 +539,9 @@ Um den Zustand eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
     \end{itemize}
 \end{minipage}
 
+
 \paragraph{Hochfrequenz}
+\label{Hochfrequenz}
 
 \begin{minipage}[t]{0.48\columnwidth}
     % TODO: Pfeil bei g_mb umkehren damit es mit Formel stimmt
@@ -556,66 +557,110 @@ Um den Zustand eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
     \end{itemize}
 \end{minipage}
 
-\paragraph{Parametrisierung}
-\begin{enumerate}
-    \item Grosssignalanalyse um AP zu bestimmen.
-    \item Parameter nach Formel bestimmen:
-\end{enumerate}
+
+\subsection{Kleinsignalparameter}
+\label{Kleinsignalparameter}
+
+Die Kleinsignalparameter bilden eine Vereinfachung (\textbf{Linearisierung}) in einem Arbeitspunkt. 
+Sie berechnen sich daher allgemein folgendermassen aus der Ableitung
 \[
     g_m          = \frac{\diff}{\diff V_{GS}} I_D \qquad
     g_0 = r_{DS} = \frac{\diff}{\diff V_{DS}} I_D \qquad
-    g_{mb}       = \frac{\diff}{\diff V_{Sb}} I_D
-\]
-oder
-
-\textbf{Strong Inversion:}
-\[
-    g_m = \mu C_{ox} \frac{W}{L} (V_{GS} - V_T) 
-        = \sqrt{2 \mu C_{ox} \frac{W}{L} I_D}
-\]
-\[
-    g_{mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_m - 1)
-\]
-Ungesättigt:
-\[
-    g_0 = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})
-\]
-Gesättigt:
-\[
-    g_0 = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E L + V_{DS}}
+    g_{mb}       = \frac{\diff}{\diff V_{SB}} I_D
 \]
 
+Für die beiden Kanalzustände, in welchen Formeln für die Handrechnung verfügbar sind, gibt es auch hier handliche Formeln für die Berechnung der Kleinsignalparameter.
+
+\smallskip
+
+Die Bezeichnung der einzelnen Parameter gilt sowohl für strong inversion als auch für weak inversion.
+
+\medskip
+
+\begin{tabular}{@{}ll@{}}
+    $g_m$               & Transkonduktanz (Stromquellenbetrieb) \textrightarrow\ Mass für Verstärkung des Transistors   \\
+    $g_{mb}$            & Body-Transkonduktanz \textrightarrow\ Beschreibt Wirkung des Body-Effekts                     \\
+    $g_0$               & Ausgangsleitwert (Stromquellenbetrieb) \textrightarrow\ beschreibt Kanallängenmodulation      \\
+    $r_{DS \crd{0}}$    & Kleinstmöglicher Ausgangswiderstand bzw. \textbf{Einschaltwiderstand bei} $\bm{V_{DS} = 0}$   \\
+                        & \textrightarrow\ Nur im Widerstandsbetrieb interessant
+\end{tabular}
 
 
-\textbf{Weak Inversion:}
-\[
-    g_m = \frac{I_D}{n_M V_\text{temp}}
-\]
-{
-    \raggedleft
-    \textrightarrow\ Unabhängig von der Geometrie des Transistors! \phantom{M}
+\subsubsection{Strong Inversion}
 
-}
+\vspace{-0.3cm}
+
 \[
-    G_{mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_m - 1)
+    \underbrace{ g_m = \mu C_{ox} \frac{W}{L} (V_{GS} - V_T) }_{\text{AP durch } V_{GS} \text{ bestimmt}} \qquad \qquad \qquad
+    \underbrace{ g_m = \sqrt{2 \mu C_{ox} \frac{W}{L} I_D} }_{\text{AP durch } I_D \text{ bestimmt}} 
 \]
-Ungesättigt:
+
+% \[
+%     g_{mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)
+% \]
+% Ungesättigt:
+% \[
+%     g_0 = \frac{1}{r_{DS}} = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})
+% \]
+% % Gesättigt:
+% \[
+%     g_0 =  \frac{1}{r_{DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E L + V_{DS}}
+% \]
+
+\vspace{-0.15cm}
+
+\begin{align*}
+                                         g_{mb} &= -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)                                     \\
+    \text{ \textbf{Ungesättigt:}} \quad     g_0 &= \frac{1}{r_{DS}} = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})                                              \\
+    \text{ \textbf{Gesättigt:}} \quad       g_0 &=  \frac{1}{r_{DS}} = \lambda \cdot I_{DS, \rm sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E \cdot L + V_{DS}}
+\end{align*}
+
+
+\subsubsection{Weak Inversion}
+
+\vspace{-0.3cm}
+
 \[
-    g_0: \text{Wird üblicherweise simuliert}
+    g_m = \frac{I_D}{n_M \cdot V_\text{temp}} \quad \text{ \textrightarrow\ Unabhängig von der Geometrie des Transistors!}
 \]
-Gesättigt:
-\[
-    g_0 = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}}
-\]
+% {
+%     \raggedleft
+%     \textrightarrow\ Unabhängig von der Geometrie des Transistors! \phantom{M}
+
+% }
+
+\vspace{-0.15cm}
+
+\begin{align*}
+                                         g_{mb} &= -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)                                             \\
+    \text{ \textbf{Ungesättigt:}} \quad     g_0 &= \frac{1}{r_{DS}} = \frac{V_{\text{temp}}}{I_{D \infty}} \quad \text{ \textrightarrow\ wird meist simuliert}              \\
+    \text{ \textbf{Gesättigt:}} \quad       g_0 &=  \frac{1}{r_{DS}} = \lambda \cdot  I_{DS, \rm sat} = \frac{I_D}{V_E + V_{DS}}  \approx \frac{I_D}{a_E \cdot L + V_{DS}}
+\end{align*}
+
+
+% \[
+%     g_{mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)
+% \]
+% Ungesättigt:
+% \[
+%     g_0: \text{Wird üblicherweise simuliert}
+% \]
+% Gesättigt:
+% \[
+%     g_0 = \frac{1}{r_{DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}}
+% \]
 
 \subsection{Zusammenhänge}
-%TODO: This seems important but I don't know how to integrate this in a logical way
+%TODO: [Flurin] This seems important but I don't know how to integrate this in a logical way
+% [Simi] @Flurin: Leave it here for the moment... maybe we can fit in in somewhere late or we just leave it here :) 
+
 $g_m$ ist in der Weak Inversion unabhängig der Geometrie. 
 Es ist für einen gegebenen Drainstrom möglich, Transistoren, die in Weak Inversion wie auch welche, die in Strong Inversion sind herzustellen.
 Das $g_m$ steigt beim Transistor in Strong Inversion 
 
 \subsection{Bestimmung von Ersatzschaltbildern -- Allgemein}
 \subsubsection{Grosssignalersatzschaltung}
+\label{Grosssignalersatzschaltung}
 
 Zur Bestimmung des \textbf{Arbeitspunkts} bzw.\ aller Gleichspannungen.
 \begin{description}
@@ -626,6 +671,7 @@ Zur Bestimmung des \textbf{Arbeitspunkts} bzw.\ aller Gleichspannungen.
 \end{description}
 
 \subsubsection{Kleinsignalersatzschaltung}
+\label{Kleinsignalersatzschaltung}
 Zur Berechnung von Verstärkungsfaktoren und Eingangswiderständen für AC-Signale.
 
 \begin{description}
@@ -635,11 +681,11 @@ Zur Berechnung von Verstärkungsfaktoren und Eingangswiderständen für AC-Signa
     \item[Koppel- und Bypass-Kondensatoren] durch Kurzschlüsse ersetzen.  
 \end{description}
 
-\subsection{Verstärker dimensionieren}
+
+\subsection{Vorgehen: Verstärker dimensionieren}
 \begin{itemize}
     \item Arbeitspunkt bestimmen.
-    \item $I_D$ wählen, sodass der Transistor ungesättigt ist.
+    \item $I_D$ wählen, sodass der Transistor \textbf{gesättigt} ist.   %CHECK [Simi] @Flurin Hier stand zuvor UNgesättigt -> gemäss Beispiel von V4 S15 haben wir aber gesagt, der Transistor muss gesättigt sein...?
     \item Kleinsignalersatzschaltung zeichnen.
     \item Parameter der Ersatzschaltung bestimmen.
-    \item 
 \end{itemize}
