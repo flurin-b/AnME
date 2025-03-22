@@ -195,11 +195,12 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 
 
 \subsubsection{Strong Inversion}
+\label{Strong Inversion}
 
 \vspace{-0.3cm}
 
 % $$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{GS} < V_L(I_D) } \qquad \qquad \beta = \mu \cdot C_{\text{OX}} \cdot \frac{W}{L} $$
-\[ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{GS}| < |V_L(I_D)| \quad \text{bzw.} \quad |I_H| \leq |I_D| < |I_L| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.4 1)
+\[ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{GS}| < |V_L(I_D)| \quad \text{bzw.} \quad |I_H'| \leq |I_D'| < |I_L'| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.4 1)
 
 \resizebox{\columnwidth}{!}
 {
@@ -259,18 +260,10 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 %TODO: [Flurin] V3S9 nochmal studieren, macht iwie noch nicht so sinn.
 \paragraph{Kanallängenmodulation $\bm{\lambda$} und Early-Spannung $\bm{V_E}$}
 
-\begin{minipage}[c]{0.7\columnwidth}
-    % Die Early-Spannung $V_E = a_E \cdot L$ setzt sich zusammen aus dem technologieabhängigen Early-Faktor $a_E$ und der Kanallänge $L$.
-    Die Kanallängenmodulation beschreibt die Nichtidealität der spannungsgesteurten Stromquelle (im Sättigungsbetrieb). \\
-    Idealfall: $\lambda = 0$ \rightarrow\ $L = \infty$
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.28\columnwidth}
-    \[ \lambda = \frac{1}{V_E} = \frac{1}{a_E \cdot L} \]
-    % \overset{V_E >> V_{DS}}{\approx} \frac{1}{V_E}
-\end{minipage}
+% Die Early-Spannung $V_E = a_E \cdot L$ setzt sich zusammen aus dem technologieabhängigen Early-Faktor $a_E$ und der Kanallänge $L$.
+Die Kanallängenmodulation beschreibt die Nichtidealität der spannungsgesteurten Stromquelle (im Sättigungsbetrieb).
 
-\smallskip
+$$ \lambda = \frac{1}{V_E + V_{DS, \rm sat}} \approx \frac{1}{V_E} \approx \frac{1}{a_E \cdot L} \qquad \text{Idealfall: } \lambda = 0 \text{ \rightarrow\ } L = \infty $$ 
 
 \textbf{Achtung:} $\bm{V_E}$ ist typischerweise negativ, wird jedoch \textbf{immer positiv angegeben}. 
 Grafisch entspricht $V_E$ der Spannung $V_{DS}$, bei welcher die Verlängerung der Ausgangskennlinie (Sättigung) die $V_{DS}$-Achse schneidet.
@@ -320,7 +313,7 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 \vspace{-0.3cm}
 
 % $$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D) \qquad \qquad V_M(I_D) = V_T(I_D) - x_M(I_D) } $$
-\[ \boxed{ \text{EXP-Bereich: } |V_K(I_D)| < |V_{GS}| \leq |V_M(I_D)| \quad \text{bzw.} \quad |I_K| < |I_D| \leq |I_M| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.5 1)
+\[ \boxed{ \text{EXP-Bereich: } |V_K(I_D)| < |V_{GS}| \leq |V_M(I_D)| \quad \text{bzw.} \quad |I_K'| < |I_D'| \leq |I_M'| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.5 1)
 
 
 \resizebox{\columnwidth}{!}
@@ -477,6 +470,7 @@ Daher wird er \textbf{in einem Arbeitspunkt} folgendermassen vereinfacht  und mo
 
 
 \subsubsection{Bestimmung des Arbeitspunkts}
+\label{Bestimmung des Arbeitspunkts}
 Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 
 \begin{minipage}[t]{0.44\columnwidth}
@@ -584,6 +578,11 @@ Die Bezeichnung der einzelnen Parameter gilt sowohl für strong inversion als au
     $r_{DS \crd{0}}$    & Kleinstmöglicher Ausgangswiderstand bzw. \textbf{Einschaltwiderstand bei} $\bm{V_{DS} = 0}$   \\
                         & \textrightarrow\ Nur im Widerstandsbetrieb interessant
 \end{tabular}
+
+\medskip
+
+\textbf{Hinweis:} Folgende Formel gelten für nMOS Transistoren.
+Für pMOS Transistoren müssen jeweils \textbf{Beträge} eingesetzt werden \textbf{(ausser bei Technologieparametern)} und vor dem Gesamtresultat ein \textbf{Minus} ergänzt werden.
 
 
 \subsubsection{Strong Inversion}
