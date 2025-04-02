@@ -1,0 +1,57 @@
+\section{MOS Diode}
+\subsection{Gegenüberstellung Diodentypen}
+% TODO: Kennlinien und Schaltungen aus V6S5
+
+\subsection{Arbeitsbereich}
+Die MOS Diode arbeitet in der Sättigung, da die Bedingung für Sättigung aufgrund der Zusammengehängten Gate- und Source-Anschlüssen immer erfüllt ist:
+\[
+    V_\text{DS} = V_\text{GS} > V_\text{GS} - V_\text{T}
+\]
+
+Ob die Diode in Weak oder Strong Inversion arbeitet wird von der Forwardspannung bestimmt.
+
+\subsection{Kennlinie und Kleinsignalersatzschaltung}
+Die Spannung über der Diode als Funktion des Eingangsstroms und so die Diodenkennlinie wird als
+\[
+    V_\text{DS} = V_\text{GS} = T_\text{T} + \sqrt{\frac{2 I_\text{D}}{\mu C_\text{ox} \frac{W}{L}}}
+\]
+berechnet.
+
+\[
+    V_{GS} = V_\text{M} + n_m V_\text{temp} \ln{\frac{I_\text{D}}{I_m' \frac{W}{L}}}
+\]
+
+Die Kleinsignalersatzschaltung kann, wie die obige Gleichung, ebenfalls vom MOS Transistor leicht angepasst und übernommen werden.
+% TODO: Ersatzschaltbild
+Dabei gilt
+\[
+    r_\text{MD} \approx \frac{1}{g_m} = \frac{1}{\sqrt{2 \mu C_\text{ox} \frac{W}{L} I_\text{D}}}.
+\]
+
+\subsection{Anwendungen}
+
+\subsubsection{Spannungsreferenz}
+% TODO: Beide Schaltungen aus V6S10
+% TODO: Create a pro and contra list type
++ Kleinerer Flächenanspruch als ein Widerstand
++ Die Eingangsspannung wird durch den relativ tiefen $\Delta r_{MD}$ geglättet
+- Ebenfalls ungenau
+- $r_{MD}$ kann nur schlecht verändert werden.
+
+\subsubsection{Spannungsteiler}
+% TODO: Entweder entfernen oder schemen aus V6S13 einfügen, sicher korrektes Schema einfügen
+a:
+ - body-Effekt bei oberem Transistor
+
+b:
+ + Da P-Transistoren kein Body-Effekt
+ + Matching gut da beides P-Transistoren
+
+c:
+ - Matching schlecht, da komplementäre Elemente
+ + Kein Body-Effekt
+
+d:
+ - viel Fläche
+ - schlechte absolute genauigkeit
+ + gute relative genauigkeit

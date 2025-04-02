@@ -1,0 +1,34 @@
+\section{MOS Stromquelle}
+Bei der Einstellung des Arbietspunkts mittels Widerstand resultiert eine quadratische Gleichung für den Strom und so die Ausgangsspannung eines Verstärkers.
+Abhilfe kann eine Stromquelle anstelle des Widerstands schaffen.
+
+MOS Transistoren sind bereits spannungsgesteuerte Stromquellen.
+Durch einfügen eines $R_\text{S}$ kann der Innenwiderstand der Quelle minimiert werden.
+% TODO: Schaltung mit R_S aus V6S18 und evtl. Formeln für R_iD aus V6S17
+
+\paragraph{Minimale Ausgangsspannung}
+% TODO: unterste Formel aus V6S17
+
+\subsection{Kaskode}
+Damit für die Stromquelle kein Widerstand verwendet werden muss, kann ein weiterer Transistor verwendet werden. Diese Schaltung wird Kaskode genannt.
+
+Dabei wird der maximale Ausgangsstrom jedoch leicht reduziert.
+% TODO: Kaskodenschaltung und dazugehörige Formeln aus V6S18
+
+\paragraph{Minimale Ausgangsspannung}
+% TODO: unterste zwei Formeln aus V6S18
+
+\subsubsection{Geregelte Kaskode}
+Um die Kaskodenschaltung weiter zu verbessern, kann die $V_\text{GS}$ Spannung des oberen Transistors auf die Referenzspannung geregelt werden.
+Durch das Stabilisieren der Spannung wird der Arbeitspunkt des transistors stabilisiert und der Ausgangswiderstand noch grösser.
+% TODO: Schaltung mit OpAMP und Formeln aus V6S20
+
+\paragraph{Minimale Ausgangsspannung}
+% TODO: unterste zwei Formeln aus V6S20
+
+\subsubsection{Säckinger Kaskode}
+Die Säckinger Kaskode ersetzt den komplexen OpAMP mit einem einzelnen Transistor in Source-Schaltung.
+% TODO: Schaltung Säckinger Kaskode und Formeln aus V6S21
+
+\paragraph{Minimale Ausgangsspannung}
+% TODO: unterste zwei Formeln aus V6S21 sowie praktische Angabe aus V6S23
