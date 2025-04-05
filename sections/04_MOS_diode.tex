@@ -118,23 +118,54 @@ Die MOS Diode arbeitet \textbf{(in strong inversion) immer in Sättigung}, da di
 \end{minipage}
 
 
-% CONTINUE HERE
-
 
 \subsubsection{Spannungsteiler}
-% TODO: Entweder entfernen oder schemen aus V6S13 einfügen, sicher korrektes Schema einfügen
-a:
- - body-Effekt bei oberem Transistor
 
-b:
- + Da P-Transistoren kein Body-Effekt
- + Matching gut da beides P-Transistoren
+Spannungsteiler könnten auf mehrere Arten realisiert werden. \textrightarrow\ \textbf{Variante (b) am Besten!}
 
-c:
- - Matching schlecht, da komplementäre Elemente
- + Kein Body-Effekt
+\vspace{-0.2cm}
 
-d:
- - viel Fläche
- - schlechte absolute genauigkeit
- + gute relative genauigkeit
+\begin{ctabular}{@{}c cc cc cc@{}}
+    \includegraphics[height=3cm, align=t]{images/04_MOS_diode_spannungsteiler_a.pdf}    & &
+    \includegraphics[height=3cm, align=t]{images/04_MOS_diode_spannungsteiler_b.pdf}    & & 
+    \includegraphics[height=3cm, align=t]{images/04_MOS_diode_spannungsteiler_c.pdf}    & &
+    \includegraphics[height=3cm, align=t]{images/04_MOS_diode_spannungsteiler_d.pdf}    \\
+\end{ctabular}
+
+
+\begin{minipage}[t]{0.36\columnwidth}
+    Schaltung (a)
+    \begin{itemize}
+        \item[+] Gleiche Elemente (nMOS)
+        \item[-] Body-Effekt bei $N_2$
+    \end{itemize}
+   
+    \smallskip
+
+    \textbf{Schaltung (b)}
+    \begin{itemize}
+        \item[+] Gleiche Elemente (pMOS) \\
+            \textrightarrow\ gutes Matching
+        \item[+] Kein Body-Effekt (pMOS)
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.6\columnwidth}
+    Schaltung (c)
+    \begin{itemize}
+        \item[+] Kein Body-Effekt
+        \item[-] Komplementäre Elemente
+            \textrightarrow\ schlechtes Matching
+    \end{itemize}
+   
+    \smallskip
+
+    Schaltung (d)
+    \begin{itemize}
+        \item[+] Gute \textbf{relative} Genauigkeit
+        \item[-] Schlechte \textbf{absolute} Genauigkeit
+        \item[-] Braucht viel Platz 
+    \end{itemize}
+\end{minipage}
+
+
