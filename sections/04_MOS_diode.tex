@@ -1,42 +1,125 @@
 \section{MOS Diode}
 \subsection{Gegenüberstellung Diodentypen}
-% TODO: Kennlinien und Schaltungen aus V6S5
 
-\subsection{Arbeitsbereich}
-Die MOS Diode arbeitet in der Sättigung, da die Bedingung für Sättigung aufgrund der Zusammengehängten Gate- und Source-Anschlüssen immer erfüllt ist:
+%NOTE: Platzhalter! -> wird mit überarbeitetem pdf ersetzt
+%TODO: [Simi]: pdf
+\includegraphics[width=\columnwidth, align=t]{images/04_Vergleich_Dioden.png}
+
+
+\subsection{Arbeitsbereich der MOS Diode}
+
+Die MOS Diode arbeitet \textbf{(in strong inversion) immer in Sättigung}, da die Sättigungsbedingung aufgrund der Verbindung der Gate- und Source-Anschlüsse immer erfüllt ist:
 \[
     V_\text{DS} = V_\text{GS} > V_\text{GS} - V_\text{T}
 \]
+\textbf{Hinweis:} Die Forwardspannung bestimmt, ob die MOS Diode in strong- oder weak inversion betrieben wird.
+\textbf{Der 'Normalfall' ist strong inversion.}
 
-Ob die Diode in Weak oder Strong Inversion arbeitet wird von der Forwardspannung bestimmt.
 
-\subsection{Kennlinie und Kleinsignalersatzschaltung}
-Die Spannung über der Diode als Funktion des Eingangsstroms und so die Diodenkennlinie wird als
-\[
-    V_\text{DS} = V_\text{GS} = T_\text{T} + \sqrt{\frac{2 I_\text{D}}{\mu C_\text{ox} \frac{W}{L}}}
-\]
-berechnet.
+\subsection{Arbeitspunkteinstellung}
 
-\[
-    V_{GS} = V_\text{M} + n_m V_\text{temp} \ln{\frac{I_\text{D}}{I_m' \frac{W}{L}}}
-\]
+\subsubsection{Arbeitspunkteinstellung mittels Drainstrom}
 
-Die Kleinsignalersatzschaltung kann, wie die obige Gleichung, ebenfalls vom MOS Transistor leicht angepasst und übernommen werden.
-% TODO: Ersatzschaltbild
-Dabei gilt
-\[
-    r_\text{MD} \approx \frac{1}{g_m} = \frac{1}{\sqrt{2 \mu C_\text{ox} \frac{W}{L} I_\text{D}}}.
-\]
+\begin{minipage}[t]{0.3\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/04_MOS_diode_mit_stromquelle.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.66\columnwidth}
+    Aus der Drainstrom-Gleichung (strong inversion, Sättigung) lässt sich die Spannung über der Diode als Funktion des Eingangsstroms berechnen:
+    \[
+        V_\text{DS} = V_\text{GS} = V_T + \sqrt{\frac{2 I_\text{D}}{\mu C_\text{ox} \frac{W}{L}}}
+    \]
+
+    %CHECK: [Simi] @ Flurin: WO kommt das her? Ist das relevant?   
+    \[
+        V_{GS} = V_\text{M} + n_M V_\text{temp} \ln{\frac{I_\text{D}}{I_m' \frac{W}{L}}}
+    \]
+\end{minipage}
+
+
+\subsubsection{Arbeitspunkteinstellung mittels Seriewiderstand}
+
+\begin{minipage}[t]{0.3\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/04_MOS_diode_mit_widerstand.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.66\columnwidth}
+    Der Arbeitspunkt kann auf zwei Arten ermittelt werden:
+
+    \smallskip
+    
+    \begin{outline}
+        \1 Grafisch durch Einzeichnen der Lastgerade des Drainwiderstands $R_1$ in der Kennlinie $I_D = f(V_{\rm GS})$
+            \2 Leerlaufspannung: $V_{\rm GS,0} = V_{\rm DD}$
+            \2 Kurzschluss-Strom: $I_{D, 0} = \frac{V_{\rm DD}}{R_1}$ \\
+            \textrightarrow\ Schnittpunkt entspricht Arbeitspunkt
+            \smallskip
+        \1 Rechnerisch mittels folgender Formel
+        $$ I_D = \frac{V_{\rm DD} - V_{\rm GS}}{R_1} = \frac{\mu C_{\rm OX}}{2} \frac{W}{L} (V_{\rm GS} - V_T)^2 $$
+    \end{outline}
+\end{minipage}
+
+
+\subsection{Kleinsignalersatzschaltung}
+
+\begin{minipage}[t]{0.3\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/04_MOS_diode_ersatzschaltung_vereinfacht.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.65\columnwidth}
+    Die Kleinsignalersatzschaltung kann (leicht angepasst) vom MOS Transistor übernommen werden.
+    \begin{align*}
+        \text{Allgemein:} \quad             r_\text{\rm MD}  &= \frac{1}{g_m + g_0} = \frac{1}{g_m} \parallel r_{DS} \\
+        \text{\textbf{Praxis:}} \quad       r_\text{\rm MD} &\approx \frac{1}{g_m} = \frac{1}{\sqrt{2 \mu C_\text{ox} \frac{W}{L} I_\text{D}}}
+    \end{align*}
+
+\end{minipage}
+
 
 \subsection{Anwendungen}
 
 \subsubsection{Spannungsreferenz}
-% TODO: Beide Schaltungen aus V6S10
-% TODO: Create a pro and contra list type
-+ Kleinerer Flächenanspruch als ein Widerstand
-+ Die Eingangsspannung wird durch den relativ tiefen $\Delta r_{MD}$ geglättet
-- Ebenfalls ungenau
-- $r_{MD}$ kann nur schlecht verändert werden.
+\label{Spannungsreferenz}
+
+\begin{minipage}[t]{0.44\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/04_MOS_diode_spannungsreferenz.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.52\columnwidth}
+    \textbf{Voraussetzung: } Referenzstrom $I_Q$
+    \smallskip
+
+    \begin{itemize}
+        \item[+] Kleinerer Flächenanspruch als Widerstand
+        \item[+] Eingangsspannung wird durch relativ tiefen $\Delta r_{\rm MD}$ geglättet
+        \item[-] Genauer als mit Widerstand, jedoch noch immer eher ungenau
+        \item[-] $r_{\rm MD}$ kann nur schlecht verändert werden
+    \end{itemize}
+\end{minipage}
+
+
+\subsubsection{Spannungsstabilisator}
+
+\begin{minipage}[t]{0.48\columnwidth}
+    \begin{outline}
+        \1 MOS-Dioden Schaltung aus Abschnitt \ref{Spannungsreferenz} mit Widerstand statt Stromquelle
+        \1 AC-Störung wird oberhalb von $R$ eingespeist (gegenüber GND)
+    \end{outline}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\columnwidth}
+    \raggedright
+    
+    \begin{outline}
+        \1 Kleinsignalersatzschaltung des beschriebenen Aufbaus:
+            \2 Spannungsteiler aus $R$ (gross) und $r_{\rm MD}$ (klein) \\
+            \textrightarrow\ AC-Störspannung $v_0$ am Ausgang ($V_{\rm DS} + v_0$) sehr klein
+    \end{outline}
+\end{minipage}
+
+
+% CONTINUE HERE
+
 
 \subsubsection{Spannungsteiler}
 % TODO: Entweder entfernen oder schemen aus V6S13 einfügen, sicher korrektes Schema einfügen
