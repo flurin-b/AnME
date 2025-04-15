@@ -3,7 +3,21 @@
 
 %NOTE: Platzhalter! -> wird mit überarbeitetem pdf ersetzt
 %TODO: [Simi]: pdf
-\includegraphics[width=\columnwidth, align=t]{images/04_Vergleich_Dioden.png}
+
+\begin{tabularx}{\columnwidth}{@{}c c c c@{}}
+    Ideale Diode ($V_F = V_{F0}$) & Reale Diode & \multicolumn{2}{c}{MOS-Diode}\\
+    \includegraphics[height=1.75cm]{images/diode_ideal_symbol.pdf} & 
+    \includegraphics[height=1.75cm]{images/diode_real_symbol.pdf} & 
+    \parbox[t]{\widthof{\includegraphics[height=1.75cm]{images/diode_nmos_symbol.pdf}}}{%
+        \includegraphics[height=1.75cm]{images/diode_nmos_symbol.pdf}\\
+        \phantom{------} NMOS} & % this \phantom{------} is a bit of a hacky way to get the text to where it should be... maybe we'll change it later on
+    \parbox[t]{\widthof{\includegraphics[height=1.75cm]{images/diode_pmos_symbol.pdf}}}{%
+        \includegraphics[height=1.75cm]{images/diode_pmos_symbol.pdf}\\
+        PMOS} \\
+    \includegraphics[width=.3\columnwidth]{images/diode_ideal_kennlinie.pdf} & 
+    \includegraphics[width=.3\columnwidth]{images/diode_real_kennlinie.pdf} & 
+    \multicolumn{2}{c}{\includegraphics[width=.3\columnwidth]{images/diode_mos_kennlinie.pdf}} \\ 
+\end{tabularx}
 
 
 \subsection{Arbeitsbereich der MOS Diode}
