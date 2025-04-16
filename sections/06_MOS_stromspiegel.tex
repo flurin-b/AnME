@@ -1,0 +1,92 @@
+\section{MOS Stromspiegel}
+Stromspiegel werden in jeder integrierten Schaltung eingesetzt.
+Sie werden dabei eingesetzt
+\begin{itemize}
+    \item um Arbeitspunkte einzustellen,
+    \item als Eingangsstufen von OpAMPs und
+    \item als grosse Lastwiderstände in Verstärkerschaltungen.
+\end{itemize}
+
+\subsection{Einfache Stromspiegel}
+% TODO: Schemas p- und n-Stromspiegel wie V7S8
+
+% TODO: Formeln aus V7S17 ergänzen
+\[
+    I_\text{out} = k \cdot I_\text{in} = \frac{W_\text{out}/L_\text{out}}{W_\text{in}/L_\text{in}}
+\]
+
+\[
+    V_\text{out} \geq V_\text{DS, sat $\text{N}_2$} = \sqrt{\frac{2 I_\text{D}}{\mu C_\text{ox}\frac{W}{L}}}
+\]
+
+% TODO: Kleinsignalersatzschaltung Stromspiegel V7S11
+
+\subsubsection{Eingangsbeschaltung}
+Als Eingang dient ein Strom aus einer Referenzquelle
+\[
+    I_\text{in} = I_\text{ref}
+\]
+oder kann von der Eingangsspannung als
+\[
+    V_\text{in} = V_{\text{T, N}_1} + \sqrt{\frac{2 I_\text{in}}{\mu C_\text{ox}\frac{W}{L}}}
+\]
+abgeleitet werden.
+
+\subsubsection{Anwendungen}
+\paragraph{Versorgungsspannungsunterdrückung / DC-Level Shifting}
+Durch Einsatz eines Stromspiegels kann die Abhängigkeit der Ausgangsspannung von der Versorgungsspannung reduziert werden.
+% TODO: Bilder zur Verschiebung RL aus V7S13
+
+\paragraph{Stromquellenlast bei Differenzstufe}
+% TODO: V7S14: Leider im hintendrein, konnte keine notizen machen... :(
+
+\paragraph{Mehrfachstromspiegel}
+Durch einen Mehrfachstromspiegel reicht ein Referenzstrom aus, um diverse Referenzströme zu generieren.
+Die Grösse der vom Stromspiegel erzeugten Ströme kann durch die Länge und Breite der Transistoren eingestellt werden.
+
+\subsubsection{Optimierungen}
+% TODO: Evtl. die nicht vereinfachten Formeln aus V7S19
+Da $V_\text{T}$ Temperaturabhängig ist, sollten die Transistoren jeweils dieselbe Temperatur haben.
+
+Ebenfalls ist das Teilverhältnis von $\mu C_\text{ox}$ abhängig.
+Durch kontrolliertes Platzieren der Transistoren (Common Centroid Layout) und gute Temperaturkontrolle beim Herstellen können diese Werte relativ genau gehalten werden.
+
+Zu guter Letzt sollten die $\lambda$ gleich gross sein.
+Dazu müssen die Transistoren dieselbe Länge $L$ (und in einem nächsten Schritt möglichst gross) sein.
+
+
+Im Grunde genommen können Stromspiegel auch in Weak und Moderate Inversion betrieben werden.
+Dabei leidet jedoch die Genauigkeit.
+
+\subsection{Wilson-Stromspiegel}
+Der einfache Stromspiegel besitzt eine relativ tiefe Ausgangsimpedanz.
+Abhilfe kann der Wilson-Stromspiegel schaffen.
+
+$\text{N}_3$ bildet dabei eine Rückkopplung zur Regelung von $I_\text{o}$ auf $I_\text{i}$.
+% TODO: How does this work? idgi...
+
+% TODO: Schema p- und n-Wislon-Stromspiegel V7S21
+
+% TODO: Formeln aus V7S21
+
+\subsubsection{Verbesserter Wilson- / Kaskoden-Stromspiegel}
+
+% TODO: Schem verbesserter Wilson- und Kaskoden-Stromspiegel V7S22
+
+% TODO: Formeln zur minimalen Ausgangsspanung V7S23
+
+\subsubsection{Stromspiegel mit geregelter Kaskode}
+
+% TODO: Schema V7S24
+
+Durch M4 und M5 wird die Spannung am Gate von M2 konstant gehalten. 
+So wird die Ausgangsimpedanz bedeutend erhöht.
+
+% TODO: Formeln V7S24
+
+\subsection{Gegenüberstellung}
+
+%TODO: Plots der verschidenen Varianten V7S24
+% Evtl. bessere Darstellungen? Warscheindlich nicht lohnenswert.
+
+% TODO: Tabelle aus V7S27
