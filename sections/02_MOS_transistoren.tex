@@ -528,7 +528,7 @@ Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
     \raggedright
     \begin{itemize}
         \item Ideale spannungsgesteurte Stromquelle: $I_D = f(V_{GS})$
-        \item Berücksichtigung von Kanallängenmodulation: $g_0$ bzw. $r_{DS}$
+        \item Berücksichtigung von Kanallängenmodulation: $g_o$ bzw. $r_{DS}$
         \item Berücksichtigung von Body-Effekt: $g_{mb} \cdot V_{SB}$
     \end{itemize}
 \end{minipage}
@@ -559,7 +559,7 @@ Die Kleinsignalparameter bilden eine Vereinfachung (\textbf{Linearisierung}) in 
 Sie berechnen sich daher allgemein folgendermassen aus der Ableitung
 \[
     g_m          = \frac{\diff}{\diff V_{GS}} I_D \qquad
-    g_0 = r_{DS} = \frac{\diff}{\diff V_{DS}} I_D \qquad
+    g_o = r_{DS} = \frac{\diff}{\diff V_{DS}} I_D \qquad
     g_{mb}       = \frac{\diff}{\diff V_{SB}} I_D
 \]
 
@@ -574,7 +574,7 @@ Die Bezeichnung der einzelnen Parameter gilt sowohl für strong inversion als au
 \begin{tabular}{@{}ll@{}}
     $g_m$               & Transkonduktanz (Stromquellenbetrieb) \textrightarrow\ Mass für Verstärkung des Transistors   \\
     $g_{mb}$            & Body-Transkonduktanz \textrightarrow\ Beschreibt Wirkung des Body-Effekts                     \\
-    $g_0$               & Ausgangsleitwert (Stromquellenbetrieb) \textrightarrow\ beschreibt Kanallängenmodulation      \\
+    $g_o$               & Ausgangsleitwert (Stromquellenbetrieb) \textrightarrow\ beschreibt Kanallängenmodulation      \\
     $r_{DS \crd{0}}$    & Kleinstmöglicher Ausgangswiderstand bzw. \textbf{Einschaltwiderstand bei} $\bm{V_{DS} = 0}$   \\
                         & \textrightarrow\ Nur im Widerstandsbetrieb interessant
 \end{tabular}
@@ -599,19 +599,19 @@ Für pMOS Transistoren müssen jeweils \textbf{überall Beträge eingesetzt werd
 % \]
 % Ungesättigt:
 % \[
-%     g_0 = \frac{1}{r_{DS}} = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})
+%     g_o = \frac{1}{r_{DS}} = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})
 % \]
 % % Gesättigt:
 % \[
-%     g_0 =  \frac{1}{r_{DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E L + V_{DS}}
+%     g_o =  \frac{1}{r_{DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E L + V_{DS}}
 % \]
 
 \vspace{-0.15cm}
 
 \begin{align*}
                                          g_{mb} &= -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)                                     \\
-    \text{ \textbf{Ungesättigt:}} \quad     g_0 &= \frac{1}{r_{DS}} = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})                                              \\
-    \text{ \textbf{Gesättigt:}} \quad       g_0 &=  \frac{1}{r_{DS}} = \lambda \cdot I_{DS, \rm sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E \cdot L + V_{DS}}
+    \text{ \textbf{Ungesättigt:}} \quad     g_o &= \frac{1}{r_{DS}} = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})                                              \\
+    \text{ \textbf{Gesättigt:}} \quad       g_o &=  \frac{1}{r_{DS}} = \lambda \cdot I_{DS, \rm sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E \cdot L + V_{DS}}
 \end{align*}
 
 
@@ -632,8 +632,8 @@ Für pMOS Transistoren müssen jeweils \textbf{überall Beträge eingesetzt werd
 
 \begin{align*}
                                          g_{mb} &= -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)                                             \\
-    \text{ \textbf{Ungesättigt:}} \quad     g_0 &= \frac{1}{r_{DS}} = \frac{V_{\text{temp}}}{I_{D \infty}} \quad \text{ \textrightarrow\ wird meist simuliert}              \\
-    \text{ \textbf{Gesättigt:}} \quad       g_0 &=  \frac{1}{r_{DS}} = \lambda \cdot  I_{DS, \rm sat} = \frac{I_D}{V_E + V_{DS}}  \approx \frac{I_D}{a_E \cdot L + V_{DS}}
+    \text{ \textbf{Ungesättigt:}} \quad     g_o &= \frac{1}{r_{DS}} = \frac{V_{\text{temp}}}{I_{D \infty}} \quad \text{ \textrightarrow\ wird meist simuliert}              \\
+    \text{ \textbf{Gesättigt:}} \quad       g_o &=  \frac{1}{r_{DS}} = \lambda \cdot  I_{DS, \rm sat} = \frac{I_D}{V_E + V_{DS}}  \approx \frac{I_D}{a_E \cdot L + V_{DS}}
 \end{align*}
 
 
@@ -642,11 +642,11 @@ Für pMOS Transistoren müssen jeweils \textbf{überall Beträge eingesetzt werd
 % \]
 % Ungesättigt:
 % \[
-%     g_0: \text{Wird üblicherweise simuliert}
+%     g_o: \text{Wird üblicherweise simuliert}
 % \]
 % Gesättigt:
 % \[
-%     g_0 = \frac{1}{r_{DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}}
+%     g_o = \frac{1}{r_{DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}}
 % \]
 
 \subsection{Zusammenhänge}

@@ -58,7 +58,7 @@ Die Source-Schaltung ist eine \textbf{invertierende Verstärkerschaltung.}
 
     \vspace{-0.2cm}
     \[
-        a = \frac{v_{\rm out}}{v_{\rm in}} = \frac{R_D}{R_S + \frac{1}{g_m} + \frac{g_0}{g_m}(R_D + R_S)} 
+        a = \frac{v_{\rm out}}{v_{\rm in}} = \frac{R_D}{R_S + \frac{1}{g_m} + \frac{g_o}{g_m}(R_D + R_S)} 
     \]
 
 
@@ -71,7 +71,7 @@ Die Source-Schaltung ist eine \textbf{invertierende Verstärkerschaltung.}
     \]
     
 
-    % $$g_m \gg g_0$ \& $R_D \ll r_{DS} \qquad a \approx - g_m \frac{R_D}{g_m R_D + 1} $$   % NOTE: Aus Skript (nicht in Vorlesung), macht Formatierung kaputt daher weggelassen, da allg. Formel immer gültig
+    % $$g_m \gg g_o$ \& $R_D \ll r_{DS} \qquad a \approx - g_m \frac{R_D}{g_m R_D + 1} $$   % NOTE: Aus Skript (nicht in Vorlesung), macht Formatierung kaputt daher weggelassen, da allg. Formel immer gültig
 
     \vspace{-0.2cm}
 
@@ -92,7 +92,7 @@ Die \textbf{\myul{theoretisch}} maximal mögliche Verstärkung in strong inversi
 \vspace{-0.2cm}
 
 \[
-    a_{\rm max} = - \frac{g_m}{g_0} = -g_m r_{DS} = -\frac{2\cdot a_E \cdot L}{V_{GS} - V_T}
+    a_{\rm max} = - \frac{g_m}{g_o} = -g_m r_{DS} = -\frac{2\cdot a_E \cdot L}{V_{GS} - V_T}
 \]
 % \[
 %     r_{DS} = \frac{a_E \cdot L}{I_D} \qquad g_m = \mu C_{OX} \frac{W}{L} (V_{GS} - V_T) = \frac{2 I_D}{V_{GS}-V_T}
@@ -126,7 +126,7 @@ Die \textbf{\myul{theoretisch}} maximal mögliche Verstärkung in weak inversion
 \vspace{-0.2cm}
 
 \[
-    a_{\rm max} = - \frac{g_m}{g_0} = -g_m r_{DS} = -\frac{a_E \cdot L}{n_m - V_{\rm temp}}
+    a_{\rm max} = - \frac{g_m}{g_o} = -g_m r_{DS} = -\frac{a_E \cdot L}{n_m - V_{\rm temp}}
 \]
 
 % \[
@@ -157,7 +157,7 @@ Die Gate-Schaltung ist eine \textbf{nichtinvertierende Verstärkerschaltung.}
     \vspace{-0.2cm}
 
     \[
-        a = \frac{v_{\rm out}}{v_{\rm in}} = \frac{R_D (1+\frac{g_0}{g_m})}{R_S + \frac{1}{g_m} + \frac{g_0}{g_m} (R_D + R_S)}
+        a = \frac{v_{\rm out}}{v_{\rm in}} = \frac{R_D (1+\frac{g_o}{g_m})}{R_S + \frac{1}{g_m} + \frac{g_o}{g_m} (R_D + R_S)}
     \]
 
     \paragraph{Spezialfall}
@@ -173,7 +173,7 @@ Die Gate-Schaltung ist eine \textbf{nichtinvertierende Verstärkerschaltung.}
 
 Für $R_S = 0$ und $R_D \ll r_{DS}$ gilt (ebenfalls in \textbf{strong inversion}) weiter: 
 \[
-    a \overset{R_D \text{klein}}{\approx} g_m R_D \qquad \text{bzw.} \qquad a \overset{R_D \text{gross}}{\approx} \frac{g_m}{g_0} \approx a_{\rm max}
+    a \overset{R_D \text{klein}}{\approx} g_m R_D \qquad \text{bzw.} \qquad a \overset{R_D \text{gross}}{\approx} \frac{g_m}{g_o} \approx a_{\rm max}
 \]
 
 %TODO: [Flurin] Weak inversion Grenzwerte? Oder einfach Verweis auf Source-Schaltung?
@@ -204,13 +204,13 @@ Die Drain-Schaltung ist eine \textbf{nichtinvertierende Verstärkerschaltung.}
 
     \vspace{-0.2cm}
     \[
-        a = \frac{v_{\rm out}}{v_{\rm in}} = \frac{R_S}{R_S + \frac{1}{g_m} + \frac{g_0}{g_m} (R_D + R_S)}
+        a = \frac{v_{\rm out}}{v_{\rm in}} = \frac{R_S}{R_S + \frac{1}{g_m} + \frac{g_o}{g_m} (R_D + R_S)}
     \]
 
     \paragraph{Maximale Verstärkung}
 
     Für die \textbf{theoretisch} maximal mögliche Verstärkung $a_{\rm max}$ gilt für
-    $g_m \ll g_0$ und $r_{DS} \ll R_D$
+    $g_m \ll g_o$ und $r_{DS} \ll R_D$
 
     \vspace{-0.2cm}
 
@@ -267,9 +267,9 @@ Da die Source nicht auf Bulk-Potential ist, muss die Veränderung der Threshold 
 \vspace{-0.3cm}
 
 \begin{align*}
-    \text{Allgemein}            & \qquad r_{i, S} = \left( \frac{1}{g_m} \parallel r_{DS} \right) \left( 1 + \frac{R_D}{r_{DS}} \right) = \frac{1}{g_m + g_0} (1 + g_0 R_D) \\
-    \text{Für } r_{DS} \gg R_D  & \qquad r_{i, S} \approx \frac{1}{g_m} \parallel r_{DS} = \frac{1}{g_m + g_0} \\
-    \text{Für } g_m \gg g_0     & \qquad r_{i, S} \approx \frac{1}{g_m}
+    \text{Allgemein}            & \qquad r_{i, S} = \left( \frac{1}{g_m} \parallel r_{DS} \right) \left( 1 + \frac{R_D}{r_{DS}} \right) = \frac{1}{g_m + g_o} (1 + g_o R_D) \\
+    \text{Für } r_{DS} \gg R_D  & \qquad r_{i, S} \approx \frac{1}{g_m} \parallel r_{DS} = \frac{1}{g_m + g_o} \\
+    \text{Für } g_m \gg g_o     & \qquad r_{i, S} \approx \frac{1}{g_m}
 \end{align*}
 
 
@@ -278,8 +278,8 @@ Da die Source nicht auf Bulk-Potential ist, muss die Veränderung der Threshold 
 \vspace{-0.3cm}
 
 \begin{align*}
-    \text{Allgemein}            & \qquad r_{i, D} = r_{DS} \left( 1 + g_m R_S + \frac{R_S}{r_{DS}} \right) = \frac{1}{g_0} (1+g_m R_S) + R_S \\
-    \text{Für } r_{DS} \gg R_S  & \qquad r_{i, D} \approx r_{DS} \left( 1 + g_m R_S \right) = \frac{1}{g_0} (1+g_m R_S) + R_S \\
-    \text{Für } R_S = 0         & \qquad r_{i, D} \approx r_{DS} = \frac{1}{g_0}
+    \text{Allgemein}            & \qquad r_{i, D} = r_{DS} \left( 1 + g_m R_S + \frac{R_S}{r_{DS}} \right) = \frac{1}{g_o} (1+g_m R_S) + R_S \\
+    \text{Für } r_{DS} \gg R_S  & \qquad r_{i, D} \approx r_{DS} \left( 1 + g_m R_S \right) = \frac{1}{g_o} (1+g_m R_S) + R_S \\
+    \text{Für } R_S = 0         & \qquad r_{i, D} \approx r_{DS} = \frac{1}{g_o}
 \end{align*}
 
