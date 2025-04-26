@@ -58,7 +58,7 @@ Die Source-Schaltung ist eine \textbf{invertierende Verstärkerschaltung.}
 
     \vspace{-0.2cm}
     \[
-        a = \frac{v_{\rm out}}{v_{\rm in}} = \frac{R_D}{R_S + \frac{1}{g_m} + \frac{g_o}{g_m}(R_D + R_S)} 
+        a = \frac{v_{\rm out}}{v_{\rm in}} = - \frac{R_D}{R_S + \frac{1}{g_m} + \frac{g_o}{g_m}(R_D + R_S)} 
     \]
 
 
@@ -67,7 +67,7 @@ Die Source-Schaltung ist eine \textbf{invertierende Verstärkerschaltung.}
     \vspace{-0.5cm}
 
     \[
-        \boldsymbol{ R_S = 0 \qquad  a \approx - g_m \cdot R_{\rm out} \underbrace{= - g_m (r_{DS} \parallel R_D) }_{\text{Mikroelektronik}} }
+        \boldsymbol{ R_S = 0 \qquad  a \approx - g_m \cdot r_{\rm out} \underbrace{= - g_m (r_{DS} \parallel R_D) }_{\text{Mikroelektronik}} }
     \]
     
 
@@ -162,10 +162,10 @@ Die Gate-Schaltung ist eine \textbf{nichtinvertierende Verstärkerschaltung.}
 
     \paragraph{Spezialfall}
     
-    \vspace{-0.3cm}
+    \vspace{-0.5cm}
 
     \[
-        R_S = 0 \qquad  a \approx g_m \cdot R_{\rm out} \underbrace{= g_m (r_{DS} \parallel R_D) }_{\text{Mikroelektronik}} 
+        \bm{R_S = 0 \qquad  a \approx g_m \cdot r_{\rm out} \underbrace{= g_m (r_{DS} \parallel R_D) }_{\text{Mikroelektronik}} }
     \]
 \end{minipage}
 

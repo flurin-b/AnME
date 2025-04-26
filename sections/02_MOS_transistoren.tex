@@ -558,9 +558,9 @@ Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 Die Kleinsignalparameter bilden eine Vereinfachung (\textbf{Linearisierung}) in einem Arbeitspunkt. 
 Sie berechnen sich daher allgemein folgendermassen aus der Ableitung
 \[
-    g_m          = \frac{\diff}{\diff V_{GS}} I_D \qquad
-    g_o = r_{DS} = \frac{\diff}{\diff V_{DS}} I_D \qquad
-    g_{mb}       = \frac{\diff}{\diff V_{SB}} I_D
+    g_m                     = \frac{\diff}{\diff V_{GS}} I_D \qquad
+    g_o = \frac{1}{r_{DS}}  = \frac{\diff}{\diff V_{DS}} I_D \qquad
+    g_{mb}                  = \frac{\diff}{\diff V_{SB}} I_D
 \]
 
 Für die beiden Kanalzustände, in welchen Formeln für die Handrechnung verfügbar sind, gibt es auch hier handliche Formeln für die Berechnung der Kleinsignalparameter.
@@ -657,17 +657,44 @@ $g_m$ ist in der Weak Inversion unabhängig der Geometrie.
 Es ist für einen gegebenen Drainstrom möglich, Transistoren, die in Weak Inversion wie auch welche, die in Strong Inversion sind herzustellen.
 Das $g_m$ steigt beim Transistor in Strong Inversion 
 
-\subsection{Bestimmung von Ersatzschaltbildern -- Allgemein}
+
+\subsection{Grosssignalanalyse / AP-Bestimmung}
+
+Die Grosssignalanalyse untersucht das Verhalten der Schaltung \textbf{im Zeitbereich} und hat folgende Eigenschaften:
+
+\smallskip
+
+\begin{outline}
+    \1 Berücksichtigung aller Nichtlinearitäten bei beliebig grossen Signalen
+    \1 Simulationen: Transient, DC-Arbeitspunkt, DC-Transferkennlinie
+    \1 Handrechnung: Bestimmung des Arbeitspunkts mittels Grosssignalersatzschaltung
+\end{outline}
+
+
 \subsubsection{Grosssignalersatzschaltung}
 \label{Grosssignalersatzschaltung}
 
-Zur Bestimmung des \textbf{Arbeitspunkts} bzw.\ aller Gleichspannungen.
+Zur Bestimmung des \textbf{Arbeitspunkts} bzw. aller Gleichspannungen.
 \begin{description}
     \item[AC-Spannungsquellen] durch Kurzschlüsse ersetzen.
     \item[AC-Stromquellen] durch Unterbrüche ersetzen. 
     \item[Kondensatoren] durch Unterbrüche ersetzen.
     \item[Spulen] durch Kurzschlüsse ersetzen.  
 \end{description}
+
+
+\subsection{Kleinsignalanalyse}
+
+Die Kleinsignalanalyse untersucht das Verhalten der Schaltung \textbf{imFrequenzbereich} und hat folgende Eigenschaften:
+
+\smallskip
+
+\begin{outline}
+    \1 Betrachtung von Signalen mit kleiner Amplitude
+    \1 Simulationen: AC-Analyse, Transfer-Funktion
+    \1 Handrechnung: Rechnung mit linearen Grössen gemäss Kleinsignalersatzschaltung
+\end{outline}
+
 
 \subsubsection{Kleinsignalersatzschaltung}
 \label{Kleinsignalersatzschaltung}
@@ -681,10 +708,10 @@ Zur Berechnung von Verstärkungsfaktoren und Eingangswiderständen für AC-Signa
 \end{description}
 
 
-\subsection{Vorgehen: Verstärker dimensionieren}
-\begin{itemize}
-    \item Arbeitspunkt bestimmen.
-    \item $I_D$ wählen, sodass der Transistor \textbf{gesättigt} ist.   %CHECK [Simi] @Flurin Hier stand zuvor UNgesättigt -> gemäss Beispiel von V4 S15 haben wir aber gesagt, der Transistor muss gesättigt sein...?
-    \item Kleinsignalersatzschaltung zeichnen.
-    \item Parameter der Ersatzschaltung bestimmen.
-\end{itemize}
+% \subsection{Vorgehen: Verstärker dimensionieren}
+% \begin{itemize}
+%     \item Arbeitspunkt bestimmen.
+%     \item $I_D$ wählen, sodass der Transistor \textbf{gesättigt} ist.   %CHECK [Simi] @Flurin Hier stand zuvor UNgesättigt -> gemäss Beispiel von V4 S15 haben wir aber gesagt, der Transistor muss gesättigt sein...?
+%     \item Kleinsignalersatzschaltung zeichnen.
+%     \item Parameter der Ersatzschaltung bestimmen.
+% \end{itemize}

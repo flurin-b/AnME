@@ -228,42 +228,42 @@ Durch M4 und M5 wird die Spannung am Gate von M2 konstant gehalten. % CHECK[Simi
 So wird die Ausgangsimpedanz bedeutend erhöht.
 
 
-\begin{minipage}[t]{0.46\columnwidth}
+\begin{minipage}[t]{0.42\columnwidth}
     \includegraphics[width=\columnwidth, align=t]{images/06_stormspiegel_geregelte_kaskode.pdf}
 
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.52\columnwidth}
+\begin{minipage}[t]{0.56\columnwidth}
     % \subsubsection{Kenngrössen}
 
     \vspace{-0.4cm}
 
     \begin{align*}
-        V_0         &\geq V_{\rm GS,4} + V_{\rm DS,sat3} = V_T + 2 \sqrt{ \frac{2 I_O}{\mu C_{\rm OX} \frac{W_{\rm out}}{L_{\rm out}}} }                                                                                           \\
+        V_0         &\geq V_{\rm GS,4} + V_{\rm DS,sat3} = V_T + (1..2) \sqrt{ \frac{2 I_O}{\mu C_{\rm OX} \frac{W_{\rm out}}{L_{\rm out}}} }                                                                                           \\
         V_I         &= V_{\rm GS,1} = 2 V_{T,1} + \sqrt{ \frac{2 I_{\rm in}}{\mu C_{\rm OX} \frac{W_{\rm in}}{L_{\rm in}}} }                                                                                                                                     \\
-        r_{\rm out} &\approx \frac{1}{g_o} \left( \frac{g_m}{g_0} \right)^2 = r_{\rm DS} \cdot (g_m r_{\rm DS})^2
+        r_{\rm out} &\approx \frac{1}{g_o} \left( \frac{g_m}{g_o} \right)^2 = r_{\rm DS} \cdot (g_m r_{\rm DS})^2
     \end{align*}
 \end{minipage}
 
 
 \subsection{Gegenüberstellung der Stromspiegel}
 
-%NOTE [Simi] Sooo viel bringt diese Tabelle auch nicht... Die ganze Info steht bei der jeweiligen Schaltung aber bei genug Platz kann man sie schon drin lassen
+%NOTE [Simi] Sooo viel bringt diese Tabelle auch nicht... Die ganze Info steht bei der jeweiligen Schaltung aber bei genug Platz kann man sie schon drin lassen -> Inhalt ist aber eher klein...
 \resizebox{\columnwidth}{!}{
     \renewcommand{\arraystretch}{2}
     \begin{tabular}{|c|c|c|c|c|}
     \hline
-    \textbf{Typ}    & \textbf{Genauigkeit}  & $\bm{r_{\rm out}}$                                            & $\bm{V_{\rm I}}$                                                              & $\bm{V_{\rm O,min}}$                                                      \\
+    \textbf{Typ}    & \textbf{Genauigkeit}  & $\bm{r_{\rm out}}$                                            & $\bm{V_{\rm I}}$                                                              & $\bm{V_{\rm O,min}}$                                                              \\
     \hline
-    Widlar          & +                     & $\frac{1}{g_o}$                                               & $\approx V_T + \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$       & $\approx \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$         \\
+    Widlar          & +                     & $\frac{1}{g_o}$                                               & $\approx V_T + \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$       & $\approx \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$                 \\
     \hline
-    Wilson          & +                     & $\approx \frac{1}{g_o} \left( 2 + \frac{g_m}{g_o} \right)$    & $\approx 2V_T + 2 \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$    & $\approx V_T + 2 \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$ \\
+    Wilson          & +                     & $\approx \frac{1}{g_o} \left( 2 + \frac{g_m}{g_o} \right)$    & $\approx 2V_T + 2 \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$    & $\approx V_T + 2 \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$         \\
     \hline
-    Verb. Wilson    & ++                    & $\approx \frac{1}{g_o} \left( 2 + \frac{g_m}{g_o} \right)$    & $\approx 2V_T + 2 \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$    & $\approx V_T + 2 \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$ \\
+    Verb. Wilson    & ++                    & $\approx \frac{1}{g_o} \left( 2 + \frac{g_m}{g_o} \right)$    & $\approx 2V_T + 2 \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$    & $\approx V_T + 2 \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$         \\
     \hline
-    Kaskode         & ++                    & $\approx \frac{1}{g_o} \left( 2 + \frac{g_m}{g_o} \right)$    & $\approx 2V_T + 2 \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$    & $\approx V_T + 2 \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$ \\
+    Kaskode         & ++                    & $\approx \frac{1}{g_o} \left( 2 + \frac{g_m}{g_o} \right)$    & $\approx 2V_T + 2 \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$    & $\approx V_T + 2 \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$         \\
     \hline
-    Ger. Kaskode    & ++                    & $\approx \frac{1}{g_o} \left( \frac{g_m}{g_o} \right)^2$      & $\approx V_T + \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$       & $\approx V_T + 2 \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$ \\
+    Ger. Kaskode    & ++                    & $\approx \frac{1}{g_o} \left( \frac{g_m}{g_o} \right)^2$      & $\approx V_T + \sqrt{ \frac{2I_I}{\mu C_{\text{ox}} \frac{W_I}{L_I}} }$       & $\approx V_T + (1..2) \sqrt{ \frac{2I_O}{\mu C_{\text{ox}} \frac{W_O}{L_O}} }$    \\
     \hline
     \end{tabular}
     \renewcommand{\arraystretch}{1}
