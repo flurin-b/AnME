@@ -1,0 +1,105 @@
+\section{Frequenzverhalten}
+
+Da jede leitende Fläche eine Kapazität gegenüber der umliegenden Flächen besitzt, müssen zur Einschätzung des Frequenzgangs diverse Kapazitäten berücksichtigt werden.
+
+\subsection{Parasitäre Kapazitäten in MOS-Transistoren}
+%TODO: Evtl. Bild wie in V9S8
+%TODO: Kleinsignalersatzschaltung eines Transistors inkl. Kapazitäten
+
+\subsubsection{Nutzkapazität}
+\[
+    C_{oxt} = C_{ox} \cdot W_{eff} \cdot L_{eff}
+\]
+
+\subsubsection{Parasitäre Kapazitäten}
+Gate-Drain- und Gate-Source-Kapazitäten durch Overlap
+\[
+    C_{GDt} = C_{GD} \cdot W_{eff} \cdot L_{eff}
+    \qquad
+    C_{GSt} = C_{GS} \cdot W_{eff} \cdot L_{eff}
+\]
+
+Source-Bulk- und Drain-Bulk-Kapazitäten durch Raumladungszone
+\[
+    C_{jSBt} = C_{jSB} \cdot A_S + C_{jswSB} \cdot P_S
+    \qquad
+    C_{jDSt} = C_{jGS} \cdot A_S + C_{jswDB} \cdot P_D
+\]
+$C_{jsw}$: Side Wall Kapazität
+$P$: Perimiter
+
+Kanal-Bulk-Kapazität durch Raumladungszone
+\[
+    C_{jBCt} = C_{jBC} \cdot W_{eff} \cdot L_{eff}
+\]
+
+Junction-Bulk-Kapazität
+\[
+    C_{jBC}
+\]
+
+\subsection{Vereinfachtes Handrechenmodell}
+
+% TODO: Ersatzschaltung und Formeln aus V9S11
+
+\begin{tabular}{lllll}
+    Arbeitsbereich & & & & \\
+    Gesättigt & & & & \\
+    Ungesättigt & & & & \\
+\end{tabular}
+
+\subsection{Miller-Effekt}
+% TODO: Bild der equivalenten Schaltungen
+Das Miller Theorem postuliert, dass die linke Schaltung durch Wählen von $Y_1$ und $Y_2$ als 
+\[
+    Y_1(s) = Y(s) (1+A) \quad\text{und}\quad Y_2(s) = Y(s) (1+\frac{1}{A})
+\]
+äquivalent gemacht werden können.
+Es kann durch einfaches Einsetzen bewiesen werden.
+
+Die Miller-Kapazität $C_m$ erscheint 
+\begin{itemize}
+    \item multipliziert mit $1+\abs{A}$ am Eingang als $C_{mi}$ und
+    \item multipliziert mit $1+\abs{\frac{1}{A}}$ am Ausgang als $C_{mo}$.
+\end{itemize}
+
+Nachteile: 
+\begin{itemize}
+    \item Durch Verschieben des Miller-C aus dem Vorwärtspfad stimmt die UTF nach Ersetzen des $C_m$ nicht mehr.
+    \item Das Miller-Theorem geht von konstantem Frequenzgang der Verstärkung aus. Es stimmt folglich nur für die tieferen Frequenzen.
+\end{itemize}
+
+\subsubsection{Approximatives Frequenzverhalten}
+Schlecht.
+%TODO: Evtl. Berechnung aus V9S15-17 -> Nein, nur beschreiben, warum diese für nichts zu brauchen ist.
+
+\subsection{Frequenzverhalten durch Zero Value Time Constant Analysis}
+
+
+\subsubsection{Vorgehen}
+\begin{enumerate}
+    \item Kleinsignalersatzschaltung erstellen.
+    \item Für alle $C_k$ die zugehörige Zeitkonstante bestimmen.
+    \begin{enumerate}
+        \item Alle übrigen $C_{i \neq k} = 0$ setzen.
+        \item Durch Ersetzen des $C_k$ mit einer Stromquelle den von $C_k$ her gesehenen Kleinsignalwiderstand bestimmen.
+        \item Zeitkonstante als $\tau_k = R_k C_k$ bzw. Polfrequenz als $f_{pk} = \frac{1}{2 \pi \tau_k}$ berechnen.
+    \end{enumerate}
+    \item Approximierter Frequenzgang aus DC-Verstärkung und den Polstellen zusammensetzen.
+\end{enumerate}
+
+\subsubsection{Resultate}
+Das GBP ist gegeben durch den ersten Pol: 
+$GPB \approx f_{p1} \cdot A_{DC}$
+
+Die Stabilität wird bestimmt durch den zweiten Pol:
+$f_{180^\circ} \approx f_{p2}$
+
+\subsubsection{Typische Werte}
+%TODO: Tabelle aus V9S23
+%TODO: Typische Widerstandswerte analog V9S22
+Vorsicht bei $C_{GD}$: Sollte der Transistor eine Spannungsverstärkung haben, so muss der Miller-Effekt berücksichtigt werden.
+
+Weiter ist $C_{GD}$ bei hohen Frequenzen oft als erstes kurzgeschlossen, für den zweiten Pol muss dieser als kurzgeschlossen betrachtet werden.
+
+
