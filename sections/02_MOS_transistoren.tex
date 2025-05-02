@@ -474,45 +474,61 @@ Daher wird er \textbf{in einem Arbeitspunkt} folgendermassen vereinfacht  und mo
 \label{Bestimmung des Arbeitspunkts}
 Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 
-\begin{minipage}[t]{0.44\columnwidth}
-    \raggedright
-    \begin{enumerate}
-        \item $V_{GS}$ bestimmen 
-        \item Ausgangsstrombereich mittels $V_{GS}$ bestimmen \\
-            $|V_{GS}| \geq |V_H|$ \rightarrow\ strong inversion \\
-            $|V_{GS}| \leq |V_M|$ \rightarrow\ weak inversion
-        \item $V_{DS}$ ermitteln
-    \end{enumerate}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.54\columnwidth}
-    \raggedright
-    \begin{enumerate}
-        \setcounter{enumi}{3}
-        \item $V_{DS, \rm sat}$ ausrechnen (Strombereich beachten)  \\
-            strong inversion: $V_{DS, \rm sat} = V_{GS} - V_T$  \\
-            weak inversion: $V_{DS, \rm sat} \approx 5 \cdot V_{\rm temp} \approx \qty{130}{\milli \volt}$ 
-        \item Ausgangsspannungsbereich durch vergleich von $|V_{DS}|$ mit $|V_{DS, \rm sat}|$ ermitteln  \\
-            $|V_{DS}| < |V_{DS, \rm sat}|$ \rightarrow\ ungesättigt \\
-            $|V_{DS}| > |V_{DS, \rm sat}|$ \rightarrow\ gesättigt
-    \end{enumerate}
-\end{minipage}
+\smallskip
+
+{
+\begin{enumerate}
+    \item $V_{\rm GS}$ bestimmen 
+    \item Ausgangsstrombereich mittels $V_{\rm GS}$ oder spezifischem Drainstrom $I_D'$ bestimmen 
+    
+    \begin{minipage}[t]{0.45\columnwidth}
+        \begin{enumerate}[label=\bfseries\alph*)]
+            \item $|V_{GS}| \geq |V_H|$ \rightarrow\ strong inversion \\
+                $|V_{GS}| \leq |V_M|$ \rightarrow\ weak inversion
+        \end{enumerate}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.52\columnwidth}
+        \begin{enumerate}[start=2, label=\bfseries\alph*)]
+            \item $|I_D'| = I_D \cdot \frac{L}{W} \geq |I_H'|$ \rightarrow\ strong inversion \\
+                $|I_D'| = I_D \cdot \frac{L}{W} \leq |I_M'|$ \rightarrow\ weak inversion 
+        \end{enumerate}
+    \end{minipage}
+
+    \item $V_{DS}$ bestimmen
+    \item $V_{DS, \rm sat}$ ausrechnen (Strombereich beachten)  \\
+        strong inversion: $V_{DS, \rm sat} = V_{GS} - V_T$  \\
+        weak inversion: $V_{DS, \rm sat} \approx 5 \cdot V_{\rm temp} \approx \qty{130}{\milli \volt}$ 
+    \item Ausgangsspannungsbereich durch vergleich von $|V_{DS}|$ mit $|V_{DS, \rm sat}|$ ermitteln  \\
+        $|V_{DS}| < |V_{DS, \rm sat}|$ \rightarrow\ ungesättigt \\
+        $|V_{DS}| > |V_{DS, \rm sat}|$ \rightarrow\ gesättigt
+\end{enumerate}
+}
 
 
-% \begin{enumerate}
-%     \item $V_{GS}$ bestimmen 
-%     % \item Ausgangsstrombereich (weak inversion, strong inversion, \ldots) anhand von Vergleich von $V_{GS}$ mit $V_K$, $V_M$, $V_T$, $V_H$ und $V_L$ bestimmen
-%     \item Ausgangsstrombereich mittels $V_{GS}$ bestimmen \\
-%         $|V_{GS}| \geq V_H$ \rightarrow\ strong inversion \\
-%         $|V_{GS}| \leq V_M$ \rightarrow\ weak inversion
-%     \item $V_{DS}$ ermitteln
-%     \item $V_{DS, \rm sat}$ ausrechnen (Ausgangsstrombereich beachten)  \\
-%         strong inversion: $V_{DS, \rm sat} = V_{GS} - V_T$  \\
-%         weak inversion: $V_{DS, \rm sat} \approx 5 \cdot V_{\rm temp} \approx \qty{130}{\milli \volt}$ 
-%     \item Ausgangsspannungsbereich durch vergleich von $|V_{DS}|$ mit $|V_{DS, \rm sat}|$ ermitteln  \\
-%         $|V_{DS}| < |V_{DS, \rm sat}|$ \rightarrow\ ungesättigt \\
-%         $|V_{DS}| > |V_{DS, \rm sat}|$ \rightarrow\ gesättigt
-% \end{enumerate}
+% \begin{minipage}[t]{0.44\columnwidth}
+%     \raggedright
+%     \begin{enumerate}
+%         \item $V_{GS}$ bestimmen 
+%         \item Ausgangsstrombereich mittels $V_{GS}$ bestimmen \\
+%             $|V_{GS}| \geq |V_H|$ \rightarrow\ strong inversion \\
+%             $|V_{GS}| \leq |V_M|$ \rightarrow\ weak inversion
+%         \item $V_{DS}$ ermitteln
+%     \end{enumerate}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.54\columnwidth}
+%     \raggedright
+%     \begin{enumerate}
+%         \setcounter{enumi}{3}
+%         \item $V_{DS, \rm sat}$ ausrechnen (Strombereich beachten)  \\
+%             strong inversion: $V_{DS, \rm sat} = V_{GS} - V_T$  \\
+%             weak inversion: $V_{DS, \rm sat} \approx 5 \cdot V_{\rm temp} \approx \qty{130}{\milli \volt}$ 
+%         \item Ausgangsspannungsbereich durch vergleich von $|V_{DS}|$ mit $|V_{DS, \rm sat}|$ ermitteln  \\
+%             $|V_{DS}| < |V_{DS, \rm sat}|$ \rightarrow\ ungesättigt \\
+%             $|V_{DS}| > |V_{DS, \rm sat}|$ \rightarrow\ gesättigt
+%     \end{enumerate}
+% \end{minipage}
 
 
 \subsubsection{Kleinsignalersatzschlatungen des FET}
