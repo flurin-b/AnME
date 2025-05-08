@@ -1,0 +1,29 @@
+\section{Grundwissen}
+
+\subsection{Bodediagramm zeichnen}
+\resizebox{\columnwidth}{!}{
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \multirow{2}{*}{Element} & \multicolumn{2}{c|}{Frequenzgang} \\
+        \cline{2-3}
+        & Amplitudengang & Phasengang \\
+        \hline
+        Polstelle & $-\qty{20}{\decibel\per Dekade}$, $-\qty{3}{\decibel}$ bei der Polstelle & $-90^\circ$, $-45^\circ$ bei der Polstelle \\
+        \hline
+        Nullstelle & $+\qty{20}{\decibel\per Dekade}$, $+\qty{3}{\decibel}$ bei der Nullstelle & $+90^\circ$, $+45^\circ$ bei der Nullstelle \\
+        \hline
+    \end{tabular}
+}
+\medskip%
+
+Die Phase beginnt sich jeweils eine Dekade vor der Pol- oder Nullstelle zu drehen.
+
+\subsection{Decibel}
+Werte in Decibel sind immer Leistungsverhältnisse. 
+Wird mit Spannungen gerechnet, so muss die Spannung quadriert oder der Wert in Decibel verdoppelt werden.
+
+\[
+    g_{\qty{}{\decibel}} = 10 \cdot \log_{10} \frac{P_{out}}{P_{in}} = 20 \cdot \log_{10} \frac{U_{out}}{U_{in}}
+\]
+
+%TODO: Kennlinie aus V10S9
