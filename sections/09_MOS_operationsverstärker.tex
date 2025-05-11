@@ -72,83 +72,181 @@ Man unterscheidet dabei zwischen \textbf{zwei Arten} von Operationsverstärkern:
 \end{minipage}
 
 \[
-    \frac{I_\text{D}}{I_\text{Q}} = f(V_d) = f(V_{i1} - V_{i2}) = \frac{1}{2} + \frac{1}{2} \sqrt{\frac{\left(\mu C_\text{ox} \frac{W}{L}\right) \cdot V_\text{d}^2}{I_\text{Q}} - \frac{\left(\mu C_\text{ox} \frac{W}{L}\right)^2 \cdot V_\text{d}^4}{4 I_\text{Q}}}
+    \frac{I_\text{D}}{I_\text{Q}} = f(V_{\rm d}) = f(V_{i1} - V_{i2}) = \frac{1}{2} + \frac{1}{2} \sqrt{\frac{\left(\mu C_\text{ox} \frac{W}{L}\right) \cdot V_\text{d}^2}{I_\text{Q}} - \frac{\left(\mu C_\text{ox} \frac{W}{L}\right)^2 \cdot V_\text{d}^4}{4 I_\text{Q}}}
 \]
 
 
 %TODO: [Flurin] Kennlinie aus V10S9
-%CHECK: [Simi] @Flurin: There it is... Eventuell ist es aber besser, wdie 3 Bereiche formelmässig darzustellen und die Grafik wegzulassen...?
+%CHECK: [Simi] @Flurin: There it is... Eventuell ist es aber besser, die 3 Bereiche formelmässig darzustellen und die Grafik wegzulassen...?
 \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_grosssignalanalyse_strong_inv.pdf}
 
 
 \subsubsection{Weak Inversion}
+
+\vspace{-0.2cm}
+
 \[
-    I_\text{D} = \frac{W}{L} I_\text{M}' e^\frac{V_\text{GS}-V_\text{M}}{n_\text{M} V_\text{temp}}
+    \text{Weak Inversion, Sättigung:} \qquad I_\text{D} = \frac{W}{L} I_\text{M}' e^\frac{V_\text{GS}-V_\text{M}}{n_\text{M} V_\text{temp}}
 \]
 
-%TODO: Evtl. Formel ohne vereinfach tanh(x) = x (nicht in den Slides)
+\vspace{-0.2cm}
 
-Für Kleine $V_\text{d}$:
 \[
-    \frac{I_\text{D}}{I_\text{Q}} \approx \frac{1}{2} \left(1+\frac{V_\text{d}}{2 n_\text{M} V_\text{temp}}\right)
+    \frac{I_\text{D}}{I_\text{Q}} = f(V_{\rm d}) = f(V_{i1} - V_{i2}) = \frac{1}{2} \left(1 + \tanh \left( \frac{V_\text{d}}{2 n_\text{M} V_\text{temp}} \right) \right)
+     \overset{V_d \text{ klein}}{\approx} \frac{1}{2} \left(1+\frac{V_\text{d}}{2 n_\text{M} V_\text{temp}}\right)
 \]
 
 
-\paragraph{Conclusion}
-Die Verstärkung ist im grossen und ganzen unabhängig von der Eingangsspannung und so vom Arbeitspunkt, der durch die Eingangsspannungen gegeben ist.
+\subsubsection{Conclusion Grosssignalanalyse}
+
+Die \textbf{Verstärkung} ist im grossen und ganzen \textbf{unabhängig} von der Eingangsspannung und so \textbf{vom Arbeitspunkt}, der durch die Eingangsspannungen gegeben ist.
+
+\smallskip
+
+Der Ausgangsstrom hängt nur von der \textbf{Differenz der Eingangsspannungen} ab, was zu Linearität in einem grossen Bereich führt.
+
 
 \subsection{Differenzstufe -- Kleinsignalanalyse}
 
-\paragraph{Ohne Stromspiegel}
-% TODO: Evtl. Schema und Ersatzschaltbild aus V10S11
-\[
-    g_{md} = -\frac{g_m}{2}
-\]
+\subsubsection{Transkonduktanz $\bm{g_{\rm md}}$}
 
-\paragraph{Mit Stromspiegel}
-% TODO: Evtl. Schema und Ersatzschaltbild aus V10S11
-\[
-    g_{md} = -g_m
-\]
+\begin{minipage}[t]{0.48\columnwidth}
+    \paragraph{Widerstandslast}
 
-% TODO: Folien V10S12 (sorry, habe nicht zugehört :( )
+    \[
+        g_{\rm md} = \frac{i_{\rm out}}{v_{\rm d}} = - \frac{g_m}{2}
+    \]
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\columnwidth}
+    \paragraph{Stromspiegellast}
+
+    \[
+        g_{\rm md} = \frac{i_{\rm out}}{v_{\rm d}} = - g_m
+    \]
+\end{minipage}
+
+
+% TODO: [Flurin] Evtl. Schema und Ersatzschaltbild aus V10S11
+%CHECK: [Simi] @Flurin There it is aber ich würde es weglassen... Habe im Bild weiter oben den 'Ort' eingefügt, wo die Last hin muss
+% -> wenn du die Bilder verwenden willst, müsste man wahrscheinlich etwas umformatieren und herumschieben...
+
+% \paragraph{Widerstandslast}
+
+% \begin{minipage}[t]{0.45\columnwidth}
+%     \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_widerstandslast_schaltung.pdf}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.45\columnwidth}
+% \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_widerstandslast_kleinsignal.pdf}
+% \end{minipage}
+
+
+% \paragraph{Stromspiegellast}
+
+% TODO: [Flurin] Evtl. Schema und Ersatzschaltbild aus V10S11
+%CHECK: [Simi] @Flurin There it is aber ich würde es weglassen... Habe im Bild weiter oben den 'Ort' eingefügt, wo die Last hin muss
+% -> wenn du die Bilder verwenden willst, müsste man wahrscheinlich etwas umformatieren und herumschieben...
+
+% \begin{minipage}[t]{0.45\columnwidth}
+%     \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_stromspiegellast_schaltung.pdf}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.45\columnwidth}
+%     \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_stromspiegellast_kleinsignal.pdf}
+% \end{minipage}
+
+
 
 \subsubsection{Verstärkung}
-% TODO: Jeweilige Schemas einfügen
+
+Generell berechnet sich die Verstärkung der Differenzstufe $a_{\rm Diff}$ als 
+
+\[
+    a_{\rm Diff} = \frac{v_{\rm out}}{v_{\rm in}} = g_{\rm md} \cdot r_{\rm Last\_tot}
+\]
+
+\begin{outline}
+    \1 Abhängig von der Last muss $g_{\rm md}$ entsprechend eingesetzt werden
+    \1 $r_{\rm Last\_tot}$ entspricht der gesamten Last am Ausgangsknoten
+\end{outline}
+
 
 \paragraph{Widerstandslast}
 
-\[
-    a \approx \frac{g_m (R_D \parallel R_{L\text{, ext}})}{2}
-\]
+\begin{minipage}[t]{0.45\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_kleinsignal_verstaerkung_widerstand.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.5\columnwidth}
+    \[
+        r_{\rm Last\_tot} = \left( R_D \parallel r_{\rm DS} \parallel R_{\rm Lext} \right) \approx \left( R_D \parallel R_{\rm Lext} \right) 
+    \]
 
-\paragraph{Stromquellenlast}
+    \[
+        a_{\rm Diff} \approx - \frac{g_m (R_D \parallel R_{\rm Lext})}{2}
+    \]
+\end{minipage}
 
-\[
-    a \approx \frac{ (R{L\text{, ext}} \parallel r_{DS2} \parallel r_{QL})}{2}
-\]
+
 
 \paragraph{Stromspiegellast}
 
+\begin{minipage}[t]{0.45\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_kleinsignal_verstaerkung_stromspiegel.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.5\columnwidth}
+    \[
+        r_{\rm Last\_tot} =  \left( r_{\rm DS\_N2} \parallel r_{\rm DS\_P2} \parallel R_{\rm Lext} \right)
+    \]
+
+    \vspace{-0.2cm}
+
+    \[
+        a_{\rm Diff} \approx - g_m \left(\frac{1}{g_{\rm o, N2}} \Biggm\Vert \frac{1}{g_{\rm o, N2}} \Biggm\Vert R_{\rm Lext}\right)
+    \]
+\end{minipage}
+
+
+% \[
+%     a \approx g_m \left(\frac{1}{g_{0, N2}} \Biggm\Vert \frac{1}{g_{0, N2}} \Biggm\Vert R_{L\text{, ext}}\right)
+% \]
+
+
+\paragraph{Stromquellenlast}    % NOTE: [Simi] Hat er nicht besprochen, daher verzichte ich hier auf das Schema
+
+\vspace{-0.2cm}
+
+
+
 \[
-    a \approx g_m \left(\frac{1}{g_{0, N2}} \Biggm\Vert \frac{1}{g_{0, N2}} \Biggm\Vert R_{L\text{, ext}}\right)
+    r_{\rm Last\_tot} =  \left( r_{\rm QL} \parallel r_{\rm DS2} \parallel R_{\rm Lext} \right) \qquad \qquad
+    a_{\rm Diff} \approx \frac{ \left( R_{\rm Lext} \parallel r_{\rm DS2} \parallel r_{\rm QL} \right) }{2}
 \]
 
-\paragraph{Grenzwertbetrachtungen}
+
+
+\subsubsection{Grenzwertbetrachtungen der Spannungsverstärkung}
+
+Für folgende Grenzwertbetrachtungen der Spannungsverstärkung gilt: $R_{\rm Lext} = \infty$
+
 \resizebox{\columnwidth}{!}{
     \begin{tabular}{|l|l|l|}
         \hline
-        Betriebsbereich & Grenzwert der Spannungsverstärkung & Grössere Verstärkung bei \\
+        \textbf{Betriebsbereich}    & \textbf{Grenzwert der Spannungsverstärkung}                                                                                                       & \textbf{Grössere Verstärkung bei}                                         \\
         \hline
-        Starke Inversion & $\displaystyle \abs{a_{\text{max}}} = 2 V_e \sqrt{\frac{\mu C_\text{ox} \frac{W}{L}}{I_Q}} \approx 2 a_e \sqrt{\frac{\mu C_\text{ox} L W}{I_Q}}$ & Ruhestrom $\downarrow$, Fläche $\uparrow$, (Early-Spannung $\uparrow$) \\
+        Strong Inversion            & $\displaystyle \abs{a_{\text{max}}} = 2 V_e \sqrt{\frac{\mu C_\text{ox} \frac{W}{L}}{I_Q}} \approx 2 a_E \sqrt{\frac{\mu C_\text{ox} L W}{I_Q}}$  & Ruhestrom $\downarrow$, Fläche $\uparrow$, (Early-Spannung $\uparrow$)    \\
         \hline
-        Schwache Inversion & $\abs{a_{\text{max}}} = \frac{V_E}{n_M V_\text{temp}} \approx \frac{a_E L}{n_M V_\text{temp}}$ & (Early-Spannung $\uparrow$) \\
+        Weak Inversion              & $\abs{a_{\text{max}}} = \frac{V_E}{n_M V_\text{temp}} \approx \frac{a_E L}{n_M V_\text{temp}}$                                                    & (Early-Spannung $\uparrow$)                                               \\
         \hline
     \end{tabular}
 }
-\medskip%
 
-Diese Formeln sollten nicht zur Verstärkungsberechnung verwenden -- sie dienen lediglich zur Darstellung der Bezüge verschiedener Parameter.
-% TODO: Evtl mehr Formeln / Bedingungen aus V10S14?
+\medskip
+
+Diese Formeln sollten \textbf{nicht zur Verstärkungsberechnung verwendet werden} -- sie dienen lediglich zur Darstellung der Bezüge verschiedener Parameter.
+% TODO: [Flurin] Evtl mehr Formeln / Bedingungen aus V10S14?
+% [Simi] @Flurin: Ich würde nicht... Wir dürfen damit ja sowieso nicht rechnen....
 
 
