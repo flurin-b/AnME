@@ -56,7 +56,7 @@ Man unterscheidet dabei zwischen \textbf{zwei Arten} von Operationsverstärkern:
 % Diese Stufe fehlt beim OTA.
 
 
-\subsection{Differenzstufe -- Grosssignalanalyse}
+\subsection{Differenzstufe -- Grosssignalanalyse\label{opamp:diff.stufe:grossignal}}
 
 \subsubsection{Strong Inversion}
 
@@ -111,7 +111,7 @@ Der Ausgangsstrom hängt nur von der \textbf{Differenz der Eingangsspannungen} a
 \subsubsection{Transkonduktanz $\bm{g_{\rm md}}$}
 
 \begin{minipage}[t]{0.48\columnwidth}
-    \paragraph{Widerstandslast}
+    \paragraph{Widerstands- / Stromquellenlast}
 
     \[
         g_{\rm md} = \frac{i_{\rm out}}{v_{\rm d}} = - \frac{g_m}{2}
@@ -245,8 +245,172 @@ Für folgende Grenzwertbetrachtungen der Spannungsverstärkung gilt: $R_{\rm Lex
 
 \medskip
 
-Diese Formeln sollten \textbf{nicht zur Verstärkungsberechnung verwendet werden} -- sie dienen lediglich zur Darstellung der Bezüge verschiedener Parameter.
+Diese Formeln sollten \textbf{nicht zur Verstärkungsberechnung verwendet werden} -- sie dienen lediglich zur Veranschaulichung der Bezüge verschiedener Parameter.
 % TODO: [Flurin] Evtl mehr Formeln / Bedingungen aus V10S14?
 % [Simi] @Flurin: Ich würde nicht... Wir dürfen damit ja sowieso nicht rechnen....
 
+\subsection{Verstärkerstufe}
+Für die Verstärkerstufe wird in der Regel eine Source-Schaltung mit Stromquellenlast eingesetzt.
+Diese hat eine Verstärkung von
+\[
+    a = -g_m (r_{DS1} \parallel r_Q).
+\]
 
+\subsection{Leistungsstufe}
+Als Leistungsstufe wird für Closed-Loop Anwendungen meist eine Drain-Stufe mit Stromquellenlast verwendet.
+Diese hat eine Verstärkung von
+\[
+    a \approx 1.
+\]
+Die Verstärkung der Leistungsstufe ist dabei $\leq 1$ um Instabilität zu vermeiden.
+
+
+In Open-Loop Anwendungen darf die Leistungsstufe auch Verstärkungen $>1$ aufweisen.
+
+
+\subsection{Kenngrössen}
+
+\subsubsection{Gain-Bandwidth-Product}
+\[
+    GBW = \abs{a} f_d \quad (= GBP)
+\]
+$f_d$: Frequenz des dominanten (ersten) Pols.
+
+Es gilt schliesslich für alle Verstärkungen $a$
+\[
+    B = \frac{GBW}{a} \quad \text{bzw.} \quad a = \frac{GBW}{B}
+\]
+
+\paragraph{Beispiel Differenzstufe}
+\[
+    a = -g_m R_{out} \quad \text{und} \quad f_d = \frac{1}{2 \pi R_{out} C_L}
+\]
+\begin{center}
+    \textdownarrow
+\end{center}
+\[
+    GBW = \abs{a} f_d = \abs{-g_m R_{out}} \cdot \frac{1}{2 \pi R_{out} C_L} = \frac{g_m}{2 \pi C_L}
+\]
+
+\subsubsection{Slew-Rate}
+Die Slew-Rate beschreibt die maximale Ausgangsspannungsänderung pro Zeiteinheit:
+
+\[
+    SR = \max{\abs{\frac{\diff V_o}{\diff t}}} = \frac{I_Q}{C_L}
+\]
+% TODO: [Flurin] evtl. Veranschaulichung zu I_Q aus V11S10
+
+\paragraph{Aussteuerung als Funktion der Eingangsfrequenz}
+Die Aussteuerung $\delta V$ des Ausgangs bei einem Rechteck am Eingang kann als % CHECK: [Flurin] nur für Rechteck oder für andere Signale auch?!
+\[
+    \Delta V = SR \cdot \Delta t = \frac{SR}{2 f} = \frac{I_Q}{C_L \Delta V}
+\]
+berechnet werden.
+
+\paragraph{Bestimmung}
+\begin{enumerate}
+    \item $SR$ jeder Stufe einzeln bestimmen.
+    \item Berechneter Wert auf den Ausgang normieren ($SR \cdot a$).
+    \item Kleinste normierte $SR$ wählen.
+\end{enumerate}
+
+\paragraph{Designregeln}
+\begin{itemize}
+    \item Hohe Slew Rate: $I_Q$ \textuparrow, $C_L$ \textdownarrow, Stromverbrauch \textuparrow%
+    \item Frequenzkompensation ($C_C$) reduziert die Slew-Rate
+\end{itemize}
+
+
+\subsubsection{Eingangsspannungsbereich}
+\paragraph{Gleichtakt / Common-Mode}
+% TODO: Schema aus V11S13
+\[
+    V_{inCM} = \frac{V_{in1} + V_{in2}}{2}
+\]
+
+\[
+    V_{inCM, min} = VSS + V_{DS,satN3} + V_{GS,N1/N2}
+\]
+\[
+    V_{inCM, max} = VDD - V_{GS,P1} - V_{DS,sat,N1} + V_{GS,N1} = VDD - V_{GS,P1} + V_{th,N} 
+\]
+
+Bei Unterschreitung von $V_{inCM, min}$ fällt der Transistor $N_3$ durch Reduktion des Stroms aus dem Stromquellenbereich in den Widerstandsbereich. Dies reduziert das $g_m$.
+
+Bei Überschreitung von $V_{inCM, max}$ fallen die Transistoren $P_1$ und $P_2$ aus der Sättigung, was den Stromspiegel unwirksam macht. Auch Dies reduziert das $g_m$.
+
+\paragraph{Gegentackt / Differential-Mode}
+\[
+    V_{inDM} = V_{in1} - V_{in2}
+\]
+Der Gegentackt-Eingangsspannungsbereich kann der Grossignalanalyse in~\ref{opamp:diff.stufe:grossignal} entnommen werden
+
+\subsubsection{Common-Mode-Rejection}
+\paragraph{Berechnung}
+
+Durch Symmetrie kann zur Berechnung der Common-Mode-Verstärkung die Stromquelle ``halbiert'' werden.
+%TODO: [Flurin] Schema aus V11S14, ich glaube erklärende Schemen zu CM und DM sind nicht nötig.
+Folglich kann zur Berechnung die Formel der Source-Schaltung verwenden:
+\[
+    a_{CM} \approx \frac{R_D}{2 r_Q}
+\]
+
+Die Differential-Mode-Verstärkung kann wie gehabt berechnet werden:
+\[
+    a_{DM} \approx -\frac{g_m}{2} R_D
+\]
+
+\paragraph{Minimierung der Common-Mode-Verstärkung}\
+Die Common-Mode-Verstärkung kann durch Wahl einer guten Stromquelle ($r_Q >> 2*R_D$) minimiert werden.
+
+\paragraph{Common-Mode-Rejection-Ratio}
+
+\[
+    CMRR = \abs{\frac{a_{DM}}{a_{CM}}}
+\]
+Mit
+\[
+    a_{CM} \approx \frac{R_D}{2 r_Q} \quad \text{und} \quad
+    a_{DM} \approx -\frac{g_m}{2} R_D
+\]
+folgt
+\[
+    CMRR = \abs{\frac{-\frac{g_m}{2} R_D}{\frac{R_D}{2 r_Q}}} = g_m \cdot r_Q
+\]
+
+\subsubsection{Speisungsspannungsunterdrückung}
+
+\paragraph{Intuitiv}
+
+%TODO: Formeln aus V11S18
+\begin{itemize}
+    \item Die Rejection von Störungen auf dem Bezugspotential von Verstärkern werden recht direkt auf den Ausgang übertragen.
+    \item Speisungen, die über eine Stromquelle mit der Verstärkerschaltung verbunden sind, werden mit dem Innenwiderstand dieser Quellen gedämpft.
+\end{itemize}
+
+\subsubsection{Offset}
+
+\paragraph{Random Offset}
+Entsteht durch Prozessvariationen.
+\begin{itemize}
+    \item Das Matching der Eingangstransistoren kann durch ???-Layout optimiert werden.
+    \item $V_{GS} - V_t$ nicht minimal wählen
+    \item Grosses $W/L$ für Eingangstransistoren
+\end{itemize}
+
+\paragraph{Systematic Offset}
+Entsteht durch schaltungstechnische Asymmetrien und können durch Befolgen folgender Design Rules eliminiert werden.
+%TODO: [Flurin] Schema aus V11S18
+\begin{itemize}
+    \item Identisches $L$ der Stromspiegeltransistoren $N_3$, $N_4$ und $N_5$ sowie $P_1$ und $P_2$ ($\lambda$ identisch)
+    \item Diff. Stude symmetrisch
+    \begin{itemize}
+        \item $N_1$ und $N_2$ sowie $P_1$ und $P_2$ identisch
+        \item $V_x$ = $V_y$ \textrightarrow\ gleiches $V_{GS}$ und $V_{DS}$ für $N_1$ und $N_2$ resp. $P_1$ und $P_2$
+    \end{itemize} 
+    \item Ausgangsstufe $P_3$ spiegelt $I_{P1,2}$ ideal: $I_{P3} = I_{N3} = n I_B$
+    \begin{itemize}
+        \item gleiches $V_{GS}$ ($V_x = V_y$) und $V_{DS}$ ($V_y = V_z = V_{out_o}$) für $P_2$ und $P_3$
+        \item gleiche Stromdichte: $I_{P1,P2} / (W/L)_{P1,P2} = I_{P3} / (W/L)_{P3}$
+    \end{itemize}
+\end{itemize}
