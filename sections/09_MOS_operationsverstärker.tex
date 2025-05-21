@@ -478,7 +478,7 @@ Die Common-Mode-Verstärkung kann durch Wahl einer guten Stromquelle ($r_Q >> 2 
 \paragraph{Random Offset}
 Entsteht durch \textbf{Prozessvariationen}.
 \begin{itemize}
-    \item Das Matching der Eingangstransistoren kann durch passendes Layout optimiert werden
+    \item Das Matching der Eingangstransistoren kann durch Common-Centroid-Layout optimiert werden
     \item $V_{\rm GS} - V_T$ nicht minimal wählen
     \item Grosses $W/L$ für Eingangstransistoren
 \end{itemize}
@@ -503,3 +503,134 @@ Entsteht durch \textbf{schaltungstechnische Asymmetrien} und können durch Befol
         \2 \textbf{gleiche Stromdichte:} $\bm{I_{\rm P1} / (W/L)_{\rm P1} = I_{\rm P2} / (W/L)_{\rm P2} = I_{\rm P3} / (W/L)_{\rm P3} }$
 \end{outline}
 
+\subsection{Stabilität}
+
+\subsubsection{UTF des rückgekoppelten Verstärkers}
+\[
+    A_{CL}(s) = \frac{U_{out} (s)}{U_{in}(s)}
+    = \frac{A(s)}{1+A(s) F(s)}
+    = \frac{1}{\frac{1}{A(s)}+F(s)}
+    \overset{\text{tiefe freq.}}{\approx} \frac{1}{F(s)}
+\]
+
+$A(s)$: Frequenzgang des Verstärkers
+
+$F(s)$: Frequenzgang der Rückkopplung
+
+\subsubsection{Loop Gain} % TODO: [Flurin] Das ist irgendwie für nichts?
+\[
+    T(s) = A(s) \cdot F(s)
+\]
+
+$A(s)$: Frequenzgang des Verstärkers
+
+$F(s)$: Frequenzgang der Rückkopplung
+
+\subsubsection{Stabilitätskriterien}
+Der Nenner von $A_{CL}(s)$ darf nicht null sein.
+Dafür können die Verstärkungs- und Phasenmarge beigezogen werden.
+
+Für Stabilität muss die Verstärkungsmarge 
+\[
+    GM = g_M = \left.\abs{T(s)} \right|_{\angle T(S) = 180^\circ} < 1
+\]
+sein.
+
+Die Phasenmarge muss
+\[
+    PM = \phi_M = 180^\circ - \Phi =  \left. 180^\circ - \angle T(s) \right|_{\abs{T(s)} > 0^\circ}
+\]
+erfüllen.
+%TODO: Bode-Diagramm wie V12S8 und Beispiel d. Überschwinger aus V12S10
+
+\smallskip
+\begin{center}
+    \begin{tabular}{ll}
+        Phasenmarge & Verhalten \\
+        $\phi_M \leq 0$ & Gegengekoppelter Verstärker schwingt. \\
+        $\phi_M > 0$ & Stabil aber mit überschwinger. \\
+        $\phi_M = 65$ & Keine überschwinger mehr. \\
+        $\phi_M \geq 75$ & Einbussen bei der Slew-Rate.\\
+    \end{tabular}
+\end{center}
+
+
+\subsection{Gebräuchliche Realisierungen}
+
+\subsubsection{Einstufiger OTA}
+\paragraph{Differenzstufe mit Last}
+% TODO: Schema V12S15
+\begin{itemize}
+    \item Meist ungenügende Verstärkung, da die Last zu klein ist.
+    \item Eingangs- und Ausgangs-Common-Mode-Bereich nicht unabhängig wählbar.
+\end{itemize}
+\[
+    a = - g_{m, N1, N2} r_{out} \qquad r_{out} = r_{N,P} \parallel r_{DS}
+\]
+\[
+    BW = \frac{1}{2\pi r_{out} C_{L}} \qquad GBW = \frac{g_{m, N1, N2}}{2\pi C_{L}}
+\]
+
+\paragraph{Telescopic Cascode OTA}
+\begin{itemize}
+    \item Geringer Stromverbrauch
+    \item Hohe Verstärkung
+    \item Eingangs- und Ausgangs-Common-Mode-Bereich nicht unabhängig wählbar.
+    \item Kleinerer Ausgangsspannungsbereich
+\end{itemize}
+\[
+    a = - g_{m, N1, N2} r_{out} \qquad r_{out} = r_{K\_N} \parallel r_{K\_P} \qquad r_{K\_N, K\_P} \approx r_{DS} \cdot (2+g_m r_{DS})
+\]
+\[
+    BW = \frac{1}{2\pi r_{out} C_{L}} \qquad GBW = \frac{g_{m, N1, N2}}{2\pi C_{L}}
+\]
+
+\paragraph{Folded Cascode OTA}
+\begin{itemize}
+    \item Hohe Verstärkung
+    \item Eingangs- und Ausgangs-Common-Mode-Bereich unabhängig wählbar.
+    \item Grosser Stromverbrauch (meist doppelt im Vergleich zu Telescopic).
+\end{itemize}
+
+\paragraph{Symmetrischer OTA}
+% TODO: Schema und Formeln aus V12S17 (Vermutlich hinter riesigem Simulationsschaltbild)
+\begin{itemize}
+    \item Besseres Verhalten bei hohen Frequenzkompensation, einstellbar ducrh B.
+    \item Grosser Aussteuerbereich.
+    \item Sehr hohe Frequenz des zweiten Pols \textrightarrow{} stabil.
+\end{itemize}
+
+\subsubsection{Zweistufige OTA}
+\paragraph{Zweistufiger OTA}
+% TODO: Schema aus V12S20
+\[
+    a_V = a_{V1} \cdot a_{V2} = g_{m, N1, N2} (r_{DS_N2} \parallel r_{DS_P2}) \cdot g_{m, P3} (r_{DS_N3} \parallel r_{DS_P3} \parallel R_L)
+\]
+\[
+    f_{p,N1} = \frac{1}{2\pi r_{N1} C_{N2}} \qquad f_{p,N3} = \frac{1}{2\pi r_{L} C_{L}}
+\]
+
+\begin{itemize}
+    \item Grosse Verstärkung.
+    \item $C_2 >> C_L$ nötig für Stabilität.
+    \item Durch $C_C$ tiefere Bandbreite.
+\end{itemize}
+
+\paragraph{Miller-OTA}
+%TODO: Schema aus V12S22
+
+\begin{itemize}
+    \item $C_C$ nutzt den Miller-Effekt um $C_L$ zu kompensieren.
+    \item Dadurch können kleinere Kapazitäten verwendet werden.
+    \item Weiter werden die ersten zwei Pole auseinander geschoben. 
+    \item Folglich grössere bandbreite als beim einfachen zweistufigen OTA.
+\end{itemize} %TODO: überarbeiten nach V12S25
+
+%TODO: Formeln aus V12S24&26
+
+\subsubsection{Design-Regeln}
+\begin{itemize}
+    \item $\left. \abs{A(s)F(s)} \right|_{\phi = 180^\circ} < 1$
+    \item $\left. \angle (A(s)F(s)) \right|_{\abs{A(s)F(s)} = 1} > 180^\circ$
+    \item Zweiter Pol bei ca. $3 \cdot GBW$ wählen
+\end{itemize}
