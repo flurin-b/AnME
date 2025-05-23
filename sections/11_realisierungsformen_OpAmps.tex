@@ -2,82 +2,185 @@
 
 \subsection{Einstufiger OTA}
 
-\subsubsection{Differenzstufe mit Last}
-% TODO: Schema V12S15
+\subsubsection{Differenzstufe mit (Stromspiegel) Last}
+
+%NOTE: [Simi] @Flurin Ich würde hier aus Platzgründen nicht noch einmal das Schema der Differenzstufe einfügen... Wir wissen langsam, wie das Ding aussieht...
+Die Differenzstufe des OpAmps realisiert einen einstufigen OTA.
+Meist werden aber 'verbesserte' Realisierungsformen verwendet. 
+
+\vspace{-0.3cm}
+
+\[
+    a = - g_{\rm m, N1, N2} \cdot \underbrace{ \left( r_{\rm N,P} \parallel r_{\rm DS} \right) }_{r_{\rm out}} \qquad 
+    \text{BW} \approx f_d = \frac{1}{2\pi r_{\rm out} C_{\rm L}} \qquad 
+    \text{GBW} = f_d \cdot \abs{a} = \frac{g_{\rm m, N1, N2}}{2\pi C_{\rm L}}
+\]
+
 \begin{itemize}
-    \item Meist ungenügende Verstärkung, da die Last zu klein ist.
-    \item Eingangs- und Ausgangs-Common-Mode-Bereich nicht unabhängig wählbar.
+    \item[-] Meist ungenügende Verstärkung, da die Last zu klein ist.
+    \item[-] Eingangs- und Ausgangs-Common-Mode-Bereich nicht unabhängig wählbar.
 \end{itemize}
-\[
-    a = - g_{m, N1, N2} r_{out} \qquad r_{out} = r_{N,P} \parallel r_{DS}
-\]
-\[
-    BW = \frac{1}{2\pi r_{out} C_{L}} \qquad GBW = \frac{g_{m, N1, N2}}{2\pi C_{L}}
-\]
+
 
 \subsubsection{Telescopic Cascode OTA}
-\begin{itemize}
-    \item Geringer Stromverbrauch
-    \item Hohe Verstärkung
-    \item Eingangs- und Ausgangs-Common-Mode-Bereich nicht unabhängig wählbar.
-    \item Kleinerer Ausgangsspannungsbereich
-\end{itemize}
-\[
-    a = - g_{m, N1, N2} r_{out} \qquad r_{out} = r_{K\_N} \parallel r_{K\_P} \qquad r_{K\_N, K\_P} \approx r_{DS} \cdot (2+g_m r_{DS})
-\]
-\[
-    BW = \frac{1}{2\pi r_{out} C_{L}} \qquad GBW = \frac{g_{m, N1, N2}}{2\pi C_{L}}
-\]
+\label{Telescopic Cascode OTA}
+
+\begin{minipage}[t]{0.35\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/11_OTA_einstufig_kaskode.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.62\columnwidth}
+    %CHECK: [Simi] @ Flurin: stimmt das so mit den Vorzeichen bei der Verstärkung a ? g_m negativ, r positiv -> a negativ (invertierend)
+    \[
+        a = g_{\rm m, N1, N2} \cdot \underbrace{ \left( r_{\rm K\_N} \parallel r_{\rm K\_P} \right) }_{r_{\rm out}} 
+    \]
+    \[
+        r_{\rm K\_N, K\_P} \approx r_{\rm DS} \cdot (2+ g_m \cdot r_{\rm DS})
+    \]
+    \[
+        \text{BW} \approx f_d = \frac{1}{2\pi r_{\rm out} C_{L}} \qquad \text{GBW} = f_d \cdot \abs{a} = \frac{g_{\rm m, N1, N2}}{2 \pi C_{L}}
+    \]
+
+    \smallskip
+
+    \begin{itemize}
+        \item[-] Eingangs- und Ausgangs-Common-Mode-Bereich nicht unabhängig wählbar
+        \item[-] Kleinerer Ausgangsspannungsbereich
+        \item[+] Geringer Stromverbrauch
+        \item[+] Hohe Verstärkung
+    \end{itemize}
+\end{minipage}
+
 
 \subsubsection{Folded Cascode OTA}
-\begin{itemize}
-    \item Hohe Verstärkung
-    \item Eingangs- und Ausgangs-Common-Mode-Bereich unabhängig wählbar.
-    \item Grosser Stromverbrauch (meist doppelt im Vergleich zu Telescopic).
-\end{itemize}
+
+\begin{minipage}[t]{0.5\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/11_OTA_einstufig_gefaltete_kaskode.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\columnwidth}
+    Die Berechnungsformel für die den Folded Cascode OTS sind gleich wie beim Telescopic Cascode OTA. 
+    \textrightarrow\ Abschnitt \ref{Telescopic Cascode OTA}
+
+    \smallskip
+
+    \begin{itemize}
+        \item[+] Hohe Verstärkung
+        \item[+] Eingangs- und Ausgangs-Common- \\
+            Mode-Bereich unabhängig wählbar
+        \item[-] Hoher Stromverbrauch (meist doppelt im Vergleich zu Telescopic)
+    \end{itemize}
+\end{minipage}
+
+
 
 \subsubsection{Symmetrischer OTA}
-% TODO: Schema und Formeln aus V12S17 (Vermutlich hinter riesigem Simulationsschaltbild)
+\begin{minipage}[t]{0.48\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/11_OTA_einstufig_symmetrisch.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\columnwidth}
+    %CHECK [Simi] @Flurin: stimmt das so mit den Vorzeichen bei der Verstärkung a? g_m negativ, r positiv -> a negativ (invertierend)
+    \[
+        a_V = B \cdot  g_{\rm m\_N1} \cdot \left( r_{\rm DS\_N3} \parallel r_{\rm DS\_P3} \right)
+    \]
+    \[
+        f_d = f_{\rm P\_Nout} = \frac{1}{2 \pi \cdot R_{\rm Nout} \cdot C_{\rm Nout}}
+    \]
+    \[
+        f_d \approx \frac{1}{2 \pi \left( r_{\rm DS\_N3} \parallel r_{\rm DS\_P3} \right) C_L}
+    \]
+    \[
+        \text{GBW} = \abs{a_V} \cdot f_d = B \cdot \frac{g_{\rm m1}}{2 \pi C_{\rm Nout}} \approx B \cdot \frac{g_{\rm m1}}{2 \pi C_L}   % CHECK: g_{\rm m\_N1} statt g_{\rm m1} schreiben?
+    \]
+\end{minipage}
+
+\smallskip
+
 \begin{itemize}
-    \item Besseres Verhalten bei hohen Frequenzkompensation, einstellbar ducrh B.
-    \item Grosser Aussteuerbereich.
-    \item Sehr hohe Frequenz des zweiten Pols \textrightarrow{} stabil.
+    \item[+] Besseres Verhalten bei hohen Frequenzkompensation, einstellbar durch $B$
+    \item[+] Grosser Aussteuerbereich
+    \item[+] Sehr hohe Frequenz des zweiten Pols \textrightarrow\ stabil
 \end{itemize}
 
 
 \subsection{Zweistufige OTA}
 
 \subsubsection{Zweistufiger OTA}
-% TODO: Schema aus V12S20
-\[
-    a_V = a_{V1} \cdot a_{V2} = g_{m, N1, N2} (r_{DS_N2} \parallel r_{DS_P2}) \cdot g_{m, P3} (r_{DS_N3} \parallel r_{DS_P3} \parallel R_L)
-\]
-\[
-    f_{p,N1} = \frac{1}{2\pi r_{N1} C_{N2}} \qquad f_{p,N3} = \frac{1}{2\pi r_{L} C_{L}}
-\]
 
-\begin{itemize}
-    \item Grosse Verstärkung.
-    \item $C_2 >> C_L$ nötig für Stabilität.
-    \item Durch $C_C$ tiefere Bandbreite.
-\end{itemize}
+\begin{minipage}[t]{0.5\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/11_OTA_zweistufig.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\columnwidth}
+    \[
+        a_V = \cgn{a_{\rm V1}} \cdot \cvt{a_{\rm V2}} 
+    \]
+    \[
+        \cgn{a_{\rm V1}} = g_{\rm m, N1, N2} (r_{\rm DS_N2} \parallel r_{\rm DS_P2})
+    \]
+    \[
+        \cvt{a_{\rm V2}} = g_{\rm m, P3} (\rm r_{DS_N3} \parallel r_{\rm DS_P3} \parallel R_L)
+    \]
+    \[
+        f_{\rm p,N1} = \frac{1}{2\pi r_{\rm N1} C_{\rm N2}} \qquad f_{\rm p,N3} = \frac{1}{2\pi r_{L} C_{L}}
+    \]
+\end{minipage}
+
+\smallskip
+
+\begin{minipage}[t]{0.35\columnwidth}
+    \begin{itemize}
+        \item[+] Grosse Verstärkung
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.63\columnwidth}
+    \begin{itemize}
+        \item[-] $C_2 \gg C_L$ nötig für Stabilität \textrightarrow\ suboptiomal
+        \item[-] Durch $C_C$ tiefere Bandbreite
+    \end{itemize}
+\end{minipage}
+
+
 
 \subsubsection{Miller-OTA}
-%TODO: Schema aus V12S22
 
-\begin{itemize}
-    \item $C_C$ nutzt den Miller-Effekt um $C_L$ zu kompensieren.
-    \item Dadurch können kleinere Kapazitäten verwendet werden.
-    \item Weiter werden die ersten zwei Pole auseinander geschoben. 
-    \item Folglich grössere bandbreite als beim einfachen zweistufigen OTA.
-\end{itemize} %TODO: überarbeiten nach V12S25
+Durch 'Verlagerung' der Kapazität $C_C$ wirkt diese als Miller-Kapazität. 
+Somit werden die \textbf{Pole auseinandergeschoben} ohne viel Chipfläche für eine grosse Kapazität zu benötigen.
+Die \textbf{Bandbreite} des Miller-OTA ist folglich \textbf{grösser}.
 
-%TODO: Formeln aus V12S24&26
+\smallskip
 
-\subsubsection{Design-Regeln}
-\begin{itemize}
-    \item $\left. \abs{A(s)F(s)} \right|_{\phi = 180^\circ} < 1$
-    \item $\left. \angle (A(s)F(s)) \right|_{\abs{A(s)F(s)} = 1} > 180^\circ$
-    \item Zweiter Pol bei ca. $3 \cdot GBW$ wählen
-\end{itemize}
+\begin{minipage}[t]{0.48\columnwidth}
+    \includegraphics[width=\columnwidth, align=t]{images/11_OTA_zweistufig_miller.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\columnwidth}
+    \begin{outline}
+        \1 \cbl{N2} ist dominierendenr Knoten \textrightarrow\ $f_{\rm pN2}$
+        \1 Bei hohe Frequenzen wirkt $C_C$ als Kurzschluss zw. Gate und Drain von $P_3$ \textrightarrow\ Diodenschaltung \textrightarrow\ $f_{\rm pN3}$
+        \1 $C_C$ erzeugt eine Nullstelle, deren Lage mit einem $R_C$ in Serie 'platziert' werden kann
+    \end{outline} 
+\end{minipage}
+
+
+\renewcommand{\arraystretch}{1.8}
+\begin{ctabular}{ll}
+    Dominanter Pol                  & $f_{\rm pN2} = \frac{1}{2 \pi R_{\rm n2} \left( C_{\rm n2} + A_{\rm V2} C_C \right)} \approx \frac{1}{2 \pi R_{\rm n2} A_{\rm V2} C_C}$                           \\
+    $\qty{3}{\decibel}$-Bandbreite  & $\text{BW} \approx f_d = f_{\rm N2} = \frac{1}{2 \pi R_{\rm N2} A_2 C_C}$                                                                                         \\
+    Verstärkung $a$                 & $a = a_1 \cdot a_2 = g_{\rm m\_N1,2} \, R_{\rm N2} \cdot g_{\rm m\_P3} \, R_{\rm N3}$                                                                             \\
+    Gain-Bandwidth-Product          & $\text{GBW} = a \cdot f_d = \frac{g_{\rm m\_N1,2} \, R_{\rm N2} \cdot g_{\rm m\_P3} \, R_{\rm N3}}{2 \pi R_{\rm N2} a_2 C_C} = \frac{g_{\rm m\_N1,2}}{2 \pi C_C}$ \\ 
+    Nicht-Dominanter Pol            & $f_{\rm nd} = f_{\rm N3} = \frac{1}{2 \pi R_{\rm n3} C_L} \approx \frac{g_{\rm m\_P3}}{2 \pi C_L}$                                                                \\ 
+    Phasenmarge $\varphi_M$         & $\varphi_M = \qty{90}{\degree} - \arctan \left( \frac{\text{GBW}}{f_{\rm nd}} \right)$                                                                            \\
+\end{ctabular}
+\renewcommand{\arraystretch}{1}
+
+
+% \subsubsection{Design-Regeln}
+% \begin{itemize}
+%     \item $\left. \abs{A(s)F(s)} \right|_{\phi = 180^\circ} < 1$
+%     \item $\left. \angle (A(s)F(s)) \right|_{\abs{A(s)F(s)} = 1} > 180^\circ$
+%     \item Zweiter Pol bei ca. $3 \cdot GBW$ wählen
+% \end{itemize}
 
