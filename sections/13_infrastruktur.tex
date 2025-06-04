@@ -1,0 +1,126 @@
+\section{Infrastruktur eines Chips}
+% TODO: Übersicht aus V14S12
+
+\subsection{Spannungsversorgung}
+Ein wichtiger Teil der Infrastruktur ist die Spannungsversorgung. 
+Die benötigte Leistung kann wie folgt abgeschätzt werden.
+\[
+    P_\mathrm{dynamisch} = f(C, f, N, U^2)
+\]
+\[
+    P_\mathrm{statisch} = I_\mathrm{leakage} \cdot U^2
+\]
+
+\subsection{Arbeitspunkteinstellung}
+Zur Arbeitspunkteinstellung gibt es verschiedene Strategien.
+Diese können für einen der unten aufgeführten Punkte ausgelegt werden.
+\begin{itemize}
+    \item Konstante Spannungsamplitude
+    \item Konstante Ströme
+    \item Konstante Verstärkung un Transkonduktanz
+\end{itemize}
+
+\subsubsection{Verteilungsarten}
+\paragraph{Voltage Mode:}
+
+Vorteil:
+\begin{itemize}
+    \item Minimale Hardware
+\end{itemize}
+Nachteil:
+\begin{itemize}
+    \item Schlechtes Matching (aufgrund von Technologie und Temperaturvariationen)
+    \item Störungen auf der Verbindungsleitung
+\end{itemize}
+
+\paragraph{Current Mode:}
+
+Vorteile:
+\begin{itemize}
+    \item Gutes Matching (Stromspiegeltransistoren am gleichen Ort)
+    \item Weniger störanfällig wegen niederohmigen Signalen
+\end{itemize}
+Nachteil:
+\begin{itemize}
+    \item Mehr Hardware
+    \item Höherer Stromverbrauch
+\end{itemize}
+
+\subsection{Referenzschaltungen}
+Spannungsregler sowie Arbeitspunkteinstellung und verschiedene Blöcke benötigen eine absolute Referenz.
+
+Relative Genauigkeiten bis ca. 0.1\% ist ohne trimmen möglich, während absolute Referenzwerte Losabweichungen von bis zu 40\% aufweisen.
+
+Entsprechend müssen absolute Referenzen trimmbar realisiert werden können.
+
+Als Richtwert für die Qualität einer Referenz wird die Sensitivität $S$ des Referenzwerts auf die Änderung einer externen Grösse.
+
+\subsubsection{Spannungsteiler}
+$S = 1$ auf Versorgungsspannungsänderungen \textrightarrow\ unbrauchbar.
+
+\subsubsection{Bootstrap-Referenz}
+% TODO: Schema V14S16
+\[
+    I_D = I_M' \frac{W}{L} e^{\frac{V_{GS}-V_M}{n m V_\mathrm{temp}}}
+\]
+\[
+    V_{GS} - V_M = n_m V_\mathrm{temp} \ln{\frac{I_D}{I_M' \frac{W}{L}}}
+\]
+\[
+    \Delta V_{GS} = n_m V_\mathrm{temp} \ln\left(\frac{I_{D1}}{I_{D2}} \frac{(W/L)_2}{(W/L)_1}\right)
+\]
+\[
+    I_\mathrm{bias} = \frac{\Delta V_{GS}}{R_2}
+\]
+$R_2$: Externer Präzisionswiderstand
+
+Vorteile:
+\begin{itemize}
+    \item Unabhängig von Versorgungsspannung
+\end{itemize}
+Nachteile:
+\begin{itemize}
+    \item Proportional zur Temperatur
+\end{itemize}
+
+\textrightarrow\ Benötigt eine Start-Up Schaltung, da $I_D = \qty{0}{\ampere}$ auch stabil wäre. (nicht gezeichnet)
+
+\subsubsection{Bandgap-Referenz}
+\paragraph{Grundprinzip}
+% TODO: Bild aus V14S17
+
+Temperaturkoeffizient einer Diode: 
+\[
+    TC_D = \qty{-2}{\milli\volt\per\kelvin} = \frac{d V_D}{dT} \approx \frac{V_D-V_{BG}}{T}
+\]
+
+Temperaturkoeffiziend von $V_\mathrm{temp}$:
+\[
+    TD_{V\mathrm{temp}} = \frac{d V_\mathrm{temp}}{d T} = \frac{k}{e} \approx \qty{86.24\cdot10^{-6}}{\volt\per\kelvin} 
+\]
+
+Faktor $k$:
+\[
+    k = -\frac{TC_D}{TC_{V\mathrm{temp}}} = \frac{\qty{-2}{\milli\volt\per\kelvin}}{\qty{86.24\cdot10^{-6}}{\volt\per\kelvin}} = 23.2
+\]
+
+\paragraph{Realisierung}
+%TODO: Schema aus V14S18
+
+Die Bandgap-Referenz wird durch Bipolartransistoren realisert.
+Die Emitter-Basis-Diode liefert dabei die Diodenspannung.
+\[
+    V_D = V_{EB} = V_\mathrm{temp} \ln \frac{-I_C}{I_S' A_E}
+\]
+%TODO: Entweder alle Formeln aus V14S18/19 oder zumindest beschreiben, wie k eingestellt wird.
+
+Vorteile:
+\begin{itemize}
+    \item Unabhängig von Versorgungsspannung
+    \item \qty{10}{ppm\per\kelvin} bei (\qty{0}{\degreeCelsius}-\qty{70}{\degreeCelsius})
+\end{itemize}
+Nachteile:
+\begin{itemize}
+    \item Die Spannung $V_\mathrm{ref}$ sowie der Temperaturkoeffizient hängt stark vom Offset des OpAMPs ab. \textrightarrow\ Trimmen
+    \item Es ist eine Startup-Schaltung nötig.
+\end{itemize}
