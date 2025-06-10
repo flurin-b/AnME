@@ -3,10 +3,10 @@
 \subsection{Dotierung}
 \begin{center}
     \begin{tabular}{lll}
-        \textbf{Dotierung:}          & N-dotiert            & P-dotiert \\
-        \textbf{Unreinheit:}         & Aluminium (HG III)   & Phosphor / Arsen (HG V) \\
-        \textbf{Majoritätsträger:}   & Elektronen           & Löcher \\
-        \textbf{Minoritätsträger:}   & Löcher               & Elektronen \\
+        \textbf{Dotierung:}          & N-dotiert                & P-dotiert             \\
+        \textbf{Unreinheit:}         & Phosphor / Arsen (HG V)  & Aluminium (HG III)    \\
+        \textbf{Majoritätsträger:}   & Elektronen               & Löcher                \\
+        \textbf{Minoritätsträger:}   & Löcher                   & Elektronen            \\
     \end{tabular}
 \end{center}
 
@@ -62,14 +62,16 @@ Dieser verbindet Drain und Source, es kann also ein Strom fliessen.
 \subsubsection{Modelle}
 In Cadence sind verschiedene Modelle hinterlegt:
 
-\textbf{Spice Modell 11:} Das Modell 11 beinhaltet ca. 100 Parameter und ist entsprechend genau.
-\textbf{Spice Modell 11:} Das Modell 11 beinhaltet ca. 100 Parameter und ist entsprechend genau.
+\smallskip
+\begin{description}
+    \item[Spice Modell 11:] Das Modell 11 beinhaltet ca. 100 Parameter und ist entsprechend genau.
+    \item[Spice Modell 1:] Vergleichbar mit dem Handrechenmodell, welches zwar weniger genau, dafür aber viel einfacher ist. Dennoch beinhaltet es bereits 40 Parameter.
+\end{description}
 
-\textbf{Spice Modell 1:} Vergleichbar mit dem Handrechenmodell, welches zwar weniger genau, dafür aber viel einfacher ist. Dennoch beinhaltet es bereits 40 Parameter.
 
 \subsection{Ausgangskennlinie -- Arbeitsbereiche}
  
-Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{DS}) \big|_{V_{GS} = \text{konst}}$
+Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{\rm DS}) \big|_{V_{\rm GS} = \text{konst}}$
 
 \begin{minipage}[t]{0.5\columnwidth}
     \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_ausgangskennlinien.pdf}
@@ -91,7 +93,7 @@ Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{DS}) \big|_{V_{GS}
         \1 \textbf{weak inversion:} \\
             $V_{\rm DS, sat} = V_{\rm eff} \approx 5 \cdot V_{\rm temp} \approx \qty{130}{\milli \volt}$ 
         \1 \textbf{strong inversion:} \\
-            $V_{\rm DS, sat} = V_{\rm eff} = V_{GS} - V_T$ 
+            $V_{\rm DS, sat} = V_{\rm eff} = V_{\rm GS} - V_T$ 
     \end{outline}
 \end{minipage}
 
@@ -105,7 +107,7 @@ Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{DS}) \big|_{V_{GS}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.42\columnwidth}
-    Die Transferkennlinie beschreibt den Zusammenhang $I_D = f(V_{GS})$ 
+    Die Transferkennlinie beschreibt den Zusammenhang $I_D = f(V_{\rm GS})$ 
 
     \smallskip
 
@@ -116,8 +118,8 @@ Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{DS}) \big|_{V_{GS}
     Des Weiteren gibt es die Bereiche:
 
     \begin{outline}
-        \1 Sub Threshold: $V_{GS} < V_T$
-        \1 Above Threshold: $V_{GS} > V_T$
+        \1 Sub Threshold: $V_{\rm GS} < V_T$
+        \1 Above Threshold: $V_{\rm GS} > V_T$
     \end{outline}
 \end{minipage}
 
@@ -135,16 +137,16 @@ Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{DS}) \big|_{V_{GS}
                                         & weiter unterschritten werden kann             & Leckströme ins Subsstrat                                      \\
     \hline
     \rowcolor[HTML]{FFE5BB} 
-    EXP                                 & $I_D$ steigt exponentiell mit $V_{GS}$        & Kanal zeigt \textbf{weak inversion}                           \\
+    EXP                                 & $I_D$ steigt exponentiell mit $V_{\rm GS}$        & Kanal zeigt \textbf{weak inversion}                           \\
     \hline
     \rowcolor[HTML]{FFF2CC} 
     MOD                                 & Keine 'handliche' Formel für $I_D$            & Kanal zeigt \textbf{moderate inversion}                       \\
     \hline
     \rowcolor[HTML]{D9EAD3} 
-    QUAD                                & $I_D$ steigt quadratisch mit $V_{GS}$         & Kanal zeigt \textbf{strong inversion}                         \\
+    QUAD                                & $I_D$ steigt quadratisch mit $V_{\rm GS}$         & Kanal zeigt \textbf{strong inversion}                         \\
     \hline
     \rowcolor[HTML]{CFE2F3} 
-    LIN                                 & $I_D$ steigt annähernd linear mit $V_{GS}$    & Geschwindigkeitssättigung der Ladungsträger im Kanal          \\
+    LIN                                 & $I_D$ steigt annähernd linear mit $V_{\rm GS}$    & Geschwindigkeitssättigung der Ladungsträger im Kanal          \\
     \rowcolor[HTML]{CFE2F3} 
                                         & (halb QUAD, halb LIN)                         & im Kanal (nicht weiter beschleunigbar)                        \\
     \hline
@@ -167,7 +169,7 @@ Wird der Kanal invertiert, so wird er (schwach, moderat oder start) n-leitend.
 
 %     \subsubsection*{Ungesättigt}
 
-%     Gesteuerter Widerstand \rightarrow\ $I_D = f(V_{DS})$
+%     Gesteuerter Widerstand \rightarrow\ $I_D = f(V_{\rm DS})$
     
 %     \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_ersatzschaltung_ungesaettigt.pdf}
 
@@ -181,7 +183,7 @@ Wird der Kanal invertiert, so wird er (schwach, moderat oder start) n-leitend.
 
 %     \subsubsection*{Gesättigt}
 
-%     Stromquelle \rightarrow\ $I_D = f(V_{GS})$
+%     Stromquelle \rightarrow\ $I_D = f(V_{\rm GS})$
 
 %     \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_ersatzschaltung_gesaettigt.pdf}
 
@@ -200,17 +202,17 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 
 \vspace{-0.3cm}
 
-% $$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{GS} < V_L(I_D) } \qquad \qquad \beta = \mu \cdot C_{\text{OX}} \cdot \frac{W}{L} $$
-\[ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{GS}| < |V_L(I_D)| \quad \text{bzw.} \quad |I_H'| \leq |I_D'| < |I_L'| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.4 1)
+% $$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{\rm GS} < V_L(I_D) } \qquad \qquad \beta = \mu \cdot C_{\text{OX}} \cdot \frac{W}{L} $$
+\[ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{\rm GS}| < |V_L(I_D)| \quad \text{bzw.} \quad |I_H'| \leq |I_D'| < |I_L'| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.4 1)
 
 \resizebox{\columnwidth}{!}
 {
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{@{}l c | c@{}}
-                & \textbf{Ungesättigt:} \quad $\bm{| V_{DS} | < | V_{GS} - V_T |}$                                                              & \textbf{Gesättigt:} \quad $\bm{| V_{DS} | \geq | V_{GS} - V_T |}$                         \\
-        NMOS:   & $I_D = \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg] \cbl{\cdot (1 + \lambda \cdot \Delta V_{DS})}$    & $I_D = \frac{\beta}{2} (V_{GS} - V_T)^2 \cbl{\cdot (1 + \lambda \cdot \Delta V_{DS})}$    \\
+                & \textbf{Ungesättigt:} \quad $\bm{| V_{\rm DS} | < | V_{\rm GS} - V_T |}$                                                              & \textbf{Gesättigt:} \quad $\bm{| V_{\rm DS} | \geq | V_{\rm GS} - V_T |}$                         \\
+        NMOS:   & $I_D = \beta \cdot \bigg[ (V_{\rm GS} - V_T) V_{\rm DS} - \frac{V_{\rm DS}^2}{2} \bigg] \cbl{\cdot (1 + \lambda \cdot \Delta V_{\rm DS})}$    & $I_D = \frac{\beta}{2} (V_{\rm GS} - V_T)^2 \cbl{\cdot (1 + \lambda \cdot \Delta V_{\rm DS})}$    \\
         \midrule
-        PMOS:   & $I_D = - \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg] \cbl{\cdot (1 - \lambda \cdot \Delta V_{DS})}$  & $I_{D} = - \frac{\beta}{2} (V_{GS} - V_T)^2 \cbl{\cdot (1 - \lambda \cdot \Delta V_{DS})}$
+        PMOS:   & $I_D = - \beta \cdot \bigg[ (V_{\rm GS} - V_T) V_{\rm DS} - \frac{V_{\rm DS}^2}{2} \bigg] \cbl{\cdot (1 - \lambda \cdot \Delta V_{\rm DS})}$  & $I_{D} = - \frac{\beta}{2} (V_{\rm GS} - V_T)^2 \cbl{\cdot (1 - \lambda \cdot \Delta V_{\rm DS})}$
     \end{tabular}
     \renewcommand{\arraystretch}{1}
 }
@@ -228,12 +230,12 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 % {
 %     \renewcommand{\arraystretch}{1.5}
 %     \begin{tabular}{l c|c}
-%                 & \textbf{Ungesättigt:} \quad $\bm{| V_{\rm DS} | < | V_{GS} - V_T |}$                          & \textbf{Gesättigt:} \quad $\bm{| V_{\rm DS} | \geq | V_{GS} - V_T |}$             \\
-%         NMOS:   & $I_{\rm D, ideal} = \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg]$     & $I_{\rm D, ideal} = \frac{\beta}{2} (V_{GS} - V_T)^2 $                            \\
-%         NMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{DS})$      \\
+%                 & \textbf{Ungesättigt:} \quad $\bm{| V_{\rm DS} | < | V_{\rm GS} - V_T |}$                          & \textbf{Gesättigt:} \quad $\bm{| V_{\rm DS} | \geq | V_{\rm GS} - V_T |}$             \\
+%         NMOS:   & $I_{\rm D, ideal} = \beta \cdot \bigg[ (V_{\rm GS} - V_T) V_{\rm DS} - \frac{V_{\rm DS}^2}{2} \bigg]$     & $I_{\rm D, ideal} = \frac{\beta}{2} (V_{\rm GS} - V_T)^2 $                            \\
+%         NMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{\rm DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{\rm DS})$      \\
 %         \midrule
-%         PMOS:   & $I_{\rm D, ideal} = - \beta \cdot \bigg[ (V_{GS} - V_T) V_{DS} - \frac{V_{DS}^2}{2} \bigg]$   & $I_{\rm D, ideal} = - \frac{\beta}{2} (V_{GS} - V_T)^2$                           \\
-%         PMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{DS})$      
+%         PMOS:   & $I_{\rm D, ideal} = - \beta \cdot \bigg[ (V_{\rm GS} - V_T) V_{\rm DS} - \frac{V_{\rm DS}^2}{2} \bigg]$   & $I_{\rm D, ideal} = - \frac{\beta}{2} (V_{\rm GS} - V_T)^2$                           \\
+%         PMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{\rm DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{\rm DS})$      
 %     \end{tabular}
 %     \renewcommand{\arraystretch}{1}
 % }
@@ -249,7 +251,7 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 \end{minipage}
 \hfill
 \begin{minipage}[c]{0.2\columnwidth}
-    \[ \beta = \underbrace{ \mu C_{\rm OX} }_{\beta_0} \frac{W}{L} \]
+    \[ \beta = \underbrace{ \mu C_{\rm ox} }_{\beta_0} \frac{W}{L} \]
 \end{minipage}
 
 
@@ -264,10 +266,10 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 % Die Early-Spannung $V_E = a_E \cdot L$ setzt sich zusammen aus dem technologieabhängigen Early-Faktor $a_E$ und der Kanallänge $L$.
 Die Kanallängenmodulation beschreibt die Nichtidealität der spannungsgesteurten Stromquelle (im Sättigungsbetrieb).
 
-$$ \lambda = \frac{1}{V_E + V_{DS, \rm sat}} \approx \frac{1}{V_E} \approx \frac{1}{a_E \cdot L} \qquad \text{Idealfall: } \lambda = 0 \text{ \rightarrow\ } L = \infty $$ 
+$$ \lambda = \frac{1}{V_E + V_{\rm DS,  sat}} \approx \frac{1}{V_E} \approx \frac{1}{a_E \cdot L} \qquad \text{Idealfall: } \lambda = 0 \text{ \rightarrow\ } L = \infty $$ 
 
 \textbf{Achtung:} $\bm{V_E}$ ist typischerweise negativ, wird jedoch \textbf{immer positiv angegeben}. 
-Grafisch entspricht $V_E$ der Spannung $V_{DS}$, bei welcher die Verlängerung der Ausgangskennlinie (Sättigung) die $V_{DS}$-Achse schneidet.
+Grafisch entspricht $V_E$ der Spannung $V_{\rm DS}$, bei welcher die Verlängerung der Ausgangskennlinie (Sättigung) die $V_{\rm DS}$-Achse schneidet.
 
 
 %CHECK: [Flurin] Ich finde die Herleitung aus V3S9 überflüssig. Evtl. macht die Grafik zur Early-Spannung sinn? Braucht halt viel platz...
@@ -276,21 +278,20 @@ Grafisch entspricht $V_E$ der Spannung $V_{DS}$, bei welcher die Verlängerung d
 
 
 \paragraph{Body-Effekt}
-Der Body-Effekt beschreibt die \textbf{Abhängigkeit der Schwellenspannung} $\bm{V_T}$ von der Source-Bulk-Spannung $V_{SB}$ als
+Der Body-Effekt beschreibt die \textbf{Abhängigkeit der Schwellenspannung} $\bm{V_T}$ von der Source-Bulk-Spannung $V_{\rm SB}$ als
 \[ 
     V_T = V_{T0} \pm \Delta V_T 
     \quad \text{mit} \quad 
-    \Delta V_T = \gamma\left(\sqrt{\abs{V_{SB}} + \abs{2\Phi_F}}-\sqrt{\abs{2\Phi_F}}\right)
+    \Delta V_T = \gamma\left(\sqrt{\abs{V_{\rm SB}} + \abs{2\Phi_F}}-\sqrt{\abs{2\Phi_F}}\right)
 \]
 
-\rightarrow\ \textbf{Body-Effekt nur wirksam, wenn} $\mathbf{V_{SB} \neq \qty{0}{\volt}}$ \\
-\rightarrow\ Reminder: Bulk nur gezeichnet, wenn nicht auf $V_{DD}$ oder $V_{SS}$
+\rightarrow\ \textbf{Body-Effekt nur wirksam, wenn} $\mathbf{V_{\rm SB} \neq \qty{0}{\volt}}$ \\
+\rightarrow\ Reminder: Bulk nur gezeichnet, wenn nicht auf $V_{\rm DD}$ oder $V_{SS}$
 
 \medskip
 
 Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem ist es abhängig von der Dotierungsstärke.
 
-%NOTE: [Simi] Wenn kein Platz: folgende Tabelle weglassen (diese Formeln sind uns gemäss Zbinden egal)
 \begin{minipage}[c]{0.3\columnwidth}
     \[ \Phi_F = \frac{kT}{q} \ln \left( \frac{N_A}{n_i} \right) \]
     \[ \gamma_N \overset{n-Dotierung}{\approx} \qty{1.46}{\sqrt{\volt}} \]
@@ -313,18 +314,18 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 
 \vspace{-0.3cm}
 
-% $$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{GS} < V_M(I_D) \qquad \qquad V_M(I_D) = V_T(I_D) - x_M(I_D) } $$
-\[ \boxed{ \text{EXP-Bereich: } |V_K(I_D)| < |V_{GS}| \leq |V_M(I_D)| \quad \text{bzw.} \quad |I_K'| < |I_D'| \leq |I_M'| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.5 1)
+% $$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{\rm GS} < V_M(I_D) \qquad \qquad V_M(I_D) = V_T(I_D) - x_M(I_D) } $$
+\[ \boxed{ \text{EXP-Bereich: } |V_K(I_D)| < |V_{\rm GS}| \leq |V_M(I_D)| \quad \text{bzw.} \quad |I_K'| < |I_D'| \leq |I_M'| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.5 1)
 
 
 \resizebox{\columnwidth}{!}
 {
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{@{}l c | c@{}}
-                & \textbf{Ungesättigt:} \quad $\bm{| V_{DS} | < | V_{GS} - V_T |}$                                                                                                  & \textbf{Gesättigt:} \quad $\bm{| V_{DS} | \geq | V_{GS} - V_T |}$                                                     \\
-        NMOS:   & $I_D = I_M \cdot \e^{\frac{V_{GS} - V_M}{n_M \cdot V_\text{temp}}} \cdot (1 - \e^{-\frac{V_{DS}}{V_\text{temp}}}) \cbl{\cdot (1 + \lambda \cdot \Delta V_{DS})}$  & $I_D = I_M \cdot \e^{\frac{V_{GS} - V_M}{n_M \cdot V_\text{temp}}} \cbl{\cdot (1 + \lambda \cdot \Delta V_{DS})}$     \\
+                & \textbf{Ungesättigt:} \quad $\bm{| V_{\rm DS} | < 130 \, \mathrm{mV}}$                                                                                                  & \textbf{Gesättigt:} \quad $\bm{| V_{\rm DS} | \geq 130 \, \mathrm{mV}}$                                                             \\
+        NMOS:   & $I_D = I_M \cdot \e^{\frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}} \cdot (1 - \e^{-\frac{V_{\rm DS}}{V_\text{temp}}}) \cbl{\cdot (1 + \lambda \cdot \Delta V_{\rm DS})}$  & $I_D = I_M \cdot \e^{\frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}} \cbl{\cdot (1 + \lambda \cdot \Delta V_{\rm DS})}$     \\
         \midrule
-        PMOS:   & $I_D = I_M \cdot \e^{- \frac{V_{GS} - V_M}{n_M \cdot V_\text{temp}}} \cdot (1 - \e^{\frac{V_{DS}}{V_\text{temp}}}) \cbl{\cdot (1 - \lambda \cdot \Delta V_{DS})}$ & $I_D = I_M \cdot \e^{- \frac{V_{GS} - V_M}{n_M \cdot V_\text{temp}}} \cbl{\cdot (1 - \lambda \cdot \Delta V_{DS})}$   \\
+        PMOS:   & $I_D = I_M \cdot \e^{- \frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}} \cdot (1 - \e^{\frac{V_{\rm DS}}{V_\text{temp}}}) \cbl{\cdot (1 - \lambda \cdot \Delta V_{\rm DS})}$ & $I_D = I_M \cdot \e^{- \frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}} \cbl{\cdot (1 - \lambda \cdot \Delta V_{\rm DS})}$   \\
     \end{tabular}
     \renewcommand{\arraystretch}{1}
 }
@@ -344,12 +345,12 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 % {
 %     \renewcommand{\arraystretch}{1.5}
 %     \begin{tabular}{l c|c}
-%                 & \textbf{Ungesättigt:} \quad $\bm{| V_{\rm DS} | < | V_{GS} - V_T |}$                          & \textbf{Gesättigt:} \quad $\bm{| V_{\rm DS} | \geq | V_{GS} - V_T |}$                   \\
-%         NMOS:   & $I_{\rm D, ideal} = I_M \cdot \e^{\frac{V_{GS} - V_M}{n_M \cdot V_\text{temp}}}$              & $I_{\rm D, ideal} = I_M \cdot \e^{\frac{V_{GS} - V_M}{n_M \cdot V_\text{temp}}}$        \\
-%         NMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{DS})$            \\
+%                 & \textbf{Ungesättigt:} \quad $\bm{| V_{\rm DS} | < | V_{\rm GS} - V_T |}$                          & \textbf{Gesättigt:} \quad $\bm{| V_{\rm DS} | \geq | V_{\rm GS} - V_T |}$                   \\
+%         NMOS:   & $I_{\rm D, ideal} = I_M \cdot \e^{\frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}}$              & $I_{\rm D, ideal} = I_M \cdot \e^{\frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}}$        \\
+%         NMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{\rm DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{\rm DS})$            \\
 %         \midrule
-%         PMOS:   & $I_{\rm D, ideal} = I_M \cdot \e^{- \frac{V_{GS} - V_M}{n_M \cdot V_\text{temp}}}$            & $I_{\rm D, ideal} = - I_M \cdot \e^{- \frac{V_{GS} - V_M}{n_M \cdot V_\text{temp}}}$    \\
-%         PMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{DS})$      
+%         PMOS:   & $I_{\rm D, ideal} = I_M \cdot \e^{- \frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}}$            & $I_{\rm D, ideal} = - I_M \cdot \e^{- \frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}}$    \\
+%         PMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{\rm DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{\rm DS})$      
 %     \end{tabular}
 %     \renewcommand{\arraystretch}{1}
 % }
@@ -391,10 +392,10 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{ll}
-    % Transkonduktanzparameter      & $\beta = \beta_0 \frac{W}{L} = \mu C_{OX} \, \frac{W}{L}$ \\
+    % Transkonduktanzparameter      & $\beta = \beta_0 \frac{W}{L} = \mu C_{\rm ox} \, \frac{W}{L}$ \\
     Temparaturspannung              & $V_{\rm temp} = \frac{k T}{q} \approx \qty{86.2}{\micro\volt\per\kelvin} \cdot T$                             \\
     (Spezifischer Drainstrom)       & $ I_M = \frac{W}{L} I_{M}' = \frac{W}{L} I_{M, 0}$                                                                                 \\
-    Subthreshold Slope Factor       & $n_M = 1 + \frac{\gamma}{2\sqrt{V_{SB}+\Phi_0}}$ \quad mit \quad $\Phi_0 = 2 \Phi_F \approx \qty{0.6}{\volt}$ \\
+    Subthreshold Slope Factor       & $n_M = 1 + \frac{\gamma}{2\sqrt{V_{\rm SB}+\Phi_0}}$ \quad mit \quad $\Phi_0 = 2 \Phi_F \approx \qty{0.6}{\volt}$ \\
     Kanallängenmodulation           & $\lambda = \frac{1}{V_E} \approx \frac{1}{a_E L}$
 \end{tabular}
 \renewcommand{\arraystretch}{1}
@@ -411,7 +412,7 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 
 % \paragraph{Subthreshold Slope Factor}
 % \[
-%     n_M = 1 + \frac{\gamma}{2\sqrt{V_{SB}+\Phi_0}} \quad \text{mit} \quad \Phi_0 = 2 \Phi_F \approx \qty{0.6}{\volt}
+%     n_M = 1 + \frac{\gamma}{2\sqrt{V_{\rm SB}+\Phi_0}} \quad \text{mit} \quad \Phi_0 = 2 \Phi_F \approx \qty{0.6}{\volt}
 % \]
 
 % \paragraph{Kanallängenmodulation}
@@ -421,7 +422,7 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 
 % \paragraph{Transkonduktanz-Parameter}
 % \[
-%     \beta = \frac{W}{L}\beta_0 = \mu C_{OX}
+%     \beta = \frac{W}{L}\beta_0 = \mu C_{\rm ox}
 % \]
 % (unter Vernachlässigun
 % \paragrag der Abhängigkeit von der Sättigung.)
@@ -442,10 +443,10 @@ In den drei verbleibenden Bereichen sind \textbf{keine Berechnungsformeln für} 
     \renewcommand{\arraystretch}{1.2}
     \begin{ctabular}{lll}
         \textbf{Bereich}    & \textbf{Grenzen}                  \\
-        LECK                & $V_K(I_D) < V_{GS} < V_M(I_D)$    \\ 
-        MOD                 & $V_M(I_D) < V_{GS} < V_H(I_D)$    \\ 
+        LECK                & $V_K(I_D) < V_{\rm GS} < V_M(I_D)$    \\ 
+        MOD                 & $V_M(I_D) < V_{\rm GS} < V_H(I_D)$    \\ 
                             & $V_H(I_D) = V_T(I_D) + x_H(I_D)$  \\
-        LIN                 & $V_L(I_D) < V_{GS}$               \\ 
+        LIN                 & $V_L(I_D) < V_{\rm GS}$               \\ 
     \end{ctabular}
 \end{minipage}
 \hfill
@@ -483,8 +484,8 @@ Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
     
     \begin{minipage}[t]{0.45\columnwidth}
         \begin{enumerate}[label=\bfseries\alph*)]
-            \item $|V_{GS}| \geq |V_H|$ \rightarrow\ strong inversion \\
-                $|V_{GS}| \leq |V_M|$ \rightarrow\ weak inversion
+            \item $|V_{\rm GS}| \geq |V_H|$ \rightarrow\ strong inversion \\
+                $|V_{\rm GS}| \leq |V_M|$ \rightarrow\ weak inversion
         \end{enumerate}
     \end{minipage}
     \hfill
@@ -495,13 +496,13 @@ Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
         \end{enumerate}
     \end{minipage}
 
-    \item $V_{DS}$ bestimmen
-    \item $V_{DS, \rm sat}$ ausrechnen (Strombereich beachten)  \\
-        strong inversion: $V_{DS, \rm sat} = V_{GS} - V_T$  \\
-        weak inversion: $V_{DS, \rm sat} \approx 5 \cdot V_{\rm temp} \approx \qty{130}{\milli \volt}$ 
-    \item Ausgangsspannungsbereich durch vergleich von $|V_{DS}|$ mit $|V_{DS, \rm sat}|$ ermitteln  \\
-        $|V_{DS}| < |V_{DS, \rm sat}|$ \rightarrow\ ungesättigt \\
-        $|V_{DS}| > |V_{DS, \rm sat}|$ \rightarrow\ gesättigt
+    \item $V_{\rm DS}$ bestimmen
+    \item $V_{\rm DS,  sat}$ ausrechnen (Strombereich beachten)  \\
+        strong inversion: $V_{\rm DS,  sat} = V_{\rm GS} - V_T$  \\
+        weak inversion: $V_{\rm DS,  sat} \approx 5 \cdot V_{\rm temp} \approx \qty{130}{\milli \volt}$ 
+    \item Ausgangsspannungsbereich durch vergleich von $|V_{\rm DS}|$ mit $|V_{\rm DS,  sat}|$ ermitteln  \\
+        $|V_{\rm DS}| < |V_{\rm DS,  sat}|$ \rightarrow\ ungesättigt \\
+        $|V_{\rm DS}| > |V_{\rm DS,  sat}|$ \rightarrow\ gesättigt
 \end{enumerate}
 }
 
@@ -509,11 +510,11 @@ Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 % \begin{minipage}[t]{0.44\columnwidth}
 %     \raggedright
 %     \begin{enumerate}
-%         \item $V_{GS}$ bestimmen 
-%         \item Ausgangsstrombereich mittels $V_{GS}$ bestimmen \\
-%             $|V_{GS}| \geq |V_H|$ \rightarrow\ strong inversion \\
-%             $|V_{GS}| \leq |V_M|$ \rightarrow\ weak inversion
-%         \item $V_{DS}$ ermitteln
+%         \item $V_{\rm GS}$ bestimmen 
+%         \item Ausgangsstrombereich mittels $V_{\rm GS}$ bestimmen \\
+%             $|V_{\rm GS}| \geq |V_H|$ \rightarrow\ strong inversion \\
+%             $|V_{\rm GS}| \leq |V_M|$ \rightarrow\ weak inversion
+%         \item $V_{\rm DS}$ ermitteln
 %     \end{enumerate}
 % \end{minipage}
 % \hfill
@@ -521,12 +522,12 @@ Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 %     \raggedright
 %     \begin{enumerate}
 %         \setcounter{enumi}{3}
-%         \item $V_{DS, \rm sat}$ ausrechnen (Strombereich beachten)  \\
-%             strong inversion: $V_{DS, \rm sat} = V_{GS} - V_T$  \\
-%             weak inversion: $V_{DS, \rm sat} \approx 5 \cdot V_{\rm temp} \approx \qty{130}{\milli \volt}$ 
-%         \item Ausgangsspannungsbereich durch vergleich von $|V_{DS}|$ mit $|V_{DS, \rm sat}|$ ermitteln  \\
-%             $|V_{DS}| < |V_{DS, \rm sat}|$ \rightarrow\ ungesättigt \\
-%             $|V_{DS}| > |V_{DS, \rm sat}|$ \rightarrow\ gesättigt
+%         \item $V_{\rm DS,  sat}$ ausrechnen (Strombereich beachten)  \\
+%             strong inversion: $V_{\rm DS,  sat} = V_{\rm GS} - V_T$  \\
+%             weak inversion: $V_{\rm DS,  sat} \approx 5 \cdot V_{\rm temp} \approx \qty{130}{\milli \volt}$ 
+%         \item Ausgangsspannungsbereich durch vergleich von $|V_{\rm DS}|$ mit $|V_{\rm DS,  sat}|$ ermitteln  \\
+%             $|V_{\rm DS}| < |V_{\rm DS,  sat}|$ \rightarrow\ ungesättigt \\
+%             $|V_{\rm DS}| > |V_{\rm DS,  sat}|$ \rightarrow\ gesättigt
 %     \end{enumerate}
 % \end{minipage}
 
@@ -538,15 +539,15 @@ Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 
 \begin{minipage}[t]{0.48\columnwidth}
     % \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_Pi_Ersatzschaltung.png} Variante aus Skript
-    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_Pi_Ersatzschaltung_angepasste_Stromrichtung.png}
+    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_Pi_Ersatzschaltung_angepasste_Stromrichtung.pdf}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\columnwidth}
     \raggedright
     \begin{itemize}
-        \item Ideale spannungsgesteurte Stromquelle: $I_D = f(V_{GS})$
-        \item Berücksichtigung von Kanallängenmodulation: $g_o$ bzw. $r_{DS}$
-        \item Berücksichtigung von Body-Effekt: $g_{mb} \cdot V_{SB}$
+        \item Ideale spannungsgesteurte Stromquelle: $I_D = f(V_{\rm GS})$
+        \item Berücksichtigung von Kanallängenmodulation: $g_o$ bzw. $r_{\rm DS}$
+        \item Berücksichtigung von Body-Effekt: $g_{\rm mb} \cdot V_{\rm SB}$
     \end{itemize}
 \end{minipage}
 
@@ -554,17 +555,17 @@ Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 \paragraph{Hochfrequenz}
 \label{Hochfrequenz}
 
-\begin{minipage}[t]{0.48\columnwidth}
+\begin{minipage}[t]{0.55\columnwidth}
     % \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_Kleinsignalersatzschaltung_hochfrequent.png}   Variante aus Skript
-    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_Kleinsignalersatzschaltung_hochfrequent_angepasste_Stromrichtung.png}
+    \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_Kleinsignalersatzschaltung_hochfrequent_angepasste_Stromrichtung.pdf}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.48\columnwidth}
+\begin{minipage}[t]{0.44\columnwidth}
     \raggedright
     Wenn Source und Bulk verbunden sind werden
     \begin{itemize}
-        \item $C_{GB}$ und $C_{GS}$ parallel geschaltet und
-        \item $C_{SB}$ kurzgeschlossen.
+        \item $C_{\rm GB}$ und $C_{\rm GS}$ parallel geschaltet
+        \item $C_{\rm SB}$ kurzgeschlossen.
     \end{itemize}
 \end{minipage}
 
@@ -575,9 +576,9 @@ Um den 'Zustand' eines MOS-FET zu bestimmen, wird wie folgt vorgegangen:
 Die Kleinsignalparameter bilden eine Vereinfachung (\textbf{Linearisierung}) in einem Arbeitspunkt. 
 Sie berechnen sich daher allgemein folgendermassen aus der Ableitung
 \[
-    g_m                     = \frac{\diff}{\diff V_{GS}} I_D \qquad
-    g_o = \frac{1}{r_{DS}}  = \frac{\diff}{\diff V_{DS}} I_D \qquad
-    g_{mb}                  = \frac{\diff}{\diff V_{SB}} I_D
+    g_m                     = \frac{\diff}{\diff V_{\rm GS}} I_D \qquad
+    g_o = \frac{1}{r_{\rm DS}}  = \frac{\diff}{\diff V_{\rm DS}} I_D \qquad
+    g_{\rm mb}                  = \frac{\diff}{\diff V_{\rm SB}} I_D
 \]
 
 Für die beiden Kanalzustände, in welchen Formeln für die Handrechnung verfügbar sind, gibt es auch hier handliche Formeln für die Berechnung der Kleinsignalparameter.
@@ -590,16 +591,16 @@ Die Bezeichnung der einzelnen Parameter gilt sowohl für strong inversion als au
 
 \begin{tabular}{@{}ll@{}}
     $g_m$               & Transkonduktanz (Stromquellenbetrieb) \textrightarrow\ Mass für Verstärkung des Transistors   \\
-    $g_{mb}$            & Body-Transkonduktanz \textrightarrow\ Beschreibt Wirkung des Body-Effekts                     \\
+    $g_{\rm mb}$            & Body-Transkonduktanz \textrightarrow\ Beschreibt Wirkung des Body-Effekts                     \\
     $g_o$               & Ausgangsleitwert (Stromquellenbetrieb) \textrightarrow\ beschreibt Kanallängenmodulation      \\
-    $r_{DS \crd{0}}$    & Kleinstmöglicher Ausgangswiderstand bzw. \textbf{Einschaltwiderstand bei} $\bm{V_{DS} = 0}$   \\
+    $r_{DS \crd{0}}$    & Kleinstmöglicher Ausgangswiderstand bzw. \textbf{Einschaltwiderstand bei} $\bm{V_{\rm DS} = 0}$   \\
                         & \textrightarrow\ Nur im Widerstandsbetrieb interessant
 \end{tabular}
 
 \medskip
 
 \textbf{Hinweis:} Folgende Formel gelten für nMOS Transistoren.
-Für pMOS Transistoren müssen jeweils \textbf{überall Beträge eingesetzt werden} \textbf{(ausser bei Technologieparametern)} und bei Bedarf beim Gesamtresultat ein Minus ergänzt werden.
+Für pMOS Transistoren müssen\textbf{Beträge eingesetzt werden}. Ein Plauribilitäts-Check bzgl. Vorzeichen ist generell ratsam.
 
 
 \subsubsection{Strong Inversion}
@@ -607,28 +608,28 @@ Für pMOS Transistoren müssen jeweils \textbf{überall Beträge eingesetzt werd
 \vspace{-0.3cm}
 
 \[
-    \underbrace{ g_m = \mu C_{ox} \frac{W}{L} (V_{GS} - V_T) }_{\text{AP durch } V_{GS} \text{ bestimmt}} \qquad \qquad \qquad
-    \underbrace{ g_m = \sqrt{2 \mu C_{ox} \frac{W}{L} I_D} }_{\text{AP durch } I_D \text{ bestimmt}} 
+    \underbrace{ g_m = \mu C_{\rm ox} \frac{W}{L} (V_{\rm GS} - V_T) }_{\text{AP durch } V_{\rm GS} \text{ bestimmt}} \qquad \qquad \qquad
+    \underbrace{ g_m = \sqrt{2 \mu C_{\rm ox} \frac{W}{L} I_D} }_{\text{AP durch } I_D \text{ bestimmt}} 
 \]
 
 % \[
-%     g_{mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)
+%     g_{\rm mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{\rm SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)
 % \]
 % Ungesättigt:
 % \[
-%     g_o = \frac{1}{r_{DS}} = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})
+%     g_o = \frac{1}{r_{\rm DS}} = \mu C_{\rm ox} \frac{W}{L} ((V_{\rm GS} - V_T) - V_{\rm DS})
 % \]
 % % Gesättigt:
 % \[
-%     g_o =  \frac{1}{r_{DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E L + V_{DS}}
+%     g_o =  \frac{1}{r_{\rm DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{\rm DS}} \approx \frac{I_D}{a_E L + V_{\rm DS}}
 % \]
 
 \vspace{-0.15cm}
 
 \begin{align*}
-                                         g_{mb} &= -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)                                     \\
-    \text{ \textbf{Ungesättigt:}} \quad     g_o &= \frac{1}{r_{DS}} = \mu C_{ox} \frac{W}{L} ((V_{GS} - V_T) - V_{DS})                                              \\
-    \text{ \textbf{Gesättigt:}} \quad       g_o &=  \frac{1}{r_{DS}} = \lambda \cdot I_{DS, \rm sat} = \frac{I_D}{V_E + V_{DS}} \approx \frac{I_D}{a_E \cdot L + V_{DS}}
+                                         g_{\rm mb} &= -g_m \frac{\gamma}{2 \sqrt{\abs{V_{\rm SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)                                     \\
+    \text{ \textbf{Ungesättigt:}} \quad     g_o &= \frac{1}{r_{\rm DS}} = \mu C_{\rm ox} \frac{W}{L} ((V_{\rm GS} - V_T) - V_{\rm DS})                                              \\
+    \text{ \textbf{Gesättigt:}} \quad       g_o &=  \frac{1}{r_{\rm DS}} = \lambda \cdot I_{\rm DS, sat} = \frac{I_D}{V_E + V_{\rm DS}} \approx \frac{I_D}{a_E \cdot L + V_{\rm DS}}
 \end{align*}
 
 
@@ -648,14 +649,14 @@ Für pMOS Transistoren müssen jeweils \textbf{überall Beträge eingesetzt werd
 \vspace{-0.15cm}
 
 \begin{align*}
-                                         g_{mb} &= -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)                                             \\
-    \text{ \textbf{Ungesättigt:}} \quad     g_o &= \frac{1}{r_{DS}} = \frac{V_{\text{temp}}}{I_{D \infty}} \quad \text{ \textrightarrow\ wird meist simuliert}              \\
-    \text{ \textbf{Gesättigt:}} \quad       g_o &=  \frac{1}{r_{DS}} = \lambda \cdot  I_{DS, \rm sat} = \frac{I_D}{V_E + V_{DS}}  \approx \frac{I_D}{a_E \cdot L + V_{DS}}
+                                         g_{\rm mb} &= -g_m \frac{\gamma}{2 \sqrt{\abs{V_{\rm SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)                                             \\
+    \text{ \textbf{Ungesättigt:}} \quad     g_o &= \frac{1}{r_{\rm DS}} = \frac{V_{\text{temp}}}{I_{D \infty}} \quad \text{ \textrightarrow\ wird meist simuliert}              \\
+    \text{ \textbf{Gesättigt:}} \quad       g_o &=  \frac{1}{r_{\rm DS}} = \lambda \cdot  I_{\rm DS, sat} = \frac{I_D}{V_E + V_{\rm DS}}  \approx \frac{I_D}{a_E \cdot L + V_{\rm DS}}
 \end{align*}
 
 
 % \[
-%     g_{mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)
+%     g_{\rm mb} = -g_m \frac{\gamma}{2 \sqrt{\abs{V_{\rm SB}} + \abs{2 \Phi_F}}} = - g_m (n_M - 1)
 % \]
 % Ungesättigt:
 % \[
@@ -663,7 +664,7 @@ Für pMOS Transistoren müssen jeweils \textbf{überall Beträge eingesetzt werd
 % \]
 % Gesättigt:
 % \[
-%     g_o = \frac{1}{r_{DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{DS}}
+%     g_o = \frac{1}{r_{\rm DS}} = \lambda I_{DS, sat} = \frac{I_D}{V_E + V_{\rm DS}}
 % \]
 
 \subsection{Zusammenhänge}
@@ -704,7 +705,7 @@ Zur Bestimmung des \textbf{Arbeitspunkts} bzw. aller Gleichspannungen.
 \subsection{Kleinsignalanalyse}
 \label{Kleinsignalanalyse}
 
-Die Kleinsignalanalyse untersucht das Verhalten der Schaltung \textbf{imFrequenzbereich} und hat folgende Eigenschaften:
+Die Kleinsignalanalyse untersucht das Verhalten der Schaltung \textbf{im Frequenzbereich} und hat folgende Eigenschaften:
 
 \smallskip
 
@@ -726,11 +727,3 @@ Zur Berechnung von Verstärkungsfaktoren und Eingangswiderständen für AC-Signa
     \item[Koppel- und Bypass-Kondensatoren] durch Kurzschlüsse ersetzen.  
 \end{description}
 
-
-% \subsection{Vorgehen: Verstärker dimensionieren}
-% \begin{itemize}
-%     \item Arbeitspunkt bestimmen.
-%     \item $I_D$ wählen, sodass der Transistor \textbf{gesättigt} ist.   %CHECK [Simi] @Flurin Hier stand zuvor UNgesättigt -> gemäss Beispiel von V4 S15 haben wir aber gesagt, der Transistor muss gesättigt sein...?
-%     \item Kleinsignalersatzschaltung zeichnen.
-%     \item Parameter der Ersatzschaltung bestimmen.
-% \end{itemize}

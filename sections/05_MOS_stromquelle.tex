@@ -1,5 +1,5 @@
 \section{MOS Stromquelle}
-Bei der Einstellung des Arbietspunkts mittels Widerstand resultiert eine quadratische Gleichung für den Strom und so die Ausgangsspannung eines Verstärkers.
+Bei der Einstellung des Arbeitspunkts mittels Widerstand resultiert eine quadratische Gleichung für den Strom und so die Ausgangsspannung eines Verstärkers.
 Abhilfe kann eine Stromquelle anstelle des Widerstands schaffen.
 
 MOS Transistoren sind bereits spannungsgesteuerte Stromquellen.
@@ -10,18 +10,23 @@ Durch einfügen eines $R_S$ kann der Innenwiderstand der Stromquelle \textbf{max
 % TODO: [Flurin] @ Simi: Schaltung mit R_S aus V6S18 und evtl. Formeln für R_iD aus V6S17
 %CHECK: [Simi] @ Flurin: Falsche Slide für Schaltung im obigen todo..? Habe jetzt mal improvisiert...
 
-\begin{minipage}[t]{0.35\columnwidth}
+\begin{minipage}[t]{0.44\columnwidth}
     \includegraphics[width=0.48\columnwidth, align=t]{images/05_stromquelle_einfach_NMOS.pdf}
     \includegraphics[width=0.48\columnwidth, align=t]{images/05_stromquelle_einfach_PMOS.pdf}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.62\columnwidth}
+\begin{minipage}[t]{0.5\columnwidth}
     \paragraph{Ausgangswiderstand}
 
     \vspace{-0.4cm}
-    \[
-        r_{\rm iD} = r_{\rm DS} \left( 1 + g_m R_S + \frac{R_S}{r_{\rm DS}} \right) = r_{\rm DS} (1 + g_m R_S) + R_S 
-    \]
+    % \[
+    %     r_{\rm iD} = r_{\rm DS} \left( 1 + g_m R_S + \frac{R_S}{r_{\rm DS}} \right) = r_{\rm DS} (1 + g_m R_S) + R_S 
+    % \]
+
+    \begin{align*}
+         r_{\rm iD} &= r_{\rm DS} \left( 1 + g_m R_S + \frac{R_S}{r_{\rm DS}} \right) \\ 
+                    &= r_{\rm DS} (1 + g_m R_S) + R_S
+    \end{align*}
             
 
     \paragraph{Minimale Ausgangsspannung}
@@ -47,7 +52,7 @@ Dabei wird der maximale Ausgangsstrom jedoch leicht reduziert.
     \includegraphics[width=\columnwidth, align=t]{images/05_stromquelle_kaskode.pdf}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.65\columnwidth}
+\begin{minipage}[t]{0.62\columnwidth}
     \paragraph{Ausgangswiderstand}
 
     \vspace{-0.2cm}
@@ -68,7 +73,7 @@ Dabei wird der maximale Ausgangsstrom jedoch leicht reduziert.
 
     \vspace{-0.4cm}
     \[
-        I_D = \frac{\mu C_{\rm OX}}{2} \left( \frac{W}{L}\right)_{N1} (V_{\rm GS\_N1} - V_T)^2 \cdot \cbl{(1 + \lambda V_{\rm DS\_N1})}
+        I_D = \frac{\mu C_{\rm ox}}{2} \left( \frac{W}{L}\right)_{N1} (V_{\rm GS\_N1} - V_T)^2 \cdot \cbl{(1 + \lambda V_{\rm DS\_N1})}
     \]
 \end{minipage}
 
@@ -79,11 +84,11 @@ Durch das Stabilisieren der Spannung wird der Arbeitspunkt des Transistors stabi
 
 \smallskip
 
-\begin{minipage}[t]{0.5\columnwidth}
+\begin{minipage}[t]{0.55\columnwidth}
     \includegraphics[width=\columnwidth, align=t]{images/05_stromquelle_geregelte_kaskode_opamp.pdf}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.46\columnwidth}
+\begin{minipage}[t]{0.42\columnwidth}
 
     \paragraph{Transkonduktanz}
 
@@ -114,15 +119,15 @@ Durch das Stabilisieren der Spannung wird der Arbeitspunkt des Transistors stabi
 
 
 \subsubsection{Säckinger Kaskode}
-Die Säckinger Kaskode ersetzt den komplexen OpAmp mit einem einzelnen Transistor in \textbf{Source-Schaltung}.
+Die Säckinger Kaskode ersetzt den komplexen OpAmp mit einem einzelnen Transistor ($\rm N_3$) in \textbf{Source-Schaltung}.
 
 \smallskip
 
-\begin{minipage}[t]{0.5\columnwidth}
+\begin{minipage}[t]{0.55\columnwidth}
     \includegraphics[width=\columnwidth, align=t]{images/05_stromquelle_geregelte_kaskode_FET.pdf}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.46\columnwidth}
+\begin{minipage}[t]{0.42\columnwidth}
 
     \paragraph{Transkonduktanz}
 

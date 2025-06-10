@@ -68,11 +68,11 @@ Die Source-Schaltung ist eine \textbf{invertierende Verstärkerschaltung.}
     \vspace{-0.5cm}
 
     \[
-        \boldsymbol{ R_S = 0 \qquad  a \approx - g_m \cdot r_{\rm out} \underbrace{= - g_m (r_{DS} \parallel R_D) }_{\text{Mikroelektronik}} }
+        \boldsymbol{ R_S = 0 \qquad  a \approx - g_m \cdot r_{\rm out} \underbrace{= - g_m (r_{\rm DS} \parallel R_D) }_{\text{Mikroelektronik}} }
     \]
     
 
-    % $$g_m \gg g_o$ \& $R_D \ll r_{DS} \qquad a \approx - g_m \frac{R_D}{g_m R_D + 1} $$   % NOTE: Aus Skript (nicht in Vorlesung), macht Formatierung kaputt daher weggelassen, da allg. Formel immer gültig
+    % $$g_m \gg g_o$ \& $R_D \ll r_{\rm DS} \qquad a \approx - g_m \frac{R_D}{g_m R_D + 1} $$   % NOTE: Aus Skript (nicht in Vorlesung), macht Formatierung kaputt daher weggelassen, da allg. Formel immer gültig
 
     \vspace{-0.2cm}
 
@@ -93,10 +93,10 @@ Die \textbf{\myul{theoretisch}} maximal mögliche Verstärkung in strong inversi
 \vspace{-0.2cm}
 
 \[
-    a_{\rm max} = - \frac{g_m}{g_o} = -g_m r_{DS} = -\frac{2\cdot a_E \cdot L}{V_{GS} - V_T}
+    a_{\rm max} = - \frac{g_m}{g_o} = -g_m r_{\rm DS} = -\frac{2\cdot a_E \cdot L}{V_{\rm GS} - V_T}
 \]
 % \[
-%     r_{DS} = \frac{a_E \cdot L}{I_D} \qquad g_m = \mu C_{OX} \frac{W}{L} (V_{GS} - V_T) = \frac{2 I_D}{V_{GS}-V_T}
+%     r_{\rm DS} = \frac{a_E \cdot L}{I_D} \qquad g_m = \mu C_{\rm ox} \frac{W}{L} (V_{\rm GS} - V_T) = \frac{2 I_D}{V_{\rm GS}-V_T}
 % \]
 
 
@@ -107,13 +107,13 @@ Damit der Wert $a_{\rm max}$ maximal wird, folgt as obiger Formel:
 \begin{minipage}[t]{0.35\columnwidth}
     \begin{itemize}
         \item $g_m$ so gross wie möglich
-        \item $r_{DS}$ so gross wie möglich
+        \item $r_{\rm DS}$ so gross wie möglich
     \end{itemize}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.62\columnwidth}
     \begin{itemize}
-        \item $V_{GS}$ so tief wie möglich  ($V_{GS}-V_T \approx 150 - \qty{200}{\milli\volt}$).
+        \item $V_{\rm GS}$ so tief wie möglich  ($V_{\rm GS}-V_T \approx 150 - \qty{200}{\milli\volt}$).
         \item $L$ möglichst gross \textrightarrow\ grosser Lastwiderstand
     \end{itemize}
 \end{minipage}
@@ -127,11 +127,11 @@ Die \textbf{\myul{theoretisch}} maximal mögliche Verstärkung in weak inversion
 \vspace{-0.2cm}
 
 \[
-    a_{\rm max} = - \frac{g_m}{g_o} = -g_m r_{DS} = -\frac{a_E \cdot L}{n_m - V_{\rm temp}}
+    a_{\rm max} = - \frac{g_m}{g_o} = -g_m r_{\rm DS} = -\frac{a_E \cdot L}{n_m - V_{\rm temp}}
 \]
 
 % \[
-%     g_{m} = \frac{I_D}{n_m V_{temp}} \qquad r_{DS} \approx \frac{a_E \cdot L}{I_D}
+%     g_{m} = \frac{I_D}{n_m V_{temp}} \qquad r_{\rm DS} \approx \frac{a_E \cdot L}{I_D}
 % \]
 
 \begin{itemize}
@@ -166,13 +166,13 @@ Die Gate-Schaltung ist eine \textbf{nichtinvertierende Verstärkerschaltung.}
     \vspace{-0.5cm}
 
     \[
-        \bm{R_S = 0 \qquad  a \approx g_m \cdot r_{\rm out} \underbrace{= g_m (r_{DS} \parallel R_D) }_{\text{Mikroelektronik}} }
+        \bm{R_S = 0 \qquad  a \approx g_m \cdot r_{\rm out} \underbrace{= g_m (r_{\rm DS} \parallel R_D) }_{\text{Mikroelektronik}} }
     \]
 \end{minipage}
 
 \smallskip
 
-Für $R_S = 0$ und $R_D \ll r_{DS}$ gilt (ebenfalls in \textbf{strong inversion}) weiter: 
+Für $R_S = 0$ und $R_D \ll r_{\rm DS}$ gilt (ebenfalls in \textbf{strong inversion}) weiter: 
 \[
     a \overset{R_D \text{klein}}{\approx} g_m R_D \qquad \text{bzw.} \qquad a \overset{R_D \text{gross}}{\approx} \frac{g_m}{g_o} \approx a_{\rm max}
 \]
@@ -211,7 +211,7 @@ Die Drain-Schaltung ist eine \textbf{nichtinvertierende Verstärkerschaltung.}
     \paragraph{Maximale Verstärkung}
 
     Für die \textbf{theoretisch} maximal mögliche Verstärkung $a_{\rm max}$ gilt für
-    $g_m \ll g_o$ und $r_{DS} \ll R_D$
+    $g_m \ll g_o$ und $r_{\rm DS} \ll R_D$
 
     \vspace{-0.2cm}
 
@@ -222,9 +222,9 @@ Die Drain-Schaltung ist eine \textbf{nichtinvertierende Verstärkerschaltung.}
 
 
 \subsubsection{Level-Shift}
-Die Drain-Schaltung reduziert den DC-Pegel des Ausgangssignals um die Spannung $V_{GS}$. Somit ergibt sich der Zusammenhang:
+Die Drain-Schaltung reduziert den DC-Pegel des Ausgangssignals um die Spannung $V_{\rm GS}$. Somit ergibt sich der Zusammenhang:
 \[
-    V_{\rm in} - V_{\rm out} =  V_{GS} = V_T + \sqrt{\frac{2 I_D}{\mu C_{ox} \frac{W}{L}}} \qquad \Leftrightarrow\ \quad  V_{\rm out} = V_{\rm in} - \left( V_T + \sqrt{\frac{2 I_D}{\mu C_{ox} \frac{W}{L}}} \right)
+    V_{\rm in} - V_{\rm out} =  V_{\rm GS} = V_T + \sqrt{\frac{2 I_D}{\mu C_{\rm ox} \frac{W}{L}}} \qquad \Leftrightarrow\ \quad  V_{\rm out} = V_{\rm in} - \left( V_T + \sqrt{\frac{2 I_D}{\mu C_{\rm ox} \frac{W}{L}}} \right)
 \]
 Damit der Level-Shift möglichst klein ist, wird $L$ möglichst gross gewählt.
 
@@ -236,7 +236,7 @@ Da die Source nicht auf Bulk-Potential ist, muss die Veränderung der Threshold 
 \subsubsection{Bemerkungen}
 \begin{itemize}
     \item Der Source-Follower hat immer eine Verstärkung $a \leq 1$
-    \item Der Source-Follower bewirkt immer einen Level-Shift um $V_{GS}$.
+    \item Der Source-Follower bewirkt immer einen Level-Shift um $V_{\rm GS}$.
 \end{itemize}
 
 
@@ -268,8 +268,8 @@ Da die Source nicht auf Bulk-Potential ist, muss die Veränderung der Threshold 
 \vspace{-0.3cm}
 
 \begin{align*}
-    \text{Allgemein}            & \qquad r_{i, S} = \left( \frac{1}{g_m} \parallel r_{DS} \right) \left( 1 + \frac{R_D}{r_{DS}} \right) = \frac{1}{g_m + g_o} (1 + g_o R_D) \\
-    \text{Für } r_{DS} \gg R_D  & \qquad r_{i, S} \approx \frac{1}{g_m} \parallel r_{DS} = \frac{1}{g_m + g_o} \\
+    \text{Allgemein}            & \qquad r_{i, S} = \left( \frac{1}{g_m} \parallel r_{\rm DS} \right) \left( 1 + \frac{R_D}{r_{\rm DS}} \right) = \frac{1}{g_m + g_o} (1 + g_o R_D) \\
+    \text{Für } r_{\rm DS} \gg R_D  & \qquad r_{i, S} \approx \frac{1}{g_m} \parallel r_{\rm DS} = \frac{1}{g_m + g_o} \\
     \text{Für } g_m \gg g_o     & \qquad r_{i, S} \approx \frac{1}{g_m}
 \end{align*}
 
@@ -279,8 +279,8 @@ Da die Source nicht auf Bulk-Potential ist, muss die Veränderung der Threshold 
 \vspace{-0.3cm}
 
 \begin{align*}
-    \text{Allgemein}            & \qquad r_{i, D} = r_{DS} \left( 1 + g_m R_S + \frac{R_S}{r_{DS}} \right) = \frac{1}{g_o} (1+g_m R_S) + R_S \\
-    \text{Für } r_{DS} \gg R_S  & \qquad r_{i, D} \approx r_{DS} \left( 1 + g_m R_S \right) = \frac{1}{g_o} (1+g_m R_S) + R_S \\
-    \text{Für } R_S = 0         & \qquad r_{i, D} \approx r_{DS} = \frac{1}{g_o}
+    \text{Allgemein}            & \qquad r_{i, D} = r_{\rm DS} \left( 1 + g_m R_S + \frac{R_S}{r_{\rm DS}} \right) = \frac{1}{g_o} (1+g_m R_S) + R_S \\
+    \text{Für } r_{\rm DS} \gg R_S  & \qquad r_{i, D} \approx r_{\rm DS} \left( 1 + g_m R_S \right) = \frac{1}{g_o} (1+g_m R_S) + R_S \\
+    \text{Für } R_S = 0         & \qquad r_{i, D} \approx r_{\rm DS} = \frac{1}{g_o}
 \end{align*}
 

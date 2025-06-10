@@ -43,7 +43,7 @@ Die MOS Diode arbeitet \textbf{(in strong inversion) immer in Sättigung}, da di
 
     %CHECK: [Simi] @ Flurin: WO kommt das her? Ist das relevant?   
     \[
-        V_{GS} = V_\text{M} + n_M V_\text{temp} \ln{\frac{I_\text{D}}{I_M' \frac{W}{L}}}
+        V_{\rm GS} = V_\text{M} + n_M V_\text{temp} \ln\left(\frac{I_\text{D}}{I_M' \frac{W}{L}}\right)
     \]
 \end{minipage}
 
@@ -66,7 +66,7 @@ Die MOS Diode arbeitet \textbf{(in strong inversion) immer in Sättigung}, da di
             \textrightarrow\ Schnittpunkt entspricht Arbeitspunkt
             \smallskip
         \1 Rechnerisch mittels folgender Formel
-        $$ I_D = \frac{V_{\rm DD} - V_{\rm GS}}{R_1} = \frac{\mu C_{\rm OX}}{2} \frac{W}{L} (V_{\rm GS} - V_T)^2 $$
+        $$ I_D = \frac{V_{\rm DD} - V_{\rm GS}}{R_1} = \frac{\mu C_{\rm ox}}{2} \frac{W}{L} (V_{\rm GS} - V_T)^2 $$
     \end{outline}
 \end{minipage}
 
@@ -80,7 +80,7 @@ Die MOS Diode arbeitet \textbf{(in strong inversion) immer in Sättigung}, da di
 \begin{minipage}[t]{0.65\columnwidth}
     Die Kleinsignalersatzschaltung kann (leicht angepasst) vom MOS Transistor übernommen werden.
     \begin{align*}
-        \text{Allgemein:} \quad             r_\text{\rm MD}  &= \frac{1}{g_m + g_o} = \frac{1}{g_m} \parallel r_{DS} \\
+        \text{Allgemein:} \quad             r_\text{\rm MD}  &= \frac{1}{g_m + g_o} = \frac{1}{g_m} \parallel r_{\rm DS} \\
         \text{\textbf{Praxis:}} \quad       r_\text{\rm MD} &\approx \frac{1}{g_m} = \frac{1}{\sqrt{2 \mu C_\text{ox} \frac{W}{L} I_\text{D}}}
     \end{align*}
 
@@ -157,7 +157,7 @@ Spannungsteiler könnten auf mehrere Arten realisiert werden. \textrightarrow\ \
     \begin{itemize}
         \item[+] Gleiche Elemente (pMOS) \\
             \textrightarrow\ gutes Matching
-        \item[+] Kein Body-Effekt (pMOS)
+        \item[+] Kein Body-Effekt
     \end{itemize}
 \end{minipage}
 \hfill

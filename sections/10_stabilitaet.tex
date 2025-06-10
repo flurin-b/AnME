@@ -2,51 +2,31 @@
 
 \subsection{UTF des rückgekoppelten Verstärkers}
 
-\begin{minipage}[c]{0.48\columnwidth}
+\begin{minipage}[c]{0.53\columnwidth}
     \includegraphics[width=\columnwidth, align=t]{images/10_stabilitaet_loop.pdf}
 \end{minipage}
 \hfill
-\begin{minipage}[c]{0.48\columnwidth}
+\begin{minipage}[c]{0.46\columnwidth}
     \vspace{-0.2cm}
     \begin{align*}
-         A_{\rm CL}(s)  &= \frac{U_{\rm out}(s)}{U_{\rm in}(s)} = \frac{A(s)}{1+ A(s) F(s)} \\
+         A_{\rm CL}(s)  &= \frac{U_{\rm out}(s)}{U_{\rm in}(s)} = \frac{A(s)}{1+ \underbrace{ A(s) F(s) }_{T(s)}} \\
                         &= \frac{1}{\frac{1}{A(s)} + F(s)} \overset{\text{tiefe Freq.}}{\approx} \frac{1}{F(s)}
     \end{align*}
 \end{minipage}
 
-
-% \[
-    %     A_{\rm CL}(s) = \frac{U_{out} (s)}{U_{in}(s)}
-    %     = \frac{A(s)}{1+A(s) F(s)}
-    %     = \frac{1}{\frac{1}{A(s)}+F(s)}
-    %     \overset{\text{tiefe freq.}}{\approx} \frac{1}{F(s)}
-    % \]
-
-% $A(s)$: Frequenzgang des Verstärkers
-% $F(s)$: Frequenzgang der Rückkopplung
-
-
-
-% \subsubsection{Loop Gain} % TODO: [Flurin] Das ist irgendwie für nichts?
-%[Simi] @Flurin: Ja... ich kommentiere es mal aus... Braucht es aus meiner Sicht nicht
-% \[
-%     T(s) = A(s) \cdot F(s)
-% \]
-
-% $A(s)$: Frequenzgang des Verstärkers
-
-% $F(s)$: Frequenzgang der Rückkopplung
+\begin{ctabular}{ll | ll}
+    $A(s)$  & Frequenzgang des Verstärkers      & $T(s)$    & Loop Gain     \\
+    $F(s)$  & Frequenzgang der Rückkopplung     &           &               \\
+\end{ctabular}
 
 
 \subsection{Stabilitätskriterien}
 Der \textbf{Nenner} von $A_{\rm CL}(s)$ darf \textbf{nicht null} sein, da das System sonst schwingt. \\
 Um die Stabilität zu beurteilen werden Verstärkungs- und Phasenmarge betrachtet.
 
-\medskip
-
-Damit ein System stabil ist, müssen die beiden folgenden Bedingungen erfüllt sein:
-
 \smallskip
+Damit ein System stabil ist, müssen die beiden folgenden Bedingungen für Verstärkungsmarge und Phasenmarge erfüllt sein:
+
 
 \begin{minipage}[t]{0.48\columnwidth}
     \paragraph{Verstärkungsmarge}
@@ -54,7 +34,7 @@ Damit ein System stabil ist, müssen die beiden folgenden Bedingungen erfüllt s
     Bei $\Phi = \qty{180}{\degree}$ ablesen:
 
     \[
-        \text{GM} = g_M = \abs{A(s) \cdot T(s)} < 1
+        \text{GM} = g_M = \abs{A(s) \cdot T(s)} \overset{!}{<} 1
     \]
 
     \smallskip
@@ -63,14 +43,11 @@ Damit ein System stabil ist, müssen die beiden folgenden Bedingungen erfüllt s
 
     Bei Verstärkung $1$ bzw  $\qty{0}{\decibel}$ ablesen:
     \[
-        \text{PM} = \varphi_M = \qty{180}{\degree} - \Phi > \qty{0}{\degree}
+        \text{PM} = \varphi_M = \qty{180}{\degree} - \Phi \overset{!}{>} \qty{0}{\degree}
     \]
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\columnwidth}
-    %NOTE: [Simi] Ich mag keines der Bilder besonders... Sie zeigen nicht so gut, was Verstärkungs- und Phasenreserve sind...
-    % Ich finde gerade aber nicht die Zeit, um selbst einen Bode-Plot zu machen und das Zeus vernünftig zu markieren...
-    % \includegraphics[width=\columnwidth, align=t]{images/10_bode_plot.pdf}
     \includegraphics[width=\columnwidth, align=t]{images/10_bode_plot_V2.pdf}
 \end{minipage}
 

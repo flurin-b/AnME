@@ -94,8 +94,6 @@ Man unterscheidet dabei zwischen \textbf{zwei Arten} von Operationsverstärkern:
 \]
 
 
-%TODO: [Flurin] Kennlinie aus V10S9
-%CHECK: [Simi] @Flurin: There it is... Eventuell ist es aber besser, die 3 Bereiche formelmässig darzustellen und die Grafik wegzulassen...?
 \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_grosssignalanalyse_strong_inv.pdf}
 
 
@@ -125,8 +123,10 @@ Der Ausgangsstrom hängt nur von der \textbf{Differenz der Eingangsspannungen} a
 
 
 \subsection{Differenzstufe -- Kleinsignalanalyse}
+\label{Differenzstufe -- Kleinsignalanalyse}
 
 \subsubsection{Transkonduktanz $\bm{g_{\rm md}}$}
+
 
 \begin{minipage}[t]{0.48\columnwidth}
     \paragraph{Widerstands- / Stromquellenlast}
@@ -249,7 +249,10 @@ Generell berechnet sich die Verstärkung der Differenzstufe $a_{\rm Diff}$ als
 
 Für folgende Grenzwertbetrachtungen der Spannungsverstärkung gilt: $R_{\rm Lext} = \infty$
 
+\smallskip
+
 \resizebox{\columnwidth}{!}{
+    \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|l|l|l|}
         \hline
         \textbf{Betriebsbereich}    & \textbf{Grenzwert der Spannungsverstärkung}                                                                                                       & \textbf{Grössere Verstärkung bei}                                         \\
@@ -259,6 +262,7 @@ Für folgende Grenzwertbetrachtungen der Spannungsverstärkung gilt: $R_{\rm Lex
         Weak Inversion              & $\abs{a_{\text{max}}} = \frac{V_E}{n_M V_\text{temp}} \approx \frac{a_E L}{n_M V_\text{temp}}$                                                    & (Early-Spannung $\uparrow$)                                               \\
         \hline
     \end{tabular}
+    \renewcommand{\arraystretch}{1}
 }
 
 \medskip
@@ -353,7 +357,7 @@ Die Aussteuerung $\Delta V$ des Ausgangs bei einem Rechteck am Eingang berechnet
 \hfill
 \begin{minipage}[t]{0.5\columnwidth}
     Eine Stufe limitiert die Slew Rate der gesamten Schaltung. 
-    Um die limitierende (dominante) Stufe zu bestimmen, wird folgnedermassen vorgegangen:
+    Um die limitierende (dominante) Stufe zu bestimmen, wird folgendermassen vorgegangen:
 
     \smallskip
 
@@ -401,7 +405,7 @@ Bei Unterschreitung von $V_{\rm inCM, min}$ fällt der Transistor $N_3$ durch Re
 Bei Überschreitung von $V_{\rm inCM, max}$ fallen die Transistoren $P_1$ und $P_2$ aus der Sättigung, was den Stromspiegel unwirksam macht. Auch dies reduziert das $g_m$.
 
 
-\paragraph{Gegentackt / Differential-Mode}
+\paragraph{Gegentakt / Differential-Mode}
 \[
     V_{\rm inDM} = V_{\rm in1} - V_{\rm in2}
 \]
@@ -422,7 +426,7 @@ Durch Symmetrie kann zur Berechnung der Common-Mode-Verstärkung die Stromquelle
 \begin{minipage}[t]{0.48\columnwidth}
     Folglich kann zur Berechnung die Formel der Source-Schaltung verwenden:
     \[
-        a_{\rm CM} \approx - \frac{R_D}{2 r_Q}    % NOTE: [Simi] In Herleitung in Vorlesung (von Hand) war hier ein Minus und im Skript auch... (Nur auf den Slides nicht...)
+        a_{\rm CM} \approx - \frac{R_D}{2 r_Q}
     \]
 
     Die Differential-Mode-Verstärkung kann wie gehabt berechnet werden:
@@ -441,7 +445,7 @@ Die Common-Mode-Verstärkung kann durch Wahl einer guten Stromquelle ($r_Q >> 2 
 \vspace{-0.2cm}
 
 \[
-    \text{CMRR} = \abs{\frac{a_{\rm DM}}{a_{\rm CM}}} = \abs{\frac{-\frac{g_m}{2} R_D}{- \frac{R_D}{2 r_Q}}} = \frac{g_m}{g_{\rm oQ}} = g_m \cdot r_Q
+    \text{CMRR} = \abs{\frac{a_{\rm DM}}{a_{\rm CM}}} = \abs{\frac{-\frac{g_m}{2} R_D}{- \frac{R_D}{2 r_Q}}} = g_m \cdot r_Q = \frac{g_m}{g_{\rm oQ}}
 \]
 % Mit
 % \[

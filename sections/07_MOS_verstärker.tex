@@ -4,7 +4,7 @@ Einstufige MOS-Verstärker sind im Prinzip \textbf{Source-Schaltungen} (siehe Ab
 Diese können mit diversen Lasten betieben werden.
 
 Sie bewirken eine Spannungsverstärkung durch Wandeln der Eingangsspannung in einen Strom durch $g_m$.
-Dieser Strom wird anschliessend durch $r_{out}$ in eine Spannung umgewandelt.
+Dieser Strom wird anschliessend durch $r_{\rm out}$ in eine Spannung umgewandelt.
 
 
 \subsection{Analyse von MOS-Verstärkern}
@@ -52,7 +52,7 @@ Der Transistor muss im \textbf{Stromquellen-Betrieb bzw. in Sättigung} sein!
 \]
 
 
-\paragraph{Differnetieller Ausgangswiderstand}
+\paragraph{Differentieller Ausgangswiderstand}
 
 \vspace{-0.2cm}
 
@@ -75,14 +75,14 @@ Der Transistor muss im \textbf{Stromquellen-Betrieb bzw. in Sättigung} sein!
     \vspace{-0.2cm}
 
     \[
-        a \approx - g_{m1} \cdot R_D = - \frac{g_{m1}}{g_{m2}} = - \sqrt{\frac{\left( \mu C_{OX} \frac{W_1}{L_1} \right)}{\left( \mu C_{OX} \frac{W_2}{L_2} \right)}}
+        a \approx - g_{m1} \cdot R_D = - \frac{g_{m1}}{g_{m2}} = - \sqrt{\frac{\left( \mu C_{\rm ox} \frac{W_1}{L_1} \right)}{\left( \mu C_{\rm ox} \frac{W_2}{L_2} \right)}}
     \]
 
     \paragraph{Vorteile / Nachteile}
 
      \begin{itemize}
         \item[+] Spannungsabfall über Diode nicht direkt proportional zu Strom
-        \item[-] N2 ist \textbf{nichtlinearer Widerstand} mit beträchtlichem Spannungsabfall
+        \item[-] $\rm N_{2}$ ist \textbf{nichtlinearer Widerstand} mit beträchtlichem Spannungsabfall
      \end{itemize}
 \end{minipage}
 
@@ -132,7 +132,7 @@ Diese Schaltung ist jedoch nur für keine Signalpegel und kleine Verstärkungen 
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.66\columnwidth}
-    Durch den kleinen Kleinsignalwiderstand von P1 hat die erste Verstärkerstufe eine kleine Verstärkung. 
+    Durch den kleinen Kleinsignalwiderstand von $\rm P_1$ hat die erste Verstärkerstufe eine kleine Verstärkung. 
     Dadurch fällt der Miller-Effekt weniger ins Gewicht.
 
     \paragraph{Vorteile / Nachteile}
@@ -164,7 +164,7 @@ Diese Schaltung ist jedoch nur für keine Signalpegel und kleine Verstärkungen 
 \hfill
 \begin{minipage}[t]{0.66\columnwidth}
     Durch Einsatz einer Kaskode wird eine sehr grosse Last zur Verfügung gestellt. 
-    N1 bezweckt keine Spannungs-, sondern eine reine Stromverstärkung, was den Miller-Effekt pratisch völlig vermeidet.
+    $\rm N_1$ bezweckt keine Spannungs-, sondern eine reine Stromverstärkung, was den Miller-Effekt pratisch völlig vermeidet.
     So hat auch dieser Verstärker ein gutes Frequenzverhalten.
 
     \paragraph{Vorteile / Nachteile}
@@ -185,7 +185,7 @@ Diese Schaltung ist jedoch nur für keine Signalpegel und kleine Verstärkungen 
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.56\columnwidth}
-    Durch Wählen von sehr grossen $W/L$ für die Transistoren N1 und N4 wird die minimale Ausgangsspannung $V_{\rm o, min}$ der Kaskode auf fast $V_\text{DS,sat}$ reduziert.
+    Durch Wählen von sehr grossen $W/L$ für die Transistoren $\rm{N_1}$ und $\rm{N_4}$ wird die minimale Ausgangsspannung $V_{\rm o, min}$ der Kaskode auf fast $V_\text{DS,sat}$ reduziert.
     
     Ausserdem kann der Arbeitspunkt mit wenig Aufwand eingestellt werden
 \end{minipage}
@@ -235,7 +235,7 @@ Diese Schaltung ist jedoch nur für keine Signalpegel und kleine Verstärkungen 
 \vspace{-0.2cm}
 
 \[
-    a = - \frac{g_{m\_ \rm N1} + g_{m\_ \rm P1}}{g_{o\_ \rm N1} + g_{0\_ \rm P1}} = - \left( g_{m\_ \rm N1} + g_{m\_ \rm P1} \right) \cdot \left( r_{\rm DS\_N1} \parallel r_{\rm DS\_P1} \right)
+    a = - \frac{g_{m\_ \rm N1} + g_{m\_ \rm P1}}{g_{o\_ \rm N1} + g_{o\_ \rm P1}} = - \left( g_{m\_ \rm N1} + g_{m\_ \rm P1} \right) \cdot \left( r_{\rm DS\_N1} \parallel r_{\rm DS\_P1} \right)
 \]
 
 

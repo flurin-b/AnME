@@ -32,7 +32,7 @@ In der Praxis gilt typischerweise:
 
 \begin{outline}
     \1 Die domnierende Kapazität ist $\cbl{ C_{\rm GS} }$
-    \1 Falls kein Body-Effekt auftritt gilt bzw. $V_{\rm SB} = \qty{0}{\volt}$ ist:
+    \1 Falls kein Body-Effekt auftritt bzw. $V_{\rm SB} = \qty{0}{\volt}$ ist, gilt Folgendes:
         \2 $C_{\rm SB}$ ist kurzgeschlossen und somit wirkungslos
         \2 $\cvt{ C_{\rm DB} = C_{\rm DS} }$ (wie in gezeigter Kleinsignalersatzschaltung)
     \1 $\cor{ C_{\rm GD} }$ ist vom \textbf{Miller-Effekt} betroffen, falls der Transistor eine Spannungsverstärkung hat
@@ -70,7 +70,7 @@ In der Praxis gilt typischerweise:
 
 % \subsubsection{Nutzkapazität}
 % \[
-%     C_{oxt} = C_{ox} \cdot W_{eff} \cdot L_{eff}
+%     C_{oxt} = C_{\rm ox} \cdot W_{eff} \cdot L_{eff}
 % \]
 
 % \subsubsection{Parasitäre Kapazitäten}
@@ -219,7 +219,7 @@ $$ \tau_k = R_k C_k \qquad \qquad f_{pk} = \frac{1}{2 \pi \tau_k} $$
 \subsubsection{Typische Werte für parasitäre Komponenten}
 
 \begin{outline}
-    \1 Typsische Werte für parasitäre Kapazitäten: siehe Abschnitt \ref{Parasitäre Kapazitäten in der Praxis}
+    \1 Typische Werte für parasitäre Kapazitäten: siehe Abschnitt \ref{Parasitäre Kapazitäten in der Praxis}
     \1 Typische Werte für Kleinsignalwiderstände (Innenwiderstände) an Transistor-Knoten gemäss folgender Tabelle
 \end{outline}
 
@@ -228,7 +228,7 @@ $$ \tau_k = R_k C_k \qquad \qquad f_{pk} = \frac{1}{2 \pi \tau_k} $$
 \begin{ctabular}{lccc}
                     & \textbf{Innenwiderstand}      & \textbf{hoch / tief}  & \textbf{typisch}      \\
     \textbf{Gate}   & $r_{\rm iG}$                  & unendlich             & \qty{}{\giga \ohm}    \\
-    \textbf{Drain}  & $r_{\rm  DS} = \frac{1}{g_0}$ & hoch                  & \qty{}{\mega \ohm}    \\
+    \textbf{Drain}  & $r_{\rm  DS} = \frac{1}{g_o}$ & hoch                  & \qty{}{\mega \ohm}    \\
     \textbf{Source} & $\frac{1}{g_m}$               & tief                  & \qty{}{\kilo \ohm}    \\
 \end{ctabular}
 \renewcommand{\arraystretch}{1}
