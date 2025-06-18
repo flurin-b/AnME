@@ -114,7 +114,7 @@ Meist werden aber 'verbesserte' Realisierungsformen verwendet.
 \hfill
 \begin{minipage}[t]{0.48\columnwidth}
     \[
-        a_V = \cgn{a_{\rm V1}} \cdot \cvt{a_{\rm V2}} 
+        a = \cgn{a_{\rm V1}} \cdot \cvt{a_{\rm V2}} 
     \]
     \[
         \cgn{a_{\rm V1}} = g_{\rm m, N1, N2} (r_{\rm DS\_N2} \parallel r_{\rm DS\_P2})
@@ -123,7 +123,7 @@ Meist werden aber 'verbesserte' Realisierungsformen verwendet.
         \cvt{a_{\rm V2}} = g_{\rm m, P3} (\rm r_{DS\_N3} \parallel r_{\rm DS\_P3} \parallel R_L)
     \]
     \[
-        f_{\rm p,N1} = \frac{1}{2\pi r_{\rm N1} C_{\rm N2}} \qquad f_{\rm p,N3} = \frac{1}{2\pi r_{L} C_{L}}
+        f_{\rm p,N2} = \frac{1}{2\pi R_{\rm N2} C_{\rm N2}} \qquad f_{\rm p,N3} = \frac{1}{2\pi R_{L} C_{L}}
     \]
 \end{minipage}
 
@@ -167,10 +167,10 @@ Die \textbf{Bandbreite} des Miller-OTA ist folglich \textbf{kleiner}, jedoch hat
 
 \renewcommand{\arraystretch}{1.8}
 \begin{ctabular}{ll}
-    Dominanter Pol                  & $f_{\rm pN2} = \frac{1}{2 \pi R_{\rm n2} \left( C_{\rm n2} + A_{\rm V2} C_C \right)} \approx \frac{1}{2 \pi R_{\rm n2} A_{\rm V2} C_C}$                           \\
-    $\qty{3}{\decibel}$-Bandbreite  & $\text{BW} \approx f_d = f_{\rm N2} = \frac{1}{2 \pi R_{\rm N2} A_2 C_C}$                                                                                         \\
-    Verstärkung $a$                 & $a = a_1 \cdot a_2 = g_{\rm m\_N1,2} \, R_{\rm N2} \cdot g_{\rm m\_P3} \, R_{\rm N3}$                                                                             \\
-    Gain-Bandwidth-Product          & $\text{GBW} = a \cdot f_d = \frac{g_{\rm m\_N1,2} \, R_{\rm N2} \cdot g_{\rm m\_P3} \, R_{\rm N3}}{2 \pi R_{\rm N2} a_2 C_C} = \frac{g_{\rm m\_N1,2}}{2 \pi C_C}$ \\ 
+    Dominanter Pol                  & $f_{\rm pN2} = \frac{1}{2 \pi R_{\rm N2} \left( C_{\rm N2} + a_{\rm V2} C_C \right)} \approx \frac{1}{2 \pi R_{\rm N2} a_{\rm V2} C_C}$                           \\
+    $\qty{3}{\decibel}$-Bandbreite  & $\text{BW} \approx f_d = f_{\rm N2} = \frac{1}{2 \pi R_{\rm N2} a_{\rm V2} C_C}$                                                                                         \\
+    Verstärkung $a$                 & $a = \cgn{a_{\rm V1}} \cdot \cvt{a_{\rm V2}} = g_{\rm m\_N1,2} \, R_{\rm N2} \cdot g_{\rm m\_P3} \, R_{\rm N3}$                                                                             \\
+    Gain-Bandwidth-Product          & $\text{GBW} = a \cdot f_d = \frac{g_{\rm m\_N1,2} \, R_{\rm N2} \cdot g_{\rm m\_P3} \, R_{\rm N3}}{2 \pi R_{\rm N2} a_{\rm V2} C_C} = \frac{g_{\rm m\_N1,2}}{2 \pi C_C}$ \\ 
     Nicht-Dominanter Pol            & $f_{\rm nd} = f_{\rm N3} = \frac{1}{2 \pi R_{\rm n3} C_L} \approx \frac{g_{\rm m\_P3}}{2 \pi C_L}$                                                                \\ 
     Phasenmarge $\varphi_M$         & $\varphi_M = \qty{90}{\degree} - \arctan \left( \frac{\text{GBW}}{f_{\rm nd}} \right)$                                                                            \\
 \end{ctabular}
