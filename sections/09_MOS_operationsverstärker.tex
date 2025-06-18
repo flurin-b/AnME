@@ -145,37 +145,6 @@ Der Ausgangsstrom hängt nur von der \textbf{Differenz der Eingangsspannungen} a
 \end{minipage}
 
 
-% TODO: [Flurin] Evtl. Schema und Ersatzschaltbild aus V10S11
-%CHECK: [Simi] @Flurin There it is aber ich würde es weglassen... Habe im Bild weiter oben den 'Ort' eingefügt, wo die Last hin muss
-% -> wenn du die Bilder verwenden willst, müsste man wahrscheinlich etwas umformatieren und herumschieben...
-
-% \paragraph{Widerstandslast}
-
-% \begin{minipage}[t]{0.45\columnwidth}
-%     \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_widerstandslast_schaltung.pdf}
-% \end{minipage}
-% \hfill
-% \begin{minipage}[t]{0.45\columnwidth}
-% \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_widerstandslast_kleinsignal.pdf}
-% \end{minipage}
-
-
-% \paragraph{Stromspiegellast}
-
-% TODO: [Flurin] Evtl. Schema und Ersatzschaltbild aus V10S11
-%CHECK: [Simi] @Flurin There it is aber ich würde es weglassen... Habe im Bild weiter oben den 'Ort' eingefügt, wo die Last hin muss
-% -> wenn du die Bilder verwenden willst, müsste man wahrscheinlich etwas umformatieren und herumschieben...
-
-% \begin{minipage}[t]{0.45\columnwidth}
-%     \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_stromspiegellast_schaltung.pdf}
-% \end{minipage}
-% \hfill
-% \begin{minipage}[t]{0.45\columnwidth}
-%     \includegraphics[width=\columnwidth, align=t]{images/09_differenzstufe_stromspiegellast_kleinsignal.pdf}
-% \end{minipage}
-
-
-
 \subsubsection{Verstärkung}
 
 Generell berechnet sich die Verstärkung der Differenzstufe $a_{\rm Diff}$ als 
@@ -268,10 +237,6 @@ Für folgende Grenzwertbetrachtungen der Spannungsverstärkung gilt: $R_{\rm Lex
 \medskip
 
 Diese Formeln sollten \textbf{nicht zur Verstärkungsberechnung verwendet werden} -- sie dienen lediglich zur Veranschaulichung der Bezüge verschiedener Parameter.
-% TODO: [Flurin] Evtl mehr Formeln / Bedingungen aus V10S14?
-% [Simi] @Flurin: Ich würde nicht... Wir dürfen damit ja sowieso nicht rechnen....
-
-
 
 
 \subsection{Verstärkerstufe}
@@ -305,7 +270,7 @@ In Open-Loop Anwendungen darf die Leistungsstufe auch Verstärkungen $>1$ aufwei
 \[
     \text{GBW} = \abs{a} \cdot  f_d \quad (= \text{GBP}) 
     \qquad \qquad \qquad
-    \text{BW} = \frac{\text{GBW}}{a} \quad \Leftrightarrow\ \quad a = \frac{\text{GBW}}{\text{BW}}  % CHECK [Simi] @Flurin \abs{a} statt a ?
+    \text{BW} = \frac{\text{GBW}}{\abs{a}} \quad \Leftrightarrow\ \quad \abs{a} = \frac{\text{GBW}}{\text{BW}} 
 \]
 
 % \begin{tabular}{ll | ll | ll}
@@ -343,9 +308,9 @@ Die Slew-Rate beschreibt die maximale Ausgangsspannungsänderung pro Zeiteinheit
     \text{SR} = \text{SR}_r = \abs{\text{SR}_f} = \frac{\diff v_o}{\diff t} \Bigg|_{\rm max} = \frac{I_Q}{C_L}
 \]
 \paragraph{Aussteuerung als Funktion der Eingangsfrequenz}
-Die Aussteuerung $\Delta V$ des Ausgangs bei einem Rechteck am Eingang berechnet isch als % CHECK: [Flurin] nur für Rechteck oder für andere Signale auch?!
+Die Aussteuerung $\Delta V$ des Ausgangs bei einem Rechteck am Eingang berechnet isch als
 \[
-    \Delta V = f(\text{SR, \, f}) = \text{SR} \cdot \Delta t = \frac{\text{SR}}{2 f} = \frac{I_Q}{C_L \cdot 2 f}
+    \Delta V = f(\mathrm{SR}, \, f) = \text{SR} \cdot \Delta t = \frac{\text{SR}}{2 f} = \frac{I_Q}{C_L \cdot 2 f}
 \]
 
 
@@ -416,8 +381,6 @@ Der Gegentakt-Eingangsspannungsbereich kann der Grossignalanalyse in~\ref{opamp:
 \paragraph{Berechnung}
 
 Durch Symmetrie kann zur Berechnung der Common-Mode-Verstärkung die Stromquelle 'halbiert' werden.
-%TODO: [Flurin] Schema aus V11S14, ich glaube erklärende Schemen zu CM und DM sind nicht nötig.
-%CHECK: [Simi] @Flruin: Habe ich dich jetzt richtig verstanden mit diesem Schema...?
 
 \begin{minipage}[t]{0.48\columnwidth}
     \includegraphics[width=\columnwidth, align=t]{images/09_common_mode_rejection.pdf}
