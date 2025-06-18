@@ -76,7 +76,7 @@ Je steiler die Gerade, desto kleiner $r_{\rm DS}$.
 \includegraphics[angle=90, width=0.8\linewidth]{Selbstsperrend MOS-Transistor.png}
 \end{minipage}
 \textbf{Bulk-Anschluss}\\
-Wenn der Bulk-Anschluss nicht gezeichnet ist, gilt die Konvention, dass der Bulk des n-Transistors immer mit $V_{SS}$ und der des p-Transistors immer mit $V_{\rm DD}$ verbunden ist. Wenn dies nicht der Fall ist dann steigt/sinkt die Schwellspannung $V_T$. Siehe Kap. 3.6.
+Wenn der Bulk-Anschluss nicht gezeichnet ist, gilt die Konvention, dass der Bulk des n-Transistors immer mit $V_{\rm SS}$ und der des p-Transistors immer mit $V_{\rm DD}$ verbunden ist. Wenn dies nicht der Fall ist dann steigt/sinkt die Schwellspannung $V_T$. Siehe Kap. 3.6.
 \subsection{Bestimmung Arbeitsbereich}
 \begin{enumerate}[noitemsep,topsep=0pt]
     \item Bestimmung ob in WEAK oder STRONG Inversion?
@@ -513,7 +513,7 @@ Grenzwert bei Weak Inversion & $a = \frac{V_A}{2 n_M V_{temp}}$\\
 \hline
 Gain-Bandwith-Product & $GBP = |a|\cdot f_{P1} = -\frac{g_m}{2\pi C_L}$\\
 \hline
-\makecell[l]{Input Common Mode Range\\($I_{SS}= I_{bias}\frac{(W/L)_{N1}}{(W/L)_{N5}}$)}& \makecell[l]{$V_{inp,max} = (V_{\rm DD}-V_{SS})-V_{GS,P1}-V_{DS,sat,N1}+V_{GS,N1}$\\$V_{inp,min} = V_{SS}+V_{DS,sat,N5}+V_{GS,N1}$ \vspace{5pt}\\Wenn $V_{DS,sat}\approx\sqrt{\frac{2I_D}{\mu C_{\rm ox}\frac{W}{L}}}$ dann gilt:\\$V_{inp,max} = (V_{\rm DD}-V_{SS})-V_{T,P1}-\sqrt{\frac{I_{SS}}{\mu C_{ox,P1}\frac{W}{L}}}+V_{T,N1}$\\$V_{inp,min} = V_{SS}+\sqrt{\frac{2I_{SS}}{\mu C_{ox,N5}\frac{W}{L}}}+V_{T,N1}+\sqrt{\frac{I_{SS}}{\mu C_{ox,N1}\frac{W}{L}}}$}\\
+\makecell[l]{Input Common Mode Range\\($I_{SS}= I_{bias}\frac{(W/L)_{N1}}{(W/L)_{N5}}$)}& \makecell[l]{$V_{inp,max} = (V_{\rm DD}-V_{\rm SS})-V_{GS,P1}-V_{DS,sat,N1}+V_{GS,N1}$\\$V_{inp,min} = V_{\rm SS}+V_{DS,sat,N5}+V_{GS,N1}$ \vspace{5pt}\\Wenn $V_{DS,sat}\approx\sqrt{\frac{2I_D}{\mu C_{\rm ox}\frac{W}{L}}}$ dann gilt:\\$V_{inp,max} = (V_{\rm DD}-V_{\rm SS})-V_{T,P1}-\sqrt{\frac{I_{SS}}{\mu C_{ox,P1}\frac{W}{L}}}+V_{T,N1}$\\$V_{inp,min} = V_{\rm SS}+\sqrt{\frac{2I_{SS}}{\mu C_{ox,N5}\frac{W}{L}}}+V_{T,N1}+\sqrt{\frac{I_{SS}}{\mu C_{ox,N1}\frac{W}{L}}}$}\\
 \hline
 Common mode rejection ratio & \makecell[l]{$v_{DM} = v_{in1}-v_{in2}$\hspace{20pt}differential mode\\$v_{CM} = \frac{v_{in1}+v_{in2}}{2}$\hspace{20pt} common mode\\$a_{DM}=\frac{v_O}{V_{DM}}\Bigr|_{V_{CM}=0}$\hspace{20pt}(ideal $a_{DM}=\infty$)Gegentaktverstärkung\\$a_{CM}=\frac{v_O}{V_{CM}}\Bigr|_{V_{DM}=0}$\hspace{20pt}(ideal $a_{CM}=0$)Gleichtaktverstärkung\\$CMRR=|\frac{a_{DM}}{a_{CM}}| = \frac{r_q}{r_s}=\frac{g_m}{g_{0b}}$\hspace{20pt}(ideal $CMRR=\infty$)\\mit $r_q$: Innenwiderstand von $I_q$, Gleichtaktunterdrückung}\\
 \hline
