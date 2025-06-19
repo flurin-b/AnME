@@ -159,38 +159,6 @@ Die Ausgangskennlinie beschreibt den Zusammenhang $I_D = f(V_{\rm DS}) \big|_{V_
 Bei einem n-Kanal FET ist der Kanal ursprünglich p-leidend.
 Wird der Kanal invertiert, so wird er (schwach, moderat oder start) n-leitend. 
 
-%NOTE [Simi] Kommt später bei Pi-Ersatzschaltung verallgemeinert dran und ist daher hier auskommentiert
-% \subsection{Ersatzschaltungen}
-
-% Je nach Arbeitsbereich (gesättigt / ungesättigt) müssen verschiedene Ersatzschaltungen verwendet werden.
-
-% \begin{minipage}[t]{0.48\columnwidth}
-%     \raggedright
-
-%     \subsubsection*{Ungesättigt}
-
-%     Gesteuerter Widerstand \rightarrow\ $I_D = f(V_{\rm DS})$
-    
-%     \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_ersatzschaltung_ungesaettigt.pdf}
-
-%     \smallskip
-%     Je kleiner $r_{\rm DS0}$, desto steiler die Geraden links im Ausgangskennlinienfeld
-
-% \end{minipage}
-% \hfill
-% \begin{minipage}[t]{0.48\columnwidth}
-%     \raggedright
-
-%     \subsubsection*{Gesättigt}
-
-%     Stromquelle \rightarrow\ $I_D = f(V_{\rm GS})$
-
-%     \includegraphics[width=\columnwidth, align=t]{images/02_MOSFET_ersatzschaltung_gesaettigt.pdf}
-
-%     \smallskip
-%     Je grösser $r_{\rm DS}$, desto flacher die Geraden rechts im Ausgangskennlinienfeld
-% \end{minipage}
-
 
 \subsection{Berechnung des Drainstroms}
 
@@ -203,7 +171,7 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 \vspace{-0.3cm}
 
 % $$ \boxed{ \text{QUAD-Bereich: } V_H(I_D) < V_{\rm GS} < V_L(I_D) } \qquad \qquad \beta = \mu \cdot C_{\text{OX}} \cdot \frac{W}{L} $$
-\[ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{\rm GS}| < |V_L(I_D)| \quad \text{bzw.} \quad |I_H'| \leq |I_D'| < |I_L'| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.4 1)
+\[ \boxed{ \text{QUAD-Bereich:} \quad |V_H(I_D)| \leq |V_{\rm GS}| < |V_L(I_D)| \quad \text{bzw.} \quad |I_H'| \leq |I_D'| < |I_L'| } \] 
 
 \resizebox{\columnwidth}{!}
 {
@@ -220,26 +188,6 @@ Die Berechnung des Drainstroms hängt sowohl von Arbeitsbereich (gesättigt / un
 \medskip
 
 \textbf{Ohne} Berücksichtigung der \textbf{Kanallängenmodulation:} \cbl{blauen Term $=1$} bzw $\lambda = 0$ setzen
-
-
-
-% NOTE [Simi] @Flurin: Hier noch dein Vorschlag der Darstellung (mit NMOS / PMOS Ergänzung):
-% Jetzt können wir streiten, welchen wir nehmen wollen :P
-% TODO: @Simi: Würde den oberen nemen.
-
-% \resizebox{\columnwidth}{!}
-% {
-%     \renewcommand{\arraystretch}{1.5}
-%     \begin{tabular}{l c|c}
-%                 & \textbf{Ungesättigt:} \quad $\bm{| V_{\rm DS} | < | V_{\rm GS} - V_T |}$                          & \textbf{Gesättigt:} \quad $\bm{| V_{\rm DS} | \geq | V_{\rm GS} - V_T |}$             \\
-%         NMOS:   & $I_{\rm D, ideal} = \beta \cdot \bigg[ (V_{\rm GS} - V_T) V_{\rm DS} - \frac{V_{\rm DS}^2}{2} \bigg]$     & $I_{\rm D, ideal} = \frac{\beta}{2} (V_{\rm GS} - V_T)^2 $                            \\
-%         NMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{\rm DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{\rm DS})$      \\
-%         \midrule
-%         PMOS:   & $I_{\rm D, ideal} = - \beta \cdot \bigg[ (V_{\rm GS} - V_T) V_{\rm DS} - \frac{V_{\rm DS}^2}{2} \bigg]$   & $I_{\rm D, ideal} = - \frac{\beta}{2} (V_{\rm GS} - V_T)^2$                           \\
-%         PMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{\rm DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{\rm DS})$      
-%     \end{tabular}
-%     \renewcommand{\arraystretch}{1}
-% }
 
 
 
@@ -304,7 +252,7 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 \vspace{-0.3cm}
 
 % $$ \boxed{ \text{EXP-Bereich: } V_K(I_D) < V_{\rm GS} < V_M(I_D) \qquad \qquad V_M(I_D) = V_T(I_D) - x_M(I_D) } $$
-\[ \boxed{ \text{EXP-Bereich: } |V_K(I_D)| < |V_{\rm GS}| \leq |V_M(I_D)| \quad \text{bzw.} \quad |I_K'| < |I_D'| \leq |I_M'| } \]  %NOTE: Bedingung für Ströme aus Ü3, 3.6.5 1)
+\[ \boxed{ \text{EXP-Bereich: } |V_K(I_D)| < |V_{\rm GS}| \leq |V_M(I_D)| \quad \text{bzw.} \quad |I_K'| < |I_D'| \leq |I_M'| } \] 
 
 
 \resizebox{\columnwidth}{!}
@@ -324,104 +272,17 @@ Das Fermi-Potential $\Phi_F$ ist prozess- wie auch temperaturabhängig. Zudem is
 \textbf{Ohne} Berücksichtigung der \textbf{Kanallängenmodulation:} \cbl{blauen Term $=1$} bzw $\lambda = 0$ setzen
 
 
-
-
-
-% NOTE [Simi] @Flurin: Hier noch dein Vorschlag der Darstellung (mit NMOS / PMOS Ergänzung):
-% Jetzt können wir streiten, welchen wir nehmen wollen :P
-% TODO: @Simi: Würde den oberen nemen.
-
-% \resizebox{\columnwidth}{!}
-% {
-%     \renewcommand{\arraystretch}{1.5}
-%     \begin{tabular}{l c|c}
-%                 & \textbf{Ungesättigt:} \quad $\bm{| V_{\rm DS} | < | V_{\rm GS} - V_T |}$                          & \textbf{Gesättigt:} \quad $\bm{| V_{\rm DS} | \geq | V_{\rm GS} - V_T |}$                   \\
-%         NMOS:   & $I_{\rm D, ideal} = I_M \cdot \e^{\frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}}$              & $I_{\rm D, ideal} = I_M \cdot \e^{\frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}}$        \\
-%         NMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{\rm DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 + \lambda \cdot \Delta V_{\rm DS})$            \\
-%         \midrule
-%         PMOS:   & $I_{\rm D, ideal} = I_M \cdot \e^{- \frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}}$            & $I_{\rm D, ideal} = - I_M \cdot \e^{- \frac{V_{\rm GS} - V_M}{n_M \cdot V_\text{temp}}}$    \\
-%         PMOS:   & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{\rm DS})$                  & $I_{\rm D, real} = I_{\rm D, ideal} \cdot (1 - \lambda \cdot \Delta V_{\rm DS})$      
-%     \end{tabular}
-%     \renewcommand{\arraystretch}{1}
-% }
-
-
-
-
-
-%NOTE [Simi] @Flruin Würde ich gemäss aktuellem Inhalt der Zusammenfassung nicht mehr so drauf nehmen. Alle Informationen stehen weiter oben / unten
-%TODO [Flurin] @Simi können wir weglassen... Willst du es ganz raus haben oder kommentiert lassen?
-% Zu den 130 mV: Das ist eine Approximation für: V_{DS, sat} = 5 \cdot  V_{\rm temp} (siehe Abschnitt 2.4) -> das kam so im Quiz dran
-
-% Dabei wird $V_{\rm temp}$ oft vom Technologiehandbuch gegeben. 
-
-% Alternativ kann sie als 
-
-% \begin{minipage}{0.4\columnwidth}
-%     \[
-%         V_{\rm temp} = \frac{kT}{q} \approx \qty{130}{\milli\volt}    % TODO: @Flurin: Falls das doch wieder einkommentiert wird,, 130 mV korrigieren
-%     \]
-% \end{minipage}
-% \hfill
-% \begin{minipage}{0.5\columnwidth}
-%     \begin{tabular}{rl}
-%         $k$: & Boltzmann-Konstante \\
-%         $q$: & Elementarladung \\
-%         $T$: & Temperatur in Kelvin \\
-%     \end{tabular}
-% \end{minipage}
-
-% approximativ berechnet werden.
-
-
-
-%CHECKED [Simi] @Flurin: Soll der Transkonduktanzparameter wieder rein? In der Vorlesung wurde er erwähnt, jedoch kommt er in der weak inversion Formel nicht vor...
-% Ich habe ihn daher einmal auskommentiert...
-%CHECK [Flurin] @Simi: Rein da, im schlimmsten Fall brauchen wir ihn nicht.
-
 \paragraph{Parameter der Formel}
 
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{ll}
-    Transkonduktanzparameter        & $\beta = \beta_0 \frac{W}{L} = \mu C_{\rm ox} \, \frac{W}{L}$ \\
-    Temparaturspannung              & $V_{\rm temp} = \frac{k T}{q} \approx \qty{86.2}{\micro\volt\per\kelvin} \cdot T$                             \\
-    (Spezifischer Drainstrom)       & $ I_M = \frac{W}{L} I_{M}' = \frac{W}{L} I_{M, 0}$                                                                                 \\
+    Transkonduktanzparameter        & $\beta = \beta_0 \frac{W}{L} = \mu C_{\rm ox} \, \frac{W}{L}$                                                     \\
+    Temparaturspannung              & $V_{\rm temp} = \frac{k T}{q} \approx \qty{86.2}{\micro\volt\per\kelvin} \cdot T$                                 \\
+    (Spezifischer Drainstrom)       & $ I_M = \frac{W}{L} I_{M}' = \frac{W}{L} I_{M, 0}$                                                                \\
     Subthreshold Slope Factor       & $n_M = 1 + \frac{\gamma}{2\sqrt{V_{\rm SB}+\Phi_0}}$ \quad mit \quad $\Phi_0 = 2 \Phi_F \approx \qty{0.6}{\volt}$ \\
     Kanallängenmodulation           & $\lambda = \frac{1}{V_E} \approx \frac{1}{a_E L}$
 \end{tabular}
 \renewcommand{\arraystretch}{1}
-
-%CHECK [Flurin] @Simi: ist das alles schon wo anders drin oder wieso auskommentiert?
-
-% \paragraph{Temparaturspannung}
-% \[
-%     V_{temp} = \frac{k T}{q} \approx \qty{86.2}{\micro\volt\per\kelvin} \cdot T
-% \]
-
-% \paragraph{Spezifischer Drainstrom}
-% \[
-%     I_M = \frac{W}{L} I_{M, 0}
-% \]
-
-% \paragraph{Subthreshold Slope Factor}
-% \[
-%     n_M = 1 + \frac{\gamma}{2\sqrt{V_{\rm SB}+\Phi_0}} \quad \text{mit} \quad \Phi_0 = 2 \Phi_F \approx \qty{0.6}{\volt}
-% \]
-
-% \paragraph{Kanallängenmodulation}
-% \[
-%     \lambda = \frac{1}{V_E} \approx \frac{1}{a_E L}
-% \]
-
-% \paragraph{Transkonduktanz-Parameter}
-% \[
-%     \beta = \frac{W}{L}\beta_0 = \mu C_{\rm ox}
-% \]
-% (unter Vernachlässigun
-% \paragrag der Abhängigkeit von der Sättigung.)
-
-
-
 
 
 
@@ -661,9 +522,6 @@ Für pMOS Transistoren müssen \textbf{Beträge eingesetzt werden}. Ein Plausibi
 % \]
 
 \subsection{Zusammenhänge}
-%DONE: [Flurin] This seems important but I don't know how to integrate this in a logical way
-% [Simi] @Flurin: Leave it here for the moment... maybe we can fit in in somewhere late or we just leave it here :) 
-%TODO: [Flurin] @Simi: If leave it here is our final verdict: Remove these comments.
 
 $g_m$ ist in der Weak Inversion unabhängig der Geometrie. 
 Es ist für einen gegebenen Drainstrom möglich, Transistoren, die in Weak Inversion wie auch welche, die in Strong Inversion sind herzustellen.

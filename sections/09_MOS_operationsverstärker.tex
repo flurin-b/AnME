@@ -191,7 +191,7 @@ Generell berechnet sich die Verstärkung der Differenzstufe $a_{\rm Diff}$ als
     \vspace{-0.2cm}
 
     \[
-        a_{\rm Diff} \approx - g_m \left(\frac{1}{g_{\rm o, N2}} \Biggm\Vert \frac{1}{g_{\rm o, N2}} \Biggm\Vert R_{\rm Lext}\right)
+        a_{\rm Diff} \approx - g_m \left(\frac{1}{g_{\rm o, N2}} \Biggm\Vert \frac{1}{g_{\rm o, P2}} \Biggm\Vert R_{\rm Lext}\right)
     \]
 \end{minipage}
 
@@ -245,7 +245,7 @@ Diese hat eine Verstärkung von
 
 \vspace{-0.2cm}
 \[
-    a_{\rm Gain} = - g_m (r_{DS1} \parallel r_Q)
+    a_{\rm Gain} = - g_m (r_{\rm DS1} \parallel r_Q)
 \]
 
 
@@ -358,8 +358,8 @@ Die Aussteuerung $\Delta V$ des Ausgangs bei einem Rechteck am Eingang berechnet
 
     \begin{align*}
         V_{\rm inCM, min}   &= V_{\rm SS} + V_{\rm DS,satN3} + V_{\rm GS,N1/N2} \\
-        V_{\rm inCM, max}   &= V_{\rm DD} - V_{\rm GS,P1} - V_{\rm DS,sat,N1} + V_{\rm GS,N1} \\
-                            &= V_{\rm DD} - V_{\rm GS,P1} + V_{\rm th,N} 
+        V_{\rm inCM, max}   &= V_{\rm DD} - \abs{V_{\rm GS,P1}} - V_{\rm DS,sat,N1} + V_{\rm GS,N1} \\
+                            &= V_{\rm DD} - \abs{V_{\rm GS,P1}} + V_{\rm th,N} 
     \end{align*}
 \end{minipage}
 
