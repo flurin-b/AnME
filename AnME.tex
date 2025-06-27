@@ -18,11 +18,11 @@
 \def\shorttitle{AnME}                                           % short title (displayed as PDF title)
 \def\dozent{Prof. Dr. Paul Zbinden}                             % lecturer
 \def\semester{HS 2024}                                          % semester
-\def\author{Flurin Brechbühler, Laurin Heitzer, Simone Stitz}   % authors
+\def\author{Flurin Brechbühler, Simone Stitz}                   % authors
 \def\repo{https://github.com/flurin-b/AnME}                     % repository link
 \def\version{1.0.\today}                                        % version
-\def\pagelimit{20}                                              % page limit -> causes pages after limit to be red
-\def\titleoption{ultra compact}                                 % options: compact, normal
+\def\pagelimit{12}                                              % page limit -> causes pages after limit to be red
+\def\titleoption{compact}                                       % options: compact, normal
 \def\enableToC{true}                                            
 
 % ================================= PACKAGES, SETUP AND COMMANDS ==================================
@@ -36,5 +36,19 @@
         \part{AnME}
         \input{sections/01_technologie.tex}
         \input{sections/02_MOS_transistoren.tex}
+        \input{sections/03_MOS_grundschaltungen.tex}
+        \input{sections/04_MOS_diode.tex}
+        \input{sections/05_MOS_stromquelle.tex}
+        \input{sections/06_MOS_stromspiegel.tex}
+        \input{sections/07_MOS_verstärker.tex}
+        \input{sections/08_MOS_frequenzverhalten.tex}
+        \input{sections/09_MOS_operationsverstärker.tex}
+        \input{sections/10_stabilitaet.tex}
+        \input{sections/11_realisierungsformen_OpAmps.tex}
+        \input{sections/12_ota_designbeispiel.tex}
+        \input{sections/13_infrastruktur.tex}
+
+        \part{Basics}
+        \input{sections/90_MOS_idiotenseite.tex}
     \end{layout}
 \end{document}

@@ -56,9 +56,9 @@ Absolute Genauigkeit:$ \pm 20 \%$,\hspace{5pt} Relative Genauigkeit:$\pm 1 \%$
 \end{minipage}%
 \begin{minipage}{0.5\linewidth}
 \textbf{Gesättigt}, Stromquellen-Betrieb:\\
-Gerade horizontal, dann ist $r_{DS} = \infty$(idealer Transistor). Anstieg der Gerade entspricht Ausgangsleitwert $g_0$ bzw. Ausgangswiderstand $r_{DS}$.\\
+Gerade horizontal, dann ist $r_{\rm DS} = \infty$(idealer Transistor). Anstieg der Gerade entspricht Ausgangsleitwert $g_o$ bzw. Ausgangswiderstand $r_{\rm DS}$.\\
 \textbf{Ungesättigt}, Widerstandsbetrieb:\\
-Je steiler die Gerade, desto kleiner $r_{DS}$.
+Je steiler die Gerade, desto kleiner $r_{\rm DS}$.
 \end{minipage}
 \begin{minipage}{0.33\linewidth}
 \includegraphics[width=1\linewidth]{Transferkennline.png}
@@ -76,7 +76,7 @@ Je steiler die Gerade, desto kleiner $r_{DS}$.
 \includegraphics[angle=90, width=0.8\linewidth]{Selbstsperrend MOS-Transistor.png}
 \end{minipage}
 \textbf{Bulk-Anschluss}\\
-Wenn der Bulk-Anschluss nicht gezeichnet ist, gilt die Konvention, dass der Bulk des n-Transistors immer mit $V_{SS}$ und der des p-Transistors immer mit $V_{DD}$ verbunden ist. Wenn dies nicht der Fall ist dann steigt/sinkt die Schwellspannung $V_T$. Siehe Kap. 3.6.
+Wenn der Bulk-Anschluss nicht gezeichnet ist, gilt die Konvention, dass der Bulk des n-Transistors immer mit $V_{\rm SS}$ und der des p-Transistors immer mit $V_{\rm DD}$ verbunden ist. Wenn dies nicht der Fall ist dann steigt/sinkt die Schwellspannung $V_T$. Siehe Kap. 3.6.
 \subsection{Bestimmung Arbeitsbereich}
 \begin{enumerate}[noitemsep,topsep=0pt]
     \item Bestimmung ob in WEAK oder STRONG Inversion?
@@ -86,23 +86,23 @@ Wenn der Bulk-Anschluss nicht gezeichnet ist, gilt die Konvention, dass der Bulk
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{|l|l|l|}
 \hline
-\multicolumn{1}{|l|}{\textbf{Ausgangsstrom}} & \multicolumn{2}{c|}{Ausgangsspannungsbereich($V_{DS}$-Bereich)}  \\
-\multicolumn{1}{|l|}{($I_D-,V_{GS}$-Bereich)}   & \multicolumn{1}{c|}{Transistor ungesättigt ($|V_{DS}| < |V_{DS,sat}|$)}  & \multicolumn{1}{c|}{Transistor gesättigt ($|V_{DS}| > |V_{DS,sat}|$)} \\
+\multicolumn{1}{|l|}{\textbf{Ausgangsstrom}} & \multicolumn{2}{c|}{Ausgangsspannungsbereich($V_{\rm DS}$-Bereich)}  \\
+\multicolumn{1}{|l|}{($I_D-,V_{\rm GS}$-Bereich)}   & \multicolumn{1}{c|}{Transistor ungesättigt ($|V_{\rm DS}| < |V_{DS,sat}|$)}  & \multicolumn{1}{c|}{Transistor gesättigt ($|V_{\rm DS}| > |V_{DS,sat}|$)} \\
 \hline
 \multicolumn{3}{|c|}{\textbf{n-kanal Transistor}}  \\
 \hline
-\makecell[l]{\textbf{Weak inversion}\\$V_{DS,sat} \approx130mV$\\$V_{GS}<V_M\hspace{3pt};\hspace{3pt}I_D<\frac{W}{L}I_M'$} & \makecell[l]{$I_D = I_M e^{\frac{V_{GS}-V_M}{n_M V_{temp}}}(1-e^{\frac{-V_{DS}}{V_{temp}}})$\textcolor{blue}{$(1+\lambda V_{DS})$}} & \makecell[l]{$I_D = I_M e^{\frac{V_{GS}-V_M}{n_M V_{temp}}}$\textcolor{blue}{$(1+\lambda V_{DS})$}} \\
+\makecell[l]{\textbf{Weak inversion}\\$V_{DS,sat} \approx130mV$\\$V_{\rm GS}<V_M\hspace{3pt};\hspace{3pt}I_D<\frac{W}{L}I_M'$} & \makecell[l]{$I_D = I_M e^{\frac{V_{\rm GS}-V_M}{n_M V_{temp}}}(1-e^{\frac{-V_{\rm DS}}{V_{temp}}})$\textcolor{blue}{$(1+\lambda V_{\rm DS})$}} & \makecell[l]{$I_D = I_M e^{\frac{V_{\rm GS}-V_M}{n_M V_{temp}}}$\textcolor{blue}{$(1+\lambda V_{\rm DS})$}} \\
 \hline
-\makecell[l]{\textbf{Strong inversion}\\$V_{DS,sat} = V_{GS}-V_T$\\$V_{GS}>V_H\hspace{3pt};\hspace{3pt}I_D>\frac{W}{L}I_H'$} & \makecell[l]{$I_D = \textcolor{brown}{B}[(V_{GS}-V_T)V_{DS}-\frac{V_{DS}^2}{2}]$\textcolor{blue}{$(1+\lambda V_{DS})$}} & \makecell[l]{$I_D = \frac{\mu C_{ox}}{2}\frac{W}{L}(V_{GS}-V_T)^2$\textcolor{blue}{$(1+\lambda V_{DS})$}}\\
+\makecell[l]{\textbf{Strong inversion}\\$V_{DS,sat} = V_{\rm GS}-V_T$\\$V_{\rm GS}>V_H\hspace{3pt};\hspace{3pt}I_D>\frac{W}{L}I_H'$} & \makecell[l]{$I_D = \textcolor{brown}{B}[(V_{\rm GS}-V_T)V_{\rm DS}-\frac{V_{\rm DS}^2}{2}]$\textcolor{blue}{$(1+\lambda V_{\rm DS})$}} & \makecell[l]{$I_D = \frac{\mu C_{\rm ox}}{2}\frac{W}{L}(V_{\rm GS}-V_T)^2$\textcolor{blue}{$(1+\lambda V_{\rm DS})$}}\\
 \hline
 \multicolumn{3}{|c|}{\textbf{p-kanal Transistor}}  \\
 \hline
-\makecell[l]{\textbf{Weak inversion}\\$|V_{DS,sat}| \approx 130mV$\\$|V_{GS}|<|V_M|\hspace{3pt};\hspace{3pt}|I_D|<\frac{W}{L}|I_M'|$} & \makecell[l]{$I_D = I_M e^{-\frac{V_{GS}-V_M}{n_M V_{temp}}}(1-e^{\frac{-V_{DS}}{V_{temp}}})$\textcolor{blue}{$(1-\lambda V_{DS})$}} & \makecell[l]{$I_D = I_M e^{-\frac{V_{GS}-V_M}{n_M V_{temp}}}$\textcolor{blue}{$(1-\lambda V_{DS})$}} \\
+\makecell[l]{\textbf{Weak inversion}\\$|V_{DS,sat}| \approx 130mV$\\$|V_{\rm GS}|<|V_M|\hspace{3pt};\hspace{3pt}|I_D|<\frac{W}{L}|I_M'|$} & \makecell[l]{$I_D = I_M e^{-\frac{V_{\rm GS}-V_M}{n_M V_{temp}}}(1-e^{\frac{-V_{\rm DS}}{V_{temp}}})$\textcolor{blue}{$(1-\lambda V_{\rm DS})$}} & \makecell[l]{$I_D = I_M e^{-\frac{V_{\rm GS}-V_M}{n_M V_{temp}}}$\textcolor{blue}{$(1-\lambda V_{\rm DS})$}} \\
 \hline
-\makecell[l]{\textbf{Strong inversion}\\$|V_{DS,sat}| = |V_{GS}|-|V_T|$\\$|V_{GS}|>|V_H|\hspace{3pt};\hspace{3pt}|I_D|>\frac{W}{L}|I_H'|$} & \makecell[l]{$I_D = -\textcolor{brown}{B}[(V_{GS}-V_T)V_{DS}-\frac{V_{DS}^2}{2}]$\textcolor{blue}{$(1-\lambda V_{DS})$}} & \makecell[l]{$I_D = -\frac{\mu C_{ox}}{2}\frac{W}{L}(V_{GS}-V_T)^2$\textcolor{blue}{$(1-\lambda V_{DS})$}} \\
+\makecell[l]{\textbf{Strong inversion}\\$|V_{DS,sat}| = |V_{\rm GS}|-|V_T|$\\$|V_{\rm GS}|>|V_H|\hspace{3pt};\hspace{3pt}|I_D|>\frac{W}{L}|I_H'|$} & \makecell[l]{$I_D = -\textcolor{brown}{B}[(V_{\rm GS}-V_T)V_{\rm DS}-\frac{V_{\rm DS}^2}{2}]$\textcolor{blue}{$(1-\lambda V_{\rm DS})$}} & \makecell[l]{$I_D = -\frac{\mu C_{\rm ox}}{2}\frac{W}{L}(V_{\rm GS}-V_T)^2$\textcolor{blue}{$(1-\lambda V_{\rm DS})$}} \\
 \hline
 \end{tabular}}\vspace{5pt}\\
-Wird die Kanallängenmodulation vernachlässigt, so kann der \textcolor{blue}{$(1+\lambda V_{DS})$} Term weggelassen werden.
+Wird die Kanallängenmodulation vernachlässigt, so kann der \textcolor{blue}{$(1+\lambda V_{\rm DS})$} Term weggelassen werden.
 \subsection{Kleinsignal Ersatzschaltung}
 \begin{minipage}{0.5\linewidth}
 \textbf{DC-Ersatzschaltung (Arbeitsspunkt definieren)}
@@ -140,15 +140,15 @@ Wird die Kanallängenmodulation vernachlässigt, so kann der \textcolor{blue}{$(
     \hline
         & Transistor  ungesättigt (Widerstand) & Transistor gesättigt (Stromquelle)  \\
     \hline
-    Weak Inversion      & $r_{DS0} = \frac{d V_{DS}}{d I_D}|_{V_{DS}=0} = \frac{V_{temp}}{I_{D\infty}}$     & \\
-    EXP-Bereich         & $g_0 = \frac{d I_D}{d V_{DS}} = \frac{I_{D\infty - I_D}}{V_{temp}}$               & $g_0 = \frac{1}{r_{ds}} = \frac{d I_D}{d V_{DS}} = \frac{I_D}{V_E + V_{DS}}= \textcolor{blue}{\frac{I_D}{\frac{1}{\lambda}+ V_{DS}}}$ \\
-                        & $g_m$ wird nicht benötigt                                                         & $g_m = \frac{d I_D}{d V_{GS}} = \frac{I_D}{n_M V_{temp}}$ \\
+    Weak Inversion      & $r_{DS0} = \frac{d V_{\rm DS}}{d I_D}|_{V_{\rm DS}=0} = \frac{V_{temp}}{I_{D\infty}}$     & \\
+    EXP-Bereich         & $g_o = \frac{d I_D}{d V_{\rm DS}} = \frac{I_{D\infty - I_D}}{V_{temp}}$               & $g_o = \frac{1}{r_{\rm DS}} = \frac{d I_D}{d V_{\rm DS}} = \frac{I_D}{V_E + V_{\rm DS}}= \textcolor{blue}{\frac{I_D}{\frac{1}{\lambda}+ V_{\rm DS}}}$ \\
+                        & $g_m$ wird nicht benötigt                                                         & $g_m = \frac{d I_D}{d V_{\rm GS}} = \frac{I_D}{n_M V_{temp}}$ \\
     \hline
-    Strong Inversion    & $r_{DS0} = \frac{d V_{DS}}{d I_D}|_{V_{DS}=0} = \frac{1}{\mu C_{ox}\cdot\frac{W}{L}(V_{GS}-V_T)}$ & \\
-    QUAD-Bereich        & $g_0 = \frac{d I_D}{d V_{DS}} = \mu C_{ox}\cdot \frac{W}{L}(V_{GS}-V_T - V_{DS})$ & $g_0 = \frac{1}{r_{DS}} =\frac{d I_D}{d V_{DS}} = \frac{I_D}{V_E + V_{DS}}= \textcolor{blue}{\frac{I_D}{\frac{1}{\lambda}+ V_{DS}}}$ \\
-                        & $g_m$ wird nicht benötigt & $g_m = \frac{d I_D}{d V_{GS}} = \mu C_{ox}\cdot \frac{W}{L}(V_{GS}-V_T) = \sqrt{2\mu C_{ox}\frac{W}{L}I_D}$ \\
-                        & $g_{mb}$ wird nicht benötigt & $g_{mb} = \frac{d I_D}{d V_{SB}} = -g_m (n_M - 1)$ mit  \\
-                        & & $n_M = 1 + \frac{\gamma}{2\sqrt{V_{SB}+\Phi_0}}\approx 1.5-1.8$(bei $V_{SB}$ = 0)\\
+    Strong Inversion    & $r_{DS0} = \frac{d V_{\rm DS}}{d I_D}|_{V_{\rm DS}=0} = \frac{1}{\mu C_{\rm ox}\cdot\frac{W}{L}(V_{\rm GS}-V_T)}$ & \\
+    QUAD-Bereich        & $g_o = \frac{d I_D}{d V_{\rm DS}} = \mu C_{\rm ox}\cdot \frac{W}{L}(V_{\rm GS}-V_T - V_{\rm DS})$ & $g_o = \frac{1}{r_{\rm DS}} =\frac{d I_D}{d V_{\rm DS}} = \frac{I_D}{V_E + V_{\rm DS}}= \textcolor{blue}{\frac{I_D}{\frac{1}{\lambda}+ V_{\rm DS}}}$ \\
+                        & $g_m$ wird nicht benötigt & $g_m = \frac{d I_D}{d V_{\rm GS}} = \mu C_{\rm ox}\cdot \frac{W}{L}(V_{\rm GS}-V_T) = \sqrt{2\mu C_{\rm ox}\frac{W}{L}I_D}$ \\
+                        & $g_{\rm mb}$ wird nicht benötigt & $g_{\rm mb} = \frac{d I_D}{d V_{\rm SB}} = -g_m (n_M - 1)$ mit  \\
+                        & & $n_M = 1 + \frac{\gamma}{2\sqrt{V_{\rm SB}+\Phi_0}}\approx 1.5-1.8$(bei $V_{\rm SB}$ = 0)\\
     \hline
 \end{tabular}}
 Dieselben Formel gelten auch für p-kanal Transistoren, wenn mit Beträgen gerechnet wird!
@@ -156,11 +156,11 @@ Dieselben Formel gelten auch für p-kanal Transistoren, wenn mit Beträgen gerec
 \begin{tabular}{| l | l | l |}
     \hline
     $V_{DS,sat}$    & Sättigungsspannung    & Im EXP-Bereich: $V_{DS,sat} = -5 V_{temp}$\\
-                    &                       & Im QUAD-Bereich: $V_{DS,sat} = V_{GS} - V_T$\\
+                    &                       & Im QUAD-Bereich: $V_{DS,sat} = V_{\rm GS} - V_T$\\
     \hline
     $V_T$           & Schwellenspannung     & Typisch 0.6V beim n-Kanal, resp.$-0.6V$ beim p-Kanal.\\
                     &                       & $V_T$ ist stark von der Source-Bulk Spannung abhängig (Body-Effekt):\\
-                    &                       & $V_T = V_T0 \pm \Delta V_T$ mit $\Delta V_T = \gamma(\sqrt{V_{SB}\pm 2\Phi_F}-\sqrt{2\Phi_F})$\hspace{10pt}$\Phi_0 = 2\Phi_F$ \\ 
+                    &                       & $V_T = V_T0 \pm \Delta V_T$ mit $\Delta V_T = \gamma(\sqrt{V_{\rm SB}\pm 2\Phi_F}-\sqrt{2\Phi_F})$\hspace{10pt}$\Phi_0 = 2\Phi_F$ \\ 
                     &                       & ($+$ für n-Kanal, $-$ für p-Kanal)\\
                     &                       & $\gamma_N \approx 0.6V\sqrt{V}$ bzw. $\gamma_P \approx 0\sqrt{V} (\sqrt{V}$ ist die Einheit von $\gamma$)\\
                     &                       & Handrechnung: $\gamma \approx\gamma_N \approx\gamma_P\approx 0.6\sqrt{V}$ \\
@@ -172,9 +172,9 @@ Dieselben Formel gelten auch für p-kanal Transistoren, wenn mit Beträgen gerec
                     &                       & \colorbox{lime}{$I_M = \frac{W}{L}\cdot I'_M$} \\
                     &                       & $I'_M$ ist der spezifische Drainstrom an der Grenze. \\
     \hline
-    $n_M$           & Unterschwellen-       & Der Faktor $n_M$ ist von der Source-Bulk Spannung $V_{SB}$ abhängig:\\
-                    & Neigungsfaktor        & $n_M = 1 + \frac{\gamma}{2\sqrt{V_{SB}+\Phi_0}}$\\
-                    &                       & mit $\Phi_0 = 2\Phi_F\approx0.6$V. Für $V_{SB}$ = 0V erhalten wir $n_M = 1.39.$ \\
+    $n_M$           & Unterschwellen-       & Der Faktor $n_M$ ist von der Source-Bulk Spannung $V_{\rm SB}$ abhängig:\\
+                    & Neigungsfaktor        & $n_M = 1 + \frac{\gamma}{2\sqrt{V_{\rm SB}+\Phi_0}}$\\
+                    &                       & mit $\Phi_0 = 2\Phi_F\approx0.6$V. Für $V_{\rm SB}$ = 0V erhalten wir $n_M = 1.39.$ \\
                     &                       & Häufig wird ein Wert von $n_M\approx1.5$ angegeben \\
     \hline
     $a_E$           & Early-Faktor          & \textcolor{gray}{(gemäss Technologieparametern)} \\
@@ -185,26 +185,26 @@ Dieselben Formel gelten auch für p-kanal Transistoren, wenn mit Beträgen gerec
                     & Modulationsfaktor     & $\lambda = \frac{1}{V_E + V_{DS,sat}}\approx\frac{1}{V_E}\approx\frac{1}{a_E \cdot L}$\\
                     &                       & Bei der Handrechnung wird der MOS-Transistor meistens mit \textcolor{blue}{$\lambda=0$} idealisiert\\
     \hline
-    $\beta$,B,$\mu C_{ox}$       & Transkonduktanz       & Steilheit, Verstärkungsfaktor. Dieser Faktor ist im gesättigten ($\beta$) und \\
+    $\beta$,B,$\mu C_{\rm ox}$       & Transkonduktanz       & Steilheit, Verstärkungsfaktor. Dieser Faktor ist im gesättigten ($\beta$) und \\
                     &                       & ungesättigten Bereich (B) grundsätzlich verschieden. \\
                     &                       & Es gilt: $\beta = \frac{W}{L}\beta_0$ bzw. $B = \frac{W}{L}B_0; B_0\approx \beta_0 = \mu C''_{ox}$ \\
     \hline
     $g_m$           & Transkonduktanz       & Steilheit oder Gate-Steilheit. Beschreibt den Zusammenhang zwischen \\
-                    &                       & $I_{DS}$ und $V_{GS}$. Mass für die Verstärkung. (Siehe Tabelle Kleinsignalparameter) \\
+                    &                       & $I_{DS}$ und $V_{\rm GS}$. Mass für die Verstärkung. (Siehe Tabelle Kleinsignalparameter) \\
     \hline
-    $g_{mb}$        & Body-Transkonduktanz  & Beschreibt die Wirkung des Body-Effekts. Nur im gesättigtem \\
+    $g_{\rm mb}$        & Body-Transkonduktanz  & Beschreibt die Wirkung des Body-Effekts. Nur im gesättigtem \\
                     &                       & Stromquellenbetrieb von Bedeutung. \\
     \hline
-    $g_0$           & Ausgangsleitwert      & $g_0 = 1/(r_{DS}) = I_D/(V_E + V_{DS})$\\
+    $g_o$           & Ausgangsleitwert      & $g_o = 1/(r_{\rm DS}) = I_D/(V_E + V_{\rm DS})$\\
     \hline
-    $r_{DS}$        & Ausgangswiderstand    & $r_{DS} = \frac{1}{g_0}\approx\frac{\Delta V_{DS}}{\Delta I_D}$ oder $r_{DS} = \frac{V_E + V_{DS}}{I_{D,real}}\approx\frac{V_E}{I_D}$\\
-                    &                       & $V_E, V_{DS}, I_{D,real}$ immer im Betrag! \\
+    $r_{\rm DS}$        & Ausgangswiderstand    & $r_{\rm DS} = \frac{1}{g_o}\approx\frac{\Delta V_{\rm DS}}{\Delta I_D}$ oder $r_{\rm DS} = \frac{V_E + V_{\rm DS}}{I_{D,real}}\approx\frac{V_E}{I_D}$\\
+                    &                       & $V_E, V_{\rm DS}, I_{D,real}$ immer im Betrag! \\
     \hline
-    $r_{DS0}$       & Eingangswiderstand    & Kleinstmöglicher Ausgangswiderstand (bei $V_{DS} = 0V$), Widerstandsbetrieb bei\\
-                    &                       & $V_{DS} \leq V_{DS,sat}$ \\
+    $r_{DS0}$       & Eingangswiderstand    & Kleinstmöglicher Ausgangswiderstand (bei $V_{\rm DS} = 0V$), Widerstandsbetrieb bei\\
+                    &                       & $V_{\rm DS} \leq V_{DS,sat}$ \\
     \hline
     $r_s$           & innerer                & \\
-                    & Sourcewiderstand       & $r_s = 1/g_m = 1 / \sqrt{2\mu C_{ox} I_D}$\\
+                    & Sourcewiderstand       & $r_s = 1/g_m = 1 / \sqrt{2\mu C_{\rm ox} I_D}$\\
     \hline
     \end{tabular}
 \section{Verstärker Grundschaltungen }
@@ -222,13 +222,13 @@ Dieselben Formel gelten auch für p-kanal Transistoren, wenn mit Beträgen gerec
     \hline
     $R_{in}/R_{out}$ & gross/gross                   & klein/gross                   & gross/klein \\
     \hline
-    Verstärkung     &  $a=\frac{V_{out}}{V_{in}}= -\frac{R_D}{R_S + \frac{1}{g_m}+(R_D+R_S)\frac{g_0}{g_m}}$        & $a=\frac{V_{out}}{V_{in}}= \frac{R_D (1+\frac{g_0}{g_m})}{R_S + \frac{1}{g_m}+(R_D+R_S)\frac{g_0}{g_m}}$              & $a=\frac{V_{out}}{V_{in}}= \frac{R_S}{R_S + \frac{1}{g_m}+(R_D+R_S)\frac{g_0}{g_m}}$ \\
-    Spezialfälle    & Bei $1/g_m, R_D<<1/g_0$:     & Bei $1/g_m, R_D<<1/g_0$:       & Bei $R_S,R_D<<1/g_0$: \\
+    Verstärkung     &  $a=\frac{V_{out}}{V_{in}}= -\frac{R_D}{R_S + \frac{1}{g_m}+(R_D+R_S)\frac{g_o}{g_m}}$        & $a=\frac{V_{out}}{V_{in}}= \frac{R_D (1+\frac{g_o}{g_m})}{R_S + \frac{1}{g_m}+(R_D+R_S)\frac{g_o}{g_m}}$              & $a=\frac{V_{out}}{V_{in}}= \frac{R_S}{R_S + \frac{1}{g_m}+(R_D+R_S)\frac{g_o}{g_m}}$ \\
+    Spezialfälle    & Bei $1/g_m, R_D<<1/g_o$:     & Bei $1/g_m, R_D<<1/g_o$:       & Bei $R_S,R_D<<1/g_o$: \\
                     & $a \approx -\frac{R_D}{R_S+\frac{1}{g_m}}$    & $a \approx \frac{R_D}{R_S+\frac{1}{g_m}}$     & $a \approx \frac{R_S}{R_S+\frac{1}{g_m}}$ \\
                     & Bei $R_S$=0:                 & Bei $R_S$=0:                   & Idealer Source-Folger: $a\approx1$ \\
-                    & $a\approx -g_m(R_D||r_{DS})$  & $a\approx g_m(R_D||r_{DS})(1+\frac{g_0}{g_m})$       & $(1/g_m<<R_S<<1/g_0)$ \\
+                    & $a\approx -g_m(R_D||r_{\rm DS})$  & $a\approx g_m(R_D||r_{\rm DS})(1+\frac{g_o}{g_m})$       & $(1/g_m<<R_S<<1/g_o)$ \\
     \hline
-    \multicolumn{4}{|l|}{$g_m = \frac{1}{r_s}$ \hspace{15pt} $g_0 = \frac{1}{r_{DS}}= \frac{I_D}{V_E+V_{DS}}\approx\frac{I_D}{V_E}$ (Näherung für $V_E>>V_{DS}$) \hspace{10pt} $V_E = a_E\cdot L (V_E=5$V...100V, Kanallängenabh.)} \\
+    \multicolumn{4}{|l|}{$g_m = \frac{1}{r_s}$ \hspace{15pt} $g_o = \frac{1}{r_{\rm DS}}= \frac{I_D}{V_E+V_{\rm DS}}\approx\frac{I_D}{V_E}$ (Näherung für $V_E>>V_{\rm DS}$) \hspace{10pt} $V_E = a_E\cdot L (V_E=5$V...100V, Kanallängenabh.)} \\
     \hline
 \end{tabular}\vspace{5pt}\\
 \textbf{Innenwiderstände}\\
@@ -237,10 +237,10 @@ Dieselben Formel gelten auch für p-kanal Transistoren, wenn mit Beträgen gerec
     \hline
     \textbf{Source}                 & \textbf{Gate}                     &\textbf{Drain} \\
     \hline
-    Näherung für $1/g_0>>R_D$       & $r_{iG}\rightarrow\infty$     & Näherung für $1/g_0>>R_D$ \\
-    $r_{iS}\approx r_s||r_{DS}=\frac{1}{g_m+g_0}$       &  $r_{iG}=100M\Omega ...10 G\Omega$     & $r_{iD}\approx r_{DS}(1+\frac{R_S}{r_s})=\frac{1}{g_0}(1+g_mR_s)$ \\
-    Näherung für $R_S = 0$                              &           & Näherung für $g_m, 1/R_D>>g_0$ \\
-    $r_{iS}\approx r_S = \frac{1}{g_m}$                 &           & $r_{iD}\approx r_{DS} = \frac{1}{g_0}$ \\
+    Näherung für $1/g_o>>R_D$       & $r_{iG}\rightarrow\infty$     & Näherung für $1/g_o>>R_D$ \\
+    $r_{iS}\approx r_s||r_{\rm DS}=\frac{1}{g_m+g_o}$       &  $r_{iG}=100M\Omega ...10 G\Omega$     & $r_{iD}\approx r_{\rm DS}(1+\frac{R_S}{r_s})=\frac{1}{g_o}(1+g_mR_s)$ \\
+    Näherung für $R_S = 0$                              &           & Näherung für $g_m, 1/R_D>>g_o$ \\
+    $r_{iS}\approx r_S = \frac{1}{g_m}$                 &           & $r_{iD}\approx r_{\rm DS} = \frac{1}{g_o}$ \\
     \hline
 \end{tabular}
 \section{MOS-Diode}
@@ -256,16 +256,16 @@ Dieselben Formel gelten auch für p-kanal Transistoren, wenn mit Beträgen gerec
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{|l|l|}
     \hline
-    Arbeitspunktstrom einer MOS-Diode mit Widerstandslast $R_D$ & $I_D = \frac{\mu C_{ox}}{2}\frac{W}{L}(V_{GS}-V_T)^2\textcolor{blue}{(1+\lambda V_{DS})}= \frac{V^+-V_{GS}}{R_D}$ \\
+    Arbeitspunktstrom einer MOS-Diode mit Widerstandslast $R_D$ & $I_D = \frac{\mu C_{\rm ox}}{2}\frac{W}{L}(V_{\rm GS}-V_T)^2\textcolor{blue}{(1+\lambda V_{\rm DS})}= \frac{V^+-V_{\rm GS}}{R_D}$ \\
     \hline
-    $V_{DS}$ einer MOS-Diode bei gegebenem Strom                & $V_{DS} = V_T + \sqrt{\frac{2 I_D}{\mu C_{ox}\frac{W}{L} \textcolor{blue}{(1+\lambda V_{DS})}}}\approx V_T + \sqrt{\frac{2 I_D}{\mu C_{ox}\frac{W}{L}}}$ \\
+    $V_{\rm DS}$ einer MOS-Diode bei gegebenem Strom                & $V_{\rm DS} = V_T + \sqrt{\frac{2 I_D}{\mu C_{\rm ox}\frac{W}{L} \textcolor{blue}{(1+\lambda V_{\rm DS})}}}\approx V_T + \sqrt{\frac{2 I_D}{\mu C_{\rm ox}\frac{W}{L}}}$ \\
     \hline
-    Innenwiderstand der MOS-Diode                               & $r_{DM} = \frac{V_{GS}}{I_D} = \frac{1}{g_m+g_0} \approx \frac{1}{g_m}$ \\
+    Innenwiderstand der MOS-Diode                               & $r_{DM} = \frac{V_{\rm GS}}{I_D} = \frac{1}{g_m+g_o} \approx \frac{1}{g_m}$ \\
     \hline
-    Im quadratischen Bereich gilt                               & $g_m = \mu C_{ox}\frac{W}{L} (V_{GS}-V_T) = \sqrt{2\mu C_{ox}\frac{W}{L} I_D}$ \\
+    Im quadratischen Bereich gilt                               & $g_m = \mu C_{\rm ox}\frac{W}{L} (V_{\rm GS}-V_T) = \sqrt{2\mu C_{\rm ox}\frac{W}{L} I_D}$ \\
     \hline
 \end{tabular}\vspace{5pt}\\
-Bei der leitenden MOS-Diode ist der Transistor \textbf{immer gesättigt}, weil $V_{DS}>V_{DS,sat} = (V_{GS}-V_T)$ jederzeit erfüllt ist. Auch kann die MOS-Diode in der Strong, Moderate und Weak Inversion tätig sein. \\
+Bei der leitenden MOS-Diode ist der Transistor \textbf{immer gesättigt}, weil $V_{\rm DS}>V_{DS,sat} = (V_{\rm GS}-V_T)$ jederzeit erfüllt ist. Auch kann die MOS-Diode in der Strong, Moderate und Weak Inversion tätig sein. \\
 \textbf{MOS-Dioden als Spannungsteiler}\\
 \renewcommand{\arraystretch}{1}
 \begin{tabular}{|l|l|l|l|}
@@ -278,17 +278,17 @@ Bei der leitenden MOS-Diode ist der Transistor \textbf{immer gesättigt}, weil $
     \includegraphics[width=0.08\linewidth]{Spannungsteiler_mit Body_Effekt.png}    & \includegraphics[width=0.22\linewidth]{Spannungsteiler_ohne Body_Effekt.png}  & \includegraphics[angle=90,width=0.2\linewidth]{Mehrfach_Spannungsteiler_getrennte Substrate.png}   & \includegraphics[angle=90, width=0.2\linewidth]{Mehrfach_Spannungsteiler_gemeinsame Substrate.png}\\
     \hline
 \end{tabular}\vspace{5pt}\\
-\textbf{Verhältnis:} $\frac{|V_{GS1}-V_{T1}|}{|V_{GS2}-V_{T2}|}= \sqrt{\frac{\beta_2}{\beta_1}}=\sqrt{\frac{(W/L)_2\beta_2}{(W/L)_1\beta_1}}\rightarrow \Bigl|\frac{V_{GS1}}{V_{GS2}}\Bigr| = \frac{V_{T1}\pm\sqrt{\frac{2I_D}{\beta_1}}}{V_{T2}\pm\sqrt{\frac{2I_D}{\beta_2}}}$ \hspace{20pt}($\beta = \mu C_{ox} \frac{W}{L}$)
+\textbf{Verhältnis:} $\frac{|V_{GS1}-V_{T1}|}{|V_{GS2}-V_{T2}|}= \sqrt{\frac{\beta_2}{\beta_1}}=\sqrt{\frac{(W/L)_2\beta_2}{(W/L)_1\beta_1}}\rightarrow \Bigl|\frac{V_{GS1}}{V_{GS2}}\Bigr| = \frac{V_{T1}\pm\sqrt{\frac{2I_D}{\beta_1}}}{V_{T2}\pm\sqrt{\frac{2I_D}{\beta_2}}}$ \hspace{20pt}($\beta = \mu C_{\rm ox} \frac{W}{L}$)
 \section{MOS-Transistor als Stromquelle}
 Die Drain-Source-Strecke des MOS-Transistors stellt im Sättigungsbereich eine gesteuerte Stromquelle dar, deren Ausgangswiderstand (Innenwiderstand am Drain) relativ hoch ist.\\
 \begin{minipage}{0.5\linewidth}
 \subsection{Strom einer MOS Stromquelle}
-$I_D = \frac{\mu C_{ox}}{2}\frac{W}{L}(V_{GS}-V_T)^2\textcolor{blue}{(1+\lambda V_{DS})}\approx\frac{\mu C_{ox}}{2}\frac{W}{L}(V_{GS}-V_T)^2$
+$I_D = \frac{\mu C_{\rm ox}}{2}\frac{W}{L}(V_{\rm GS}-V_T)^2\textcolor{blue}{(1+\lambda V_{\rm DS})}\approx\frac{\mu C_{\rm ox}}{2}\frac{W}{L}(V_{\rm GS}-V_T)^2$
 \end{minipage}%
 \begin{minipage}{0.5\linewidth}
 \subsection{Sättigungsspannung}
-\textbf{Bei strong Inversion:}\\ $V_{DS} \geq V_{DS,sat} = V_{GS} - V_T = \sqrt{\frac{2 I_D}{\mu C_{ox}\frac{W}{L}}}$\vspace{5pt}\\
-\textbf{Bei Weak Inversion:} $V_{DS} \geq V_{DS,sat}\approx 130 mV$
+\textbf{Bei strong Inversion:}\\ $V_{\rm DS} \geq V_{DS,sat} = V_{\rm GS} - V_T = \sqrt{\frac{2 I_D}{\mu C_{\rm ox}\frac{W}{L}}}$\vspace{5pt}\\
+\textbf{Bei Weak Inversion:} $V_{\rm DS} \geq V_{DS,sat}\approx 130 mV$
 \end{minipage}\vspace{5pt}\\
 \begin{tabular}{|l|l|l|}
     \hline
@@ -302,14 +302,14 @@ $I_D = \frac{\mu C_{ox}}{2}\frac{W}{L}(V_{GS}-V_T)^2\textcolor{blue}{(1+\lambda 
     \hline
     \textbf{Konfiguration}  & \textbf{Ausgangswiderstand $r_0$}     & \textbf{min. Ausgangsspannung $V_{0,min}$} \\
     \hline
-    Einfache Quelle      & $r_{out} = r_{iD} = r_{DS} = \frac{1}{g_0}= \frac{V_E+V_{DS}}{I_D}\approx\frac{V_E}{I_D}$ & $V_0 > V_{0,min} = V_{DS,sat}$ \\
+    Einfache Quelle      & $r_{out} = r_{iD} = r_{\rm DS} = \frac{1}{g_o}= \frac{V_E+V_{\rm DS}}{I_D}\approx\frac{V_E}{I_D}$ & $V_0 > V_{0,min} = V_{DS,sat}$ \\
     mit 1 Transistor     &  & \\
     \hline
-    Stromquelle mit      & $r_{iD} = r_{DS}\Bigl(1+g_m R_S+\frac{R_S}{r_{DS}}\Bigr)$ & $V_0 > V_{0,min} = R_S I_D + V_{DS,sat}$ \\
-    Source-Widerstand    & $= \frac{1}{g_0}(1+g_m R_S)+R_S$ & \\
+    Stromquelle mit      & $r_{iD} = r_{\rm DS}\Bigl(1+g_m R_S+\frac{R_S}{r_{\rm DS}}\Bigr)$ & $V_0 > V_{0,min} = R_S I_D + V_{DS,sat}$ \\
+    Source-Widerstand    & $= \frac{1}{g_o}(1+g_m R_S)+R_S$ & \\
     \hline
-    Stromquelle mit      & $r_{out} = r_{o2}\approx g_{m2}\cdot r_{DS}^2 = (g_m r_{DS})r_{DS}$ & $V_{0,min} = V_{G2}-V_{GS2}+V_{DS2,sat}$\\
-    Kaskode              & $= \mu\cdot r_{DS} = \frac{1}{g_{01}}\cdot\frac{g_{m2}}{g_{02}}$ & $V_{0,min} = V_{DS1,sat}+V_{DS2,sat}$ \\
+    Stromquelle mit      & $r_{out} = r_{o2}\approx g_{m2}\cdot r_{\rm DS}^2 = (g_m r_{\rm DS})r_{\rm DS}$ & $V_{0,min} = V_{G2}-V_{GS2}+V_{DS2,sat}$\\
+    Kaskode              & $= \mu\cdot r_{\rm DS} = \frac{1}{g_{01}}\cdot\frac{g_{m2}}{g_{02}}$ & $V_{0,min} = V_{DS1,sat}+V_{DS2,sat}$ \\
         &   & (bei $V_{G2} = V_{DS1,sat} +V_{GS2})$ \\
     \hline
     Stromqulle mit       & $r_{out}\approx r_{DS1}\cdot g_{m2}r_{DS2}\cdot g_{m3}r_{DS3}$ & $V_{0,min} = 2 V_{DS,sat}$\\
@@ -350,19 +350,19 @@ Ausgangsimpedanz (ideal): $r_{out}=\infty\Omega$\\
     \hline 
     \textbf{Stromspiegeltyp} & \textbf{Genauigkeit} & $r_{out}$ & $V_I$ & $V_{O,min}$ \\
     \hline
-    Widlar-Stromspiegel     & $+$     & $=\frac{1}{g_0}$                              & $\approx V_T + \sqrt{\frac{2 I_I}{\mu C_{ox}\frac{W}{L}}}$    & $\approx \sqrt{\frac{2 I_0}{\mu C_{ox}\frac{W}{L}}}$ \\
+    Widlar-Stromspiegel     & $+$     & $=\frac{1}{g_o}$                              & $\approx V_T + \sqrt{\frac{2 I_I}{\mu C_{\rm ox}\frac{W}{L}}}$    & $\approx \sqrt{\frac{2 I_0}{\mu C_{\rm ox}\frac{W}{L}}}$ \\
     \hline
-    Wilson-Stromspiegel     & $+$     & $\approx\frac{1}{g_0}(2+\frac{g_m}{g_0})$     & $\approx 2V_T + 2\sqrt{\frac{2 I_I}{\mu C_{ox}\frac{W}{L}}}$   & $\approx V_T + 2\sqrt{\frac{2 I_0}{\mu C_{ox}\frac{W}{L}}}$ \\
+    Wilson-Stromspiegel     & $+$     & $\approx\frac{1}{g_o}(2+\frac{g_m}{g_o})$     & $\approx 2V_T + 2\sqrt{\frac{2 I_I}{\mu C_{\rm ox}\frac{W}{L}}}$   & $\approx V_T + 2\sqrt{\frac{2 I_0}{\mu C_{\rm ox}\frac{W}{L}}}$ \\
     \hline
-    Verbesserter Wilson     & $+ +$   & $\approx\frac{1}{g_0}(2+\frac{g_m}{g_0})$     & $\approx 2V_T + 2\sqrt{\frac{2 I_I}{\mu C_{ox}\frac{W}{L}}}$   & $\approx V_T + 2\sqrt{\frac{2 I_0}{\mu C_{ox}\frac{W}{L}}}$ \\
+    Verbesserter Wilson     & $+ +$   & $\approx\frac{1}{g_o}(2+\frac{g_m}{g_o})$     & $\approx 2V_T + 2\sqrt{\frac{2 I_I}{\mu C_{\rm ox}\frac{W}{L}}}$   & $\approx V_T + 2\sqrt{\frac{2 I_0}{\mu C_{\rm ox}\frac{W}{L}}}$ \\
     \hline
-    Kaskode-Stromspiegel    & $+ +$   & $\approx\frac{1}{g_0}(2+\frac{g_m}{g_0})$     & $\approx 2V_T + 2\sqrt{\frac{2 I_I}{\mu C_{ox}\frac{W}{L}}}$   & $\approx V_T + 2\sqrt{\frac{2 I_0}{\mu C_{ox}\frac{W}{L}}}$ \\
+    Kaskode-Stromspiegel    & $+ +$   & $\approx\frac{1}{g_o}(2+\frac{g_m}{g_o})$     & $\approx 2V_T + 2\sqrt{\frac{2 I_I}{\mu C_{\rm ox}\frac{W}{L}}}$   & $\approx V_T + 2\sqrt{\frac{2 I_0}{\mu C_{\rm ox}\frac{W}{L}}}$ \\
     \hline
-    geregelte Kaskode       & $+ +$   & $\approx\frac{1}{g_0}(\frac{g_m}{g_0})^2$     & $\approx V_T + \sqrt{\frac{2 I_I}{\mu C_{ox}\frac{W}{L}}}$    & $\approx2\sqrt{\frac{2 I_0}{\mu C_{ox}\frac{W}{L}}}$ \\
+    geregelte Kaskode       & $+ +$   & $\approx\frac{1}{g_o}(\frac{g_m}{g_o})^2$     & $\approx V_T + \sqrt{\frac{2 I_I}{\mu C_{\rm ox}\frac{W}{L}}}$    & $\approx2\sqrt{\frac{2 I_0}{\mu C_{\rm ox}\frac{W}{L}}}$ \\
     \hline
 \end{tabular}\\
 \textbf{Beeinflussung von Stromspiegelverhältnis mittels hinzufügen von Sourcewiderstand} \\
-Strong Inversion: $R_S=\frac{1}{I_{D2}} \Bigl(\sqrt{\frac{2I_{D1}}{\beta_1}} - \sqrt{\frac{2I_{D2}}{\beta_2}}\Bigr)$ \hspace{20pt}($\beta = \mu C_{ox} \frac{W}{L}$)\\
+Strong Inversion: $R_S=\frac{1}{I_{D2}} \Bigl(\sqrt{\frac{2I_{D1}}{\beta_1}} - \sqrt{\frac{2I_{D2}}{\beta_2}}\Bigr)$ \hspace{20pt}($\beta = \mu C_{\rm ox} \frac{W}{L}$)\\
 Weak Inversion: $R_S = \frac{1}{I_{D2}}\cdot n_M\cdot V_{temp} \cdot \ln(\frac{I_{D1}}{I_{D2}})$\\
 \textbf{Serie/Parallelschaltung von Transistoren} \\
 Bei der Serieschaltung von k identischen Transistoren mit dem Kanal-Seitenverhältnis (W/L) entsteht eine Schaltung, welche sich wie ein neuer Transistor mit dem Kanal-Seitenverhältnis (W/k$\cdot$L) verhält. \\
@@ -391,11 +391,11 @@ Bei der Parallelschaltung von n identischen Transistoren mit dem Kanal-Seitenver
     \hline
     \textbf{Verstärkung mit}  & \textbf{Verstärkung}  & \textbf{Vorteil} & \textbf{Nachteil} \\
     \hline 
-    Widerstandslast & \makecell[l]{$a = -\frac{g_m}{\frac{1}{R_D}+g_0}$\\$r_{out} = r_{iD} = \frac{1}{g_0}(1+g_m R_S)+R_S$} & & \\
+    Widerstandslast & \makecell[l]{$a = -\frac{g_m}{\frac{1}{R_D}+g_o}$\\$r_{out} = r_{iD} = \frac{1}{g_o}(1+g_m R_S)+R_S$} & & \\
     \hline
     MOS-Dioden Last & $a = -\frac{\frac{1}{g_{m2}}}{R_S+\frac{1}{g_{m1}}}$\textcolor{brown}{$=-\frac{g_{m1}}{g_{m2}}= \sqrt{\frac{\beta_1}{\beta_2}}$(wenn $R_S = 0$)}& & Nichtlinear \\
     \hline
-    Stromquellenlast & $a = -\frac{R_D}{R_S+\frac{1}{g_m}+(R_D+R_S)\frac{g_0}{g_m}}$\textcolor{brown}{$=-\frac{g_{m1}}{\frac{1}{r_Q}+g_{01}}$} & & Frequenzverh. \\
+    Stromquellenlast & $a = -\frac{R_D}{R_S+\frac{1}{g_m}+(R_D+R_S)\frac{g_o}{g_m}}$\textcolor{brown}{$=-\frac{g_{m1}}{\frac{1}{r_Q}+g_{01}}$} & & Frequenzverh. \\
     \hline
     \makecell[l]{parallelem Eingang\\(Push-Pull-Stufe)} & $a= -\frac{g_{m\_N1}+g_{m\_P1}}{g_{0\_N1}+g_{0\_P1}}=-(g_{m\_N1}+g_{m\_P1})\cdot(r_{DS_N1}||r_{DS_P1})$ & Grosse Ströme & Frequenzverh. \\
     \hline
@@ -434,7 +434,7 @@ Knoten mit parasitären Kapazitäten. Von diesen Knoten ist in der Regel der Gat
 Für eine grobe Analyse des Frequenzverhaltens genügt es somit, die Knoten zu suchen, bei denen das grösste RC-Produkt auftritt. Dort wird der dominierende Pol entstehen, welcher einen Abfall des Frequnzganges um 20dB/Dek einleitet.
 \subsection{Widerstände}
 \textbf{Knotenimpedanz praktisch unendlich (G$\Omega$)}:\\ $r_{iG}\rightarrow \infty$ Gate\\
-\textbf{Knotenimpedanz sehr hoch (M$\Omega$)}:\\ $r_{DS} = \frac{1}{g_0}$ Drain wenn Stromquelle\\
+\textbf{Knotenimpedanz sehr hoch (M$\Omega$)}:\\ $r_{\rm DS} = \frac{1}{g_o}$ Drain wenn Stromquelle\\
 \textbf{Kontenimpedanz tief (k$\Omega$)}:\\ $\frac{1}{g_m}$ Drain wenn Diodenschaltung, Source wenn Stromquellenschaltung
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
@@ -462,8 +462,8 @@ Arbeitsbereich & $C_{GS}$  & $C_{GD}$  & $C_{SB}$  & $C_{DB}$\\
 \makecell[l]{Ungesättigt\\ Typ. Wert} & \makecell[l]{$C_{GS0}+ 1/2C_{oxt}$\\ 26 fF} & \makecell[l]{$C_{GD0}+ 1/2C_{oxt}$\\ 26 fF} & \makecell[l]{$C_{jSBt}+ 1/2C_{BCt}$\\ 10 fF} & \makecell[l]{$C_{jDBt}+ 1/2C_{BCt}$\\ 10 fF}\\
 \hline
 \end{tabular}\\
-$C_{oxt} = C_{ox}\cdot W \cdot L_{eff}$\hspace{20pt} $C_{BCt} = C_{jBC}\cdot W \cdot L_{eff}$\hspace{20pt} $C_{jSBt} = C_{jSB}\cdot A_S +C_{jswSB}\cdot P_S$ \hspace{20pt} $C_{jDBt} = C_{jDB}\cdot A_D + C_{jswDB} \cdot P_D$\\
-Wenn $V_{SB} = 0$, dann $C_{SB}$ ignorieren und $C_{DB} = C_{DS}$
+$C_{oxt} = C_{\rm ox}\cdot W \cdot L_{eff}$\hspace{20pt} $C_{BCt} = C_{jBC}\cdot W \cdot L_{eff}$\hspace{20pt} $C_{jSBt} = C_{jSB}\cdot A_S +C_{jswSB}\cdot P_S$ \hspace{20pt} $C_{jDBt} = C_{jDB}\cdot A_D + C_{jswDB} \cdot P_D$\\
+Wenn $V_{\rm SB} = 0$, dann $C_{SB}$ ignorieren und $C_{DB} = C_{DS}$
 \section{MOS Operationsverstärker}
 \begin{minipage}{0.5\linewidth}
 \textbf{OTA:} Hohe Eingangsimpedanz, hohe Ausgangsimpedanz.\\
@@ -483,9 +483,9 @@ Kaskadierung & \multicolumn{5}{l}{Es können nicht belibig viele Stufen kaskadie
 \subsection{Differenzstufe}
 Eigenschaften der Differenzstufe bei Strong Inversion:\\
 \begin{tabular}{l l}
-$V_d = \pm\frac{1}{2}\sqrt{\frac{I_Q}{\mu C_{ox}\frac{W}{L}}}$ & Linearität der Diff-Stufe gut. An der Linearitätsgrenzen fliesst $I_D = 0.74 I_Q$ bzw. $I_D = 0.26 I_Q$\\
-$V_d = \pm\sqrt{\frac{I_Q}{\mu C_{ox}\frac{W}{L}}}$ & In einem der Zweige fliesst $I_D = 0.93 I_Q$, im anderen $I_D = 0.07 I_Q$\\
-$V_d = \pm\sqrt{2}\sqrt{\frac{I_Q}{\mu C_{ox}\frac{W}{L}}}$ & Der gesamte $I_Q$ fliesst in einem der beiden Zweigen.
+$V_d = \pm\frac{1}{2}\sqrt{\frac{I_Q}{\mu C_{\rm ox}\frac{W}{L}}}$ & Linearität der Diff-Stufe gut. An der Linearitätsgrenzen fliesst $I_D = 0.74 I_Q$ bzw. $I_D = 0.26 I_Q$\\
+$V_d = \pm\sqrt{\frac{I_Q}{\mu C_{\rm ox}\frac{W}{L}}}$ & In einem der Zweige fliesst $I_D = 0.93 I_Q$, im anderen $I_D = 0.07 I_Q$\\
+$V_d = \pm\sqrt{2}\sqrt{\frac{I_Q}{\mu C_{\rm ox}\frac{W}{L}}}$ & Der gesamte $I_Q$ fliesst in einem der beiden Zweigen.
 \end{tabular}\\
 \textbf{Wichtig:} Im Arbeitspunkt fliesst gleich viel Strom im linken so wie im rechten Pfad. $I_B = I_{N1} + I_{N2}$
 \subsection{Slew-Rate}
@@ -507,19 +507,19 @@ Transkonduktanz Differenzstufe & \makecell[l]{Ohne Stromspiegel\hspace{10pt}$g_{
 \hline
 Verstärker Differenzstufe & \makecell[l]{Bei Widerstandslast\hspace{10pt} $i_{out}=-\frac{g_m v_d}{2}$\hspace{20pt}$a\approx - \frac{g_m r_{out}}{2}$\\Bei Stromspiegellast\hspace{10pt} $i_{out}=-g_m v_d$\hspace{20pt}$a\approx\ -g_m r_{out}$}\\
 \hline
-Grenzwert bei Strong Inversion & $a = V_A\sqrt{\frac{\mu C_{ox}\frac{W}{L}}{I_Q}}$ (Bedingung: $a_{EN} = a_{EP}$)\\
+Grenzwert bei Strong Inversion & $a = V_A\sqrt{\frac{\mu C_{\rm ox}\frac{W}{L}}{I_Q}}$ (Bedingung: $a_{EN} = a_{EP}$)\\
 \hline
 Grenzwert bei Weak Inversion & $a = \frac{V_A}{2 n_M V_{temp}}$\\
 \hline
 Gain-Bandwith-Product & $GBP = |a|\cdot f_{P1} = -\frac{g_m}{2\pi C_L}$\\
 \hline
-\makecell[l]{Input Common Mode Range\\($I_{SS}= I_{bias}\frac{(W/L)_{N1}}{(W/L)_{N5}}$)}& \makecell[l]{$V_{inp,max} = (V_{DD}-V_{SS})-V_{GS,P1}-V_{DS,sat,N1}+V_{GS,N1}$\\$V_{inp,min} = V_{SS}+V_{DS,sat,N5}+V_{GS,N1}$ \vspace{5pt}\\Wenn $V_{DS,sat}\approx\sqrt{\frac{2I_D}{\mu C_{ox}\frac{W}{L}}}$ dann gilt:\\$V_{inp,max} = (V_{DD}-V_{SS})-V_{T,P1}-\sqrt{\frac{I_{SS}}{\mu C_{ox,P1}\frac{W}{L}}}+V_{T,N1}$\\$V_{inp,min} = V_{SS}+\sqrt{\frac{2I_{SS}}{\mu C_{ox,N5}\frac{W}{L}}}+V_{T,N1}+\sqrt{\frac{I_{SS}}{\mu C_{ox,N1}\frac{W}{L}}}$}\\
+\makecell[l]{Input Common Mode Range\\($I_{SS}= I_{bias}\frac{(W/L)_{N1}}{(W/L)_{N5}}$)}& \makecell[l]{$V_{inp,max} = (V_{\rm DD}-V_{\rm SS})-V_{GS,P1}-V_{DS,sat,N1}+V_{GS,N1}$\\$V_{inp,min} = V_{\rm SS}+V_{DS,sat,N5}+V_{GS,N1}$ \vspace{5pt}\\Wenn $V_{DS,sat}\approx\sqrt{\frac{2I_D}{\mu C_{\rm ox}\frac{W}{L}}}$ dann gilt:\\$V_{inp,max} = (V_{\rm DD}-V_{\rm SS})-V_{T,P1}-\sqrt{\frac{I_{SS}}{\mu C_{ox,P1}\frac{W}{L}}}+V_{T,N1}$\\$V_{inp,min} = V_{\rm SS}+\sqrt{\frac{2I_{SS}}{\mu C_{ox,N5}\frac{W}{L}}}+V_{T,N1}+\sqrt{\frac{I_{SS}}{\mu C_{ox,N1}\frac{W}{L}}}$}\\
 \hline
 Common mode rejection ratio & \makecell[l]{$v_{DM} = v_{in1}-v_{in2}$\hspace{20pt}differential mode\\$v_{CM} = \frac{v_{in1}+v_{in2}}{2}$\hspace{20pt} common mode\\$a_{DM}=\frac{v_O}{V_{DM}}\Bigr|_{V_{CM}=0}$\hspace{20pt}(ideal $a_{DM}=\infty$)Gegentaktverstärkung\\$a_{CM}=\frac{v_O}{V_{CM}}\Bigr|_{V_{DM}=0}$\hspace{20pt}(ideal $a_{CM}=0$)Gleichtaktverstärkung\\$CMRR=|\frac{a_{DM}}{a_{CM}}| = \frac{r_q}{r_s}=\frac{g_m}{g_{0b}}$\hspace{20pt}(ideal $CMRR=\infty$)\\mit $r_q$: Innenwiderstand von $I_q$, Gleichtaktunterdrückung}\\
 \hline
-Power supply rejection ratio & \makecell[l]{$a_{ps}=\frac{\delta v_O}{\delta V_{DD}}|_{V_I=const}=\frac{v_O}{v_{DD}}|_{v_I=0}$\hspace{20pt}(ideal $a_{ps}=0$)\\$PSRR_+=|\frac{a_{DM}}{a_{PS+}}|$\\$PSRR_-=|\frac{a_{DM}}{a_{PS-}}|$}\\
+Power supply rejection ratio & \makecell[l]{$a_{ps}=\frac{\delta v_O}{\delta V_{\rm DD}}|_{V_I=const}=\frac{v_O}{V_{\rm DD}}|_{v_I=0}$\hspace{20pt}(ideal $a_{ps}=0$)\\$PSRR_+=|\frac{a_{DM}}{a_{PS+}}|$\\$PSRR_-=|\frac{a_{DM}}{a_{PS-}}|$}\\
 \hline
-Offset-Designregeln & \makecell[l]{\textbf{Random Offset}\\Matching von Parametern der Transistoren: Layout für gutes Matching $\rightarrow$\\ Common Centroid, höheres $V_{GS}-V_T$ für Stromspiegel, grosses W/L für\\ Eingangstransistoren.\\\textbf{Systematic Offset}\\Symmetrie der Differenzstufe, gleiche $V_{DS}$ und L der zu einem Stromspiegel\\gehörenden Transistoren, gleiche Stromdichten $\frac{I_D}{W/L}$ in \\Stromspiegeltransistoren. Dies ist auch zwischen der ersten und der zweiten\\Verstärkerstufe zu beachten. (P2, P3) $\frac{I_{D,P3}}{(W/L)_{P3}} = \frac{I_{D,P2}}{(W/L)_{P2}}$}\\
+Offset-Designregeln & \makecell[l]{\textbf{Random Offset}\\Matching von Parametern der Transistoren: Layout für gutes Matching $\rightarrow$\\ Common Centroid, höheres $V_{\rm GS}-V_T$ für Stromspiegel, grosses W/L für\\ Eingangstransistoren.\\\textbf{Systematic Offset}\\Symmetrie der Differenzstufe, gleiche $V_{\rm DS}$ und L der zu einem Stromspiegel\\gehörenden Transistoren, gleiche Stromdichten $\frac{I_D}{W/L}$ in \\Stromspiegeltransistoren. Dies ist auch zwischen der ersten und der zweiten\\Verstärkerstufe zu beachten. (P2, P3) $\frac{I_{D,P3}}{(W/L)_{P3}} = \frac{I_{D,P2}}{(W/L)_{P2}}$}\\
 \hline
 \end{tabular}
 \renewcommand{\arraystretch}{1}
@@ -567,7 +567,7 @@ OTA-Typ & $a$ & $r_{out}$ & $BW$ & $GBP$ & Bemerkung \\
 \hline
 Symmetrischer OTA & $B\cdot g_{m,N1}\cdot r_{out}$ & $(r_{DS,N3}||r_{DS,P3})$ & $\frac{1}{2\pi\cdot r_{out}C_L}$ & $B\cdot \frac{g_{m,N1}}{2\pi\cdot C_L}$ & \\
 \hline
-Telescopie Cascode & $-g_{m,N1,2}\cdot r_{out}$ & $(r_{K,N}||r_{K,P})$ & $\frac{1}{2\pi \cdot r_{out}C_L}$ & $\frac{g_{m,N1,2}}{2\pi \cdot C_L}$ & \makecell[l]{$r_{K,N,K,P}\approx r_{DS}\cdot (2+g_m\cdot r_{DS})$\\Vorteil: Hohe Verstärkung,\\ Geringer Stromverbrauch}\\
+Telescopie Cascode & $-g_{m,N1,2}\cdot r_{out}$ & $(r_{K,N}||r_{K,P})$ & $\frac{1}{2\pi \cdot r_{out}C_L}$ & $\frac{g_{m,N1,2}}{2\pi \cdot C_L}$ & \makecell[l]{$r_{K,N,K,P}\approx r_{\rm DS}\cdot (2+g_m\cdot r_{\rm DS})$\\Vorteil: Hohe Verstärkung,\\ Geringer Stromverbrauch}\\
 \hline
 Folded Cascode & $g_{m,N1,2}\cdot r_{out}$ & $(r_{K,N}||r_{K,P})$ & $\frac{1}{2\pi\cdot r_{out}C_L}$ & $\frac{g_{m,N1,2}}{2\pi\cdot C_L}$ & \makecell[l]{Vorteil: Hohe Verstärkung\\Nachteil: Hoher Stromverbrauch}\\
 \hline

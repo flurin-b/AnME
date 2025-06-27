@@ -1,0 +1,31 @@
+\section{Decibel und Bode}
+
+
+\subsection{Dezibel}
+Werte in Dezibel sind immer \textbf{Leistungsverhältnisse}. 
+Wird mit Spannungen gerechnet, so muss die Spannung quadriert oder der Wert in Dezibel verdoppelt werden.
+
+\[
+    g_{\qty{}{\decibel}} = 10 \cdot \log_{10} \left( \frac{P_{\rm out}}{P_{\rm in}} \right) = 20 \cdot \log_{10} \left( \frac{U_{\rm out}}{U_{\rm in}} \right)
+\]
+
+
+\subsection{Bodediagramm zeichnen}
+\resizebox{\columnwidth}{!}{
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \multirow{2}{*}{Element} & \multicolumn{2}{c|}{Frequenzgang} \\
+        \cline{2-3}
+        & Amplitudengang & Phasengang \\
+        \hline
+        Polstelle & $-\qty{20}{\decibel\per Dekade}$, $-\qty{3}{\decibel}$ bei der Polstelle & $-90^\circ$, $-45^\circ$ bei der Polstelle \\
+        \hline
+        Nullstelle & $+\qty{20}{\decibel\per Dekade}$, $+\qty{3}{\decibel}$ bei der Nullstelle & $+90^\circ$, $+45^\circ$ bei der Nullstelle \\
+        \hline
+    \end{tabular}
+}
+
+\medskip%
+
+Der Anstieg / Abfall der Phase beginnt jeweils eine Dekade vor der Pol- bzw Nullstelle.
+
